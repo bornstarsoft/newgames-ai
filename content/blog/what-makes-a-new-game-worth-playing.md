@@ -2,12 +2,12 @@
 title: "What Makes a New Game Worth Playing?"
 description: "A simple guide to the qualities that make a new mobile, web, puzzle, indie, or casual game worth trying."
 date: 2026-06-01
-draft: true
+draft: false
 categories: ["New Games"]
 tags: ["new games", "game discovery", "mobile games", "web games", "indie games", "casual games"]
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai discovery artwork with game cards and spark effects"
-robots: "noindex,nofollow"
+robots: "index,follow"
 ---
 
 ## Intro

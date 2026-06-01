@@ -13,3 +13,4 @@
 - Activated Cloudflare Email Routing for `support@newgames.ai`, `hello@newgames.ai`, `games@newgames.ai`, and `privacy@newgames.ai`.
 - Kept n8n and AI automation intentionally deferred for a later reviewed workflow.
 - Prepared NewGames.ai automation planning docs, safe AI content policy, image policy, and draft workflow template.
+- Published the first reviewed AI-assisted NewGames.ai blog post: What Makes a New Game Worth Playing?
