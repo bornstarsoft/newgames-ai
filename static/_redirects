@@ -1,0 +1,2 @@
+/blog/_draft-template/ /404.html 404
+/blog/_draft-template/* /404.html 404

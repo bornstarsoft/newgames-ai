@@ -11,17 +11,25 @@ rm -rf public
 hugo --minify
 
 test -f public/index.html
+test -f public/404.html
 test -f public/sitemap.xml
 test -f public/robots.txt
+test -f public/_redirects
+
+if ! grep -q '^/blog/_draft-template/' public/_redirects; then
+  echo "Error: public/_redirects is missing the draft template 404 guard." >&2
+  exit 1
+fi
 
 if [ -e public/blog/_draft-template/index.html ]; then
   echo "Error: draft template output found at public/blog/_draft-template/index.html." >&2
   exit 1
 fi
 
-if find public -name '*_draft-template*' -print -quit | grep -q .; then
-  echo "Error: draft template output found in public. Move templates outside Hugo content before building." >&2
-  find public -name '*_draft-template*' >&2
+draft_template_outputs="$(find public -path public/_redirects -prune -o -name '*_draft-template*' -print)"
+if [ -n "$draft_template_outputs" ]; then
+  echo "Error: draft template output found in public outside _redirects." >&2
+  printf '%s\n' "$draft_template_outputs" >&2
   exit 1
 fi
 
