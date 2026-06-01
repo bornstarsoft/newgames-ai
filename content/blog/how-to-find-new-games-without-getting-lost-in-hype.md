@@ -2,12 +2,12 @@
 title: "How to Find New Games Without Getting Lost in Hype"
 description: "A practical guide to discovering new mobile, web, puzzle, indie, and casual games without relying only on trends or loud marketing."
 date: 2026-06-01
-draft: true
+draft: false
 categories: ["New Games"]
 tags: ["new games", "game discovery", "mobile games", "web games", "indie games", "casual games"]
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai discovery artwork with game cards, search paths, and spark effects"
-robots: "noindex,nofollow"
+robots: "index,follow"
 ---
 
 ## Intro
