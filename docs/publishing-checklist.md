@@ -13,3 +13,15 @@ Use this checklist before publishing any new page or article.
 - Keep n8n and AI-assisted publishing disabled until human review and quality checks are stable.
 - Run `./tools/check_site.sh`.
 - Review the generated page locally.
+
+## Future AI-Assisted Draft Review
+
+- Frontmatter complete.
+- Draft status checked.
+- No unverified claims.
+- No copied text.
+- No third-party screenshots.
+- No fake rankings or fake download counts.
+- Links checked.
+- Categories and tags checked.
+- Final human approval completed before publishing.
