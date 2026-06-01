@@ -1,0 +1,29 @@
+baseURL = "https://newgames.ai/"
+title = "NewGames.ai"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+uglyURLs = false
+summaryLength = 28
+
+[pagination]
+  pagerSize = 12
+
+[params]
+  description = "Find fresh mobile, web, PC, console, indie, puzzle, and casual games in one lightweight discovery hub."
+  defaultOgImage = "/images/og/default-og.svg"
+  brandSlogan = "Discover New Games Worth Playing"
+  contactEmail = "hello@newgames.ai"
+  puzzlepiaURL = "https://puzzlepia.com"
+  bornstarsoftURL = "https://bornstarsoft.com"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.6
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[permalinks]
+  blog = "/blog/:slug/"

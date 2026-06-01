@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article>
+  <header class="article-hero">
+    <div class="wrap article-hero-inner">
+      <p class="eyebrow">Guide</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      {{ if .Date }}<p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>{{ end }}
+      {{ with .Params.cover }}
+      <img class="article-cover" src="{{ . | relURL }}" alt="{{ $.Params.coverAlt | default "" }}" width="960" height="540">
+      {{ end }}
+    </div>
+  </header>
+  <div class="wrap article-layout">
+    <div class="content-body">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

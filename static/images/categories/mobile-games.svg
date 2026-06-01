@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Mobile games category</title>
+  <desc id="desc">Abstract phone cards with colorful game shapes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef5ff"/>
+      <stop offset="1" stop-color="#eafefa"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102033"/>
+      <stop offset="1" stop-color="#245cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#bg)"/>
+  <circle cx="124" cy="92" r="72" fill="#ff705f" opacity="0.15"/>
+  <circle cx="500" cy="280" r="92" fill="#1bbfa6" opacity="0.2"/>
+  <rect x="230" y="42" width="180" height="276" rx="34" fill="url(#phone)"/>
+  <rect x="250" y="74" width="140" height="202" rx="20" fill="#ffffff"/>
+  <rect x="292" y="292" width="56" height="10" rx="5" fill="#ffffff" opacity="0.7"/>
+  <rect x="276" y="112" width="46" height="46" rx="14" fill="#245cff"/>
+  <rect x="330" y="112" width="34" height="74" rx="14" fill="#1bbfa6"/>
+  <circle cx="302" cy="212" r="24" fill="#ff705f"/>
+  <path d="M347 211h20v20h-20zM357 201v40" stroke="#4a35c9" stroke-width="12" stroke-linecap="round"/>
+</svg>

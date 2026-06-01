@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Indie games category</title>
+  <desc id="desc">Abstract creative game cards with stars and orbit lines.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1f5ff"/>
+      <stop offset="1" stop-color="#effffb"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a35c9"/>
+      <stop offset="1" stop-color="#245cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="24" fill="url(#bg)"/>
+  <path d="M130 224c78-120 258-160 382-70" fill="none" stroke="#1bbfa6" stroke-width="10" stroke-linecap="round" opacity="0.32"/>
+  <path d="M150 254c118-72 242-74 342-8" fill="none" stroke="#ff705f" stroke-width="8" stroke-linecap="round" opacity="0.28"/>
+  <rect x="222" y="76" width="196" height="206" rx="26" fill="url(#card)"/>
+  <path d="M320 118l16 34 38 5-27 26 7 37-34-18-34 18 7-37-27-26 38-5z" fill="#ffffff" opacity="0.88"/>
+  <circle cx="200" cy="132" r="22" fill="#ff705f"/>
+  <circle cx="458" cy="232" r="24" fill="#1bbfa6"/>
+  <rect x="282" y="236" width="76" height="18" rx="9" fill="#ffffff" opacity="0.72"/>
+</svg>

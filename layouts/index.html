@@ -1,0 +1,81 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Fresh game discovery</p>
+    <h1>NewGames.ai</h1>
+    <p class="hero-slogan">{{ .Site.Params.brandSlogan }}</p>
+    <p class="hero-copy">{{ .Site.Params.description }}</p>
+    <div class="hero-actions" aria-label="Primary actions">
+      <a class="button button-primary" href="{{ "/new-games/" | relURL }}">Explore New Games</a>
+      <a class="button button-secondary" href="{{ "/blog/" | relURL }}">Read Game Guides</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow">Start browsing</p>
+      <h2>Featured Categories</h2>
+    </div>
+    <div class="card-grid category-grid">
+      {{ $categories := slice
+        (dict "title" "New Games" "url" "/new-games/" "image" "/images/categories/new-games.svg" "text" "A simple entry point for fresh games across platforms.")
+        (dict "title" "Mobile Games" "url" "/mobile-games/" "image" "/images/categories/mobile-games.svg" "text" "Quick, portable games for phones and tablets.")
+        (dict "title" "Web Games" "url" "/web-games/" "image" "/images/categories/web-games.svg" "text" "Browser games for short breaks and easy access.")
+        (dict "title" "Puzzle Games" "url" "/puzzle-games/" "image" "/images/categories/puzzle-games.svg" "text" "Logic, pattern, word, number, and relaxing puzzle picks.")
+        (dict "title" "Indie Games" "url" "/indie-games/" "image" "/images/categories/indie-games.svg" "text" "Creative projects and small-team releases worth watching.")
+        (dict "title" "Casual Games" "url" "/casual-games/" "image" "/images/categories/casual-games.svg" "text" "Low-pressure games for relaxed daily play.")
+      }}
+      {{ range $categories }}
+      <a class="category-card" href="{{ .url | relURL }}">
+        <img src="{{ .image | relURL }}" alt="" width="320" height="180" loading="lazy">
+        <span>{{ .title }}</span>
+        <p>{{ .text }}</p>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="wrap">
+    <div class="section-heading">
+      <p class="eyebrow">Fresh game discovery</p>
+      <h2>Ideas For Your Next Play Session</h2>
+    </div>
+    <div class="discovery-grid">
+      <article class="discovery-card">
+        <h3>New Puzzle Games to Try</h3>
+        <p>Look for clear rules, satisfying feedback, and levels that teach one idea at a time.</p>
+      </article>
+      <article class="discovery-card">
+        <h3>New Browser Games for Quick Breaks</h3>
+        <p>Favor instant loading, readable controls, and sessions that fit into a spare few minutes.</p>
+      </article>
+      <article class="discovery-card">
+        <h3>New Mobile Games for Casual Players</h3>
+        <p>Good mobile games respect touch controls, battery life, short sessions, and relaxed pacing.</p>
+      </article>
+      <article class="discovery-card">
+        <h3>New Indie Games Worth Watching</h3>
+        <p>Watch for strong ideas, distinctive art direction, thoughtful updates, and transparent creators.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap why-grid">
+    <div class="section-heading">
+      <p class="eyebrow">Why NewGames.ai?</p>
+      <h2>A lightweight hub for finding games without noise</h2>
+    </div>
+    <div class="why-list">
+      <p>NewGames.ai focuses on fresh game discovery, simple recommendations, and practical guides for players who want to find something enjoyable without digging through noisy feeds.</p>
+      <p>The site covers mobile, web, PC, console, indie, puzzle, and casual game discovery with a careful tone for both casual players and game fans.</p>
+      <p>NewGames.ai is connected to the BornstarSoft and Gempia game network, with room to grow into a reliable discovery hub as future tools and editorial workflows mature.</p>
+    </div>
+  </div>
+</section>
+{{ end }}
