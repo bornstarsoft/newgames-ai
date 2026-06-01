@@ -15,3 +15,4 @@
 - Prepared NewGames.ai automation planning docs, safe AI content policy, image policy, and draft workflow template.
 - Published the first reviewed AI-assisted NewGames.ai blog post: What Makes a New Game Worth Playing?
 - Published the second reviewed AI-assisted NewGames.ai blog post: How to Find New Games Without Getting Lost in Hype.
+- Published the third reviewed AI-assisted NewGames.ai blog post: Mobile Games vs Web Games: Which Is Better for Quick Play?

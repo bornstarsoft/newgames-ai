@@ -2,12 +2,13 @@
 title: "Mobile Games vs Web Games: Which Is Better for Quick Play?"
 description: "A simple guide to choosing between mobile games and web games when you want a quick, lightweight play session."
 date: 2026-06-01
-draft: true
+slug: "mobile-games-vs-web-games-for-quick-play"
+draft: false
 categories: ["Mobile Games", "Web Games"]
 tags: ["mobile games", "web games", "browser games", "casual games", "quick play", "game discovery"]
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai artwork comparing mobile game cards and web game cards for quick play"
-robots: "noindex,nofollow"
+robots: "index,follow"
 ---
 
 ## Intro
