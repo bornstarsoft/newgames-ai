@@ -17,3 +17,4 @@
 - Published the second reviewed AI-assisted NewGames.ai blog post: How to Find New Games Without Getting Lost in Hype.
 - Published the third reviewed AI-assisted NewGames.ai blog post: Mobile Games vs Web Games: Which Is Better for Quick Play?
 - Published the reviewed AI-assisted NewGames.ai puzzle guide: How Casual Players Can Choose New Puzzle Games.
+- Published the reviewed AI-assisted NewGames.ai web games guide: How to Find Web Games That Fit Short Breaks.

@@ -2,12 +2,12 @@
 title: "How to Find Web Games That Fit Short Breaks"
 description: "A lightweight guide to finding browser-friendly web games that fit short breaks, quick sessions, and low-friction play."
 date: 2026-06-03
-draft: true
+draft: false
 categories: ["Web Games", "Casual Games"]
 tags: ["web games", "browser games", "casual games", "quick play", "new games"]
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai artwork with browser game cards and quick-play spark effects"
-robots: "noindex,nofollow"
+robots: "index,follow"
 ---
 
 ## Intro
