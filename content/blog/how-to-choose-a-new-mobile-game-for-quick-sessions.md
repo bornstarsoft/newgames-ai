@@ -76,4 +76,4 @@ If you are not sure mobile is the right format, compare with [Web Games](/web-ga
 
 Choosing a new mobile game for short sessions is mostly about fit. Look for a clear first minute, comfortable controls, readable feedback, natural pause points, and progression that respects your attention.
 
-NewGames.ai aims to make that choice simpler. The goal is not to crown official winners, but to help players find games that match their everyday moments with less noise and more confidence.
+NewGames.ai aims to make that choice simpler: Discover New Games Worth Playing, then decide what fits your own routine. The goal is not to crown official winners, but to help players find games that match everyday moments with less noise and more confidence.
