@@ -2,12 +2,12 @@
 title: "How to Choose a New Mobile Game for Quick Sessions"
 description: "A calm guide to choosing mobile games that fit short sessions, simple controls, fair difficulty, and everyday play."
 date: 2026-06-03
-draft: true
+draft: false
 categories: ["Mobile Games", "Casual Games"]
 tags: ["mobile games", "casual games", "new games", "quick sessions", "game discovery"]
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai artwork with mobile game cards and discovery spark effects"
-robots: "noindex,nofollow"
+robots: "index,follow"
 ---
 
 ## Intro
