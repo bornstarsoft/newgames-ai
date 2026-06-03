@@ -2,12 +2,12 @@
 title: "How Casual Players Can Choose New Puzzle Games"
 description: "A practical NewGames.ai guide to finding approachable puzzle games for short, relaxing, and satisfying play sessions."
 date: 2026-06-03
-draft: true
+draft: false
 categories: ["Puzzle Games", "Casual Games"]
 tags: ["puzzle games", "casual games", "new games", "game discovery", "quick play"]
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai artwork with colorful puzzle cards and spark effects"
-robots: "noindex,nofollow"
+robots: "index,follow"
 ---
 
 ## Intro
