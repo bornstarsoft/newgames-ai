@@ -19,3 +19,9 @@ NewGames.ai covers puzzle games with an emphasis on approachability. A puzzle ga
 - A satisfying loop for short or relaxed sessions.
 
 Future puzzle game articles may include specific recommendations after manual review. For the MVP, this page keeps the focus on evergreen criteria and safe discovery habits.
+
+## New Puzzle Game: Ringzzle
+
+[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free online color rings puzzle game from the BornstarSoft / Puzzlepia web game family. Players place colorful rings, build matching color lines, and manage board space while looking for clear opportunities.
+
+Ringzzle also includes Color Burst, a sound toggle, mobile-friendly browser play, and an anonymous leaderboard. Visit [Play Ringzzle](https://ringzzle.com/play/) to try it, or read the official [How to Play](https://ringzzle.com/how-to-play/) page first.

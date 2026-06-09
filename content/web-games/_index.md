@@ -19,3 +19,9 @@ NewGames.ai treats web game discovery as a balance between convenience and quali
 - Clear external links and safe browsing expectations.
 
 Web games can vary widely by browser, device, and network conditions. When a guide mentions a specific game in the future, NewGames.ai should verify availability and official links before publishing.
+
+## Browser Puzzle Highlight: Ringzzle
+
+[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free color rings puzzle game that runs directly in the browser with no install. It is part of the BornstarSoft / Puzzlepia web game family and includes color line clears, Color Burst, mobile-friendly play, a sound toggle, and an anonymous leaderboard.
+
+Use the official [Play Ringzzle](https://ringzzle.com/play/) page to start, or check the [Ringzzle leaderboard](https://ringzzle.com/leaderboard/) if you want to see the score-focused side of the game.

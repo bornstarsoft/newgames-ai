@@ -19,3 +19,9 @@ The goal is simple: help you notice games that match your time, device, mood, an
 - Transparent language without fake ranking claims.
 
 NewGames.ai is built as a discovery hub first. It is not an official ranking authority, and it does not pretend to measure every game in the market. Use the guides here as a practical starting point, then verify details on official game pages, platform stores, or developer channels before installing, purchasing, or playing.
+
+## Newly Added: Ringzzle
+
+[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free color rings puzzle game you can play instantly in your browser. It features color line clears, Color Burst, a sound toggle, mobile-friendly play, and an anonymous leaderboard.
+
+Start from the official [Play Ringzzle](https://ringzzle.com/play/) page, or read [How to Play](https://ringzzle.com/how-to-play/) before trying it.
