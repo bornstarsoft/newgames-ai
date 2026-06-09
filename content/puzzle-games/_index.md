@@ -20,8 +20,10 @@ NewGames.ai covers puzzle games with an emphasis on approachability. A puzzle ga
 
 Future puzzle game articles may include specific recommendations after manual review. For the MVP, this page keeps the focus on evergreen criteria and safe discovery habits.
 
-## New Puzzle Game: Ringzzle
+## New Puzzle Games
 
-[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free online color rings puzzle game from the BornstarSoft / Puzzlepia web game family. Players place colorful rings, build matching color lines, and manage board space while looking for clear opportunities.
+[Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free online block puzzle game from the BornstarSoft / Puzzlepia web game family. Players place block pieces, clear lines, and chase their best score in the browser with no install.
 
-Ringzzle also includes Color Burst, a sound toggle, mobile-friendly browser play, and an anonymous leaderboard. Visit [Play Ringzzle](https://ringzzle.com/play/) to try it, or read the official [How to Play](https://ringzzle.com/how-to-play/) page first.
+[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free online color rings puzzle game from the same web game family. Players place colorful rings, build matching color lines, and manage board space while looking for clear opportunities.
+
+Use [Play Blockzzle](https://blockzzle.com/play/) for block puzzle line clears, or [Play Ringzzle](https://ringzzle.com/play/) for color rings and Color Burst.

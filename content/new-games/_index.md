@@ -20,8 +20,10 @@ The goal is simple: help you notice games that match your time, device, mood, an
 
 NewGames.ai is built as a discovery hub first. It is not an official ranking authority, and it does not pretend to measure every game in the market. Use the guides here as a practical starting point, then verify details on official game pages, platform stores, or developer channels before installing, purchasing, or playing.
 
-## Newly Added: Ringzzle
+## Newly Added Browser Puzzle Games
 
-[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free color rings puzzle game you can play instantly in your browser. It features color line clears, Color Burst, a sound toggle, mobile-friendly play, and an anonymous leaderboard.
+[Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free block puzzle game you can play instantly in your browser. Players place block pieces, clear lines, and chase their best score with anonymous leaderboard support and no login or email required.
 
-Start from the official [Play Ringzzle](https://ringzzle.com/play/) page, or read [How to Play](https://ringzzle.com/how-to-play/) before trying it.
+[Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free color rings puzzle game with color line clears, Color Burst, a sound toggle, mobile-friendly play, and an anonymous leaderboard.
+
+Start from the official [Play Blockzzle](https://blockzzle.com/play/) page for block puzzle play, or use [Play Ringzzle](https://ringzzle.com/play/) if you want the color rings puzzle.
