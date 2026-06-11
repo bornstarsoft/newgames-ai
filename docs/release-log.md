@@ -1,5 +1,9 @@
 # Release Log
 
+## 2026-06-11
+
+- Added a small CSS stability pass to reduce potential header, section, card, and image layout shifts.
+
 ## 2026-06-01
 
 - Created the static Hugo MVP structure for NewGames.ai.
