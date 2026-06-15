@@ -22,8 +22,10 @@ Web games can vary widely by browser, device, and network conditions. When a gui
 
 ## Browser Puzzle Highlights
 
+[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game with a Key9-first flow. Players solve the Key9 first, then continue to the full board with no sign-up or download required.
+
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free block puzzle game that runs directly in the browser with no install. Players place block pieces, clear lines, chase their best score, and can use anonymous leaderboard support without login or email.
 
 [Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free color rings puzzle game with color line clears, Color Burst, mobile-friendly play, a sound toggle, and an anonymous leaderboard.
 
-Use [Play Blockzzle](https://blockzzle.com/play/) for the block puzzle, or use [Play Ringzzle](https://ringzzle.com/play/) for the color rings puzzle.
+Use [Play DaySudoku](https://daysudoku.com/) for daily Sudoku, [Play Blockzzle](https://blockzzle.com/play/) for the block puzzle, or [Play Ringzzle](https://ringzzle.com/play/) for the color rings puzzle.

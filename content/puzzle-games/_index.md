@@ -22,8 +22,10 @@ Future puzzle game articles may include specific recommendations after manual re
 
 ## New Puzzle Games
 
+[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game with a Key9-first opening. Players solve the Key9 first, then continue to the full Sudoku board.
+
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free online block puzzle game from the BornstarSoft / Puzzlepia web game family. Players place block pieces, clear lines, and chase their best score in the browser with no install.
 
 [Ringzzle](/blog/ringzzle-free-color-rings-puzzle-game-online/) is a free online color rings puzzle game from the same web game family. Players place colorful rings, build matching color lines, and manage board space while looking for clear opportunities.
 
-Use [Play Blockzzle](https://blockzzle.com/play/) for block puzzle line clears, or [Play Ringzzle](https://ringzzle.com/play/) for color rings and Color Burst.
+Use [Play DaySudoku](https://daysudoku.com/) for daily Sudoku, [Play Blockzzle](https://blockzzle.com/play/) for block puzzle line clears, or [Play Ringzzle](https://ringzzle.com/play/) for color rings and Color Burst.
