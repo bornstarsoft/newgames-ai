@@ -1,5 +1,11 @@
 # Release Log
 
+## 2026-07-26
+
+- Refreshed the homepage with direct browser-game play paths, moment-based discovery, and automatically ordered latest guides.
+- Simplified navigation, expanded the discovery footer, and surfaced the existing blog RSS feed.
+- Added WebSite and BlogPosting structured data, frontmatter-aware robots metadata, and a branded favicon.
+
 ## 2026-06-11
 
 - Added a small CSS stability pass to reduce potential header, section, card, and image layout shifts.

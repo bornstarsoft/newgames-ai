@@ -17,20 +17,7 @@
     {{ if or (eq .Section "blog") (eq .Kind "term") }}
       <div class="blog-grid">
         {{ range .Pages.ByDate.Reverse }}
-        {{ $post := . }}
-        <article class="post-card">
-          {{ with .Params.cover }}
-          <a href="{{ $post.RelPermalink }}" aria-label="{{ $post.Title }}">
-            <img src="{{ . | relURL }}" alt="{{ $post.Params.coverAlt | default "" }}" width="320" height="180" loading="lazy">
-          </a>
-          {{ end }}
-          <div class="post-card-body">
-            <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
-            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-            {{ with .Description }}<p>{{ . }}</p>{{ end }}
-            <a class="text-link" href="{{ .RelPermalink }}">Read guide</a>
-          </div>
-        </article>
+          {{ partial "post-card.html" . }}
         {{ end }}
       </div>
     {{ else if eq .Kind "taxonomy" }}
