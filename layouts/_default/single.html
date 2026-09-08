@@ -2,10 +2,18 @@
 <article>
   <header class="article-hero">
     <div class="wrap article-hero-inner">
-      <p class="eyebrow">Guide</p>
+      {{ if eq .Section "blog" }}
+      <nav class="article-path" aria-label="Breadcrumb">
+        <a href="{{ "/" | relURL }}">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ "/blog/" | relURL }}">Guides</a>
+      </nav>
+      {{ else }}
+      <p class="eyebrow">NewGames.ai</p>
+      {{ end }}
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p>{{ . }}</p>{{ end }}
-      {{ if .Date }}<p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>{{ end }}
+      {{ if .Date }}<p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>{{ if eq .Section "blog" }} / {{ .ReadingTime }} min read{{ end }}</p>{{ end }}
       {{ with .Params.cover }}
       <img class="article-cover" src="{{ . | relURL }}" alt="{{ $.Params.coverAlt | default "" }}" width="960" height="540">
       {{ end }}
@@ -17,4 +25,28 @@
     </div>
   </div>
 </article>
+{{ if eq .Section "blog" }}
+  {{ $posts := where .Site.RegularPages "Section" "blog" }}
+  {{ $related := where $posts "Params.categories" "intersect" (.Params.categories | default slice) }}
+  {{ $related = where $related "RelPermalink" "ne" .RelPermalink }}
+  {{ $primaryTopic := where $related "Params.categories" "intersect" (first 1 (.Params.categories | default slice)) }}
+  {{ with first 3 (union $primaryTopic.ByDate.Reverse $related.ByDate.Reverse) }}
+  <section class="section section-soft guide-feed" id="related-guides" aria-labelledby="related-guides-title">
+    <div class="wrap">
+      <div class="section-heading section-heading-row">
+        <div>
+          <h2 id="related-guides-title">Keep exploring</h2>
+          <p>More games and guides on the topics you just read about.</p>
+        </div>
+        <a class="section-link" href="{{ "/blog/" | relURL }}">All guides</a>
+      </div>
+      <div class="blog-grid">
+        {{ range . }}
+          {{ partial "post-card.html" . }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}
 {{ end }}

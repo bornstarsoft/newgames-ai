@@ -16,7 +16,7 @@ Trying a new game is a small bet. You are giving it a few minutes of attention, 
 
 At NewGames.ai, the idea is simple: **Discover New Games Worth Playing**. That does not mean chasing hype, pretending to rank the whole market, or treating every new release as urgent. It means noticing the qualities that make a game feel clear, fair, readable, and right for the moment you have.
 
-This draft is an evergreen way to think about game discovery. It does not review specific titles or make platform claims. Instead, it gives you a practical filter for deciding whether a new mobile, web, puzzle, indie, or casual game deserves a closer look.
+Use this guide as a practical filter for deciding whether a new mobile, web, puzzle, indie, or casual game deserves a closer look. The questions apply across genres, whether you have a few minutes to spare or time for a longer session.
 
 ## Easy To Understand In The First Few Minutes
 

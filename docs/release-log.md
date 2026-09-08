@@ -1,5 +1,11 @@
 # Release Log
 
+## 2026-09-08
+
+- Connected all six discovery categories to their published games and guides, with a direct jump from the page header.
+- Added related reading that prioritizes each article's primary category, a path back to the guide index, and reading-time estimates on blog articles.
+- Replaced leftover draft and future-MVP wording with practical reader guidance, preserving original publication dates.
+
 ## 2026-07-26
 
 - Refreshed the homepage with direct browser-game play paths, moment-based discovery, and automatically ordered latest guides.

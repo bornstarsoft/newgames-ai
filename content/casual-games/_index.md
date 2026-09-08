@@ -18,4 +18,4 @@ NewGames.ai treats casual game discovery as a practical player need. Sometimes t
 - Low pressure and flexible pacing.
 - Controls that work well on the target device.
 
-This page is a starting point for relaxed game discovery across mobile, web, browser, puzzle, indie, PC, and console experiences. Future recommendations should stay honest about what is known and what players should verify for themselves.
+Start with the moment you have. For a spare break at a computer, explore [web games](/web-games/). For play on a phone, compare controls and pause options in our [mobile games](/mobile-games/) guides. If you prefer a clear problem to solve, browse [puzzle games](/puzzle-games/).

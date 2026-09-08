@@ -18,7 +18,7 @@ NewGames.ai treats web game discovery as a balance between convenience and quali
 - No confusing imitation of platform stores or third-party brands.
 - Clear external links and safe browsing expectations.
 
-Web games can vary widely by browser, device, and network conditions. When a guide mentions a specific game in the future, NewGames.ai should verify availability and official links before publishing.
+Web games vary by browser, device, and network conditions. Before you start, check the official game page for controls and requirements. A browser link alone does not guarantee that a game will suit every device or every kind of break.
 
 ## Browser Puzzle Highlights
 

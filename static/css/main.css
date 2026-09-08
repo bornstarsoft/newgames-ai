@@ -637,6 +637,49 @@ h3 {
   padding: 56px 0 72px;
 }
 
+.article-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.article-path a {
+  padding-block: 8px;
+  text-underline-offset: 4px;
+}
+
+.guide-feed {
+  scroll-margin-top: 160px;
+}
+
+.guide-feed .section-heading h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.guide-feed .blog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.guide-feed .post-card {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1000px) {
+  .guide-feed .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .guide-feed .blog-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   background: #0f2034;

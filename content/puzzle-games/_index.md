@@ -18,7 +18,7 @@ NewGames.ai covers puzzle games with an emphasis on approachability. A puzzle ga
 - Helpful feedback when a move works or fails.
 - A satisfying loop for short or relaxed sessions.
 
-Future puzzle game articles may include specific recommendations after manual review. For the MVP, this page keeps the focus on evergreen criteria and safe discovery habits.
+Start with the kind of thinking you enjoy: number logic, arranging shapes, or matching patterns. The introductions below describe different puzzle styles so you can choose a starting point that fits your mood.
 
 ## New Puzzle Games
 

@@ -18,4 +18,4 @@ NewGames.ai approaches indie game discovery with care. A small project should no
 - Reasonable expectations about scope.
 - Player-facing updates that are easy to understand.
 
-When NewGames.ai covers named indie games in the future, those details should be checked against official developer pages, platform pages, or direct announcements before publication.
+Use the guides below to narrow down the kind of experience you want. For any game you consider, check the developer's official page for current requirements and details. A distinctive idea is a useful starting point; comfortable controls and a session you enjoy are reasons to return.

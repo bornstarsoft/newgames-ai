@@ -64,7 +64,7 @@ Not every exciting presentation is misleading, but some signals deserve caution.
 
 It is also worth checking whether important details are easy to verify. If you are considering an external game, use official or trustworthy sources for current information. Details like device requirements, online requirements, accounts, ads, and purchases can change, so check them directly before you install or play.
 
-For NewGames.ai drafts and guides, the safer approach is simple: no fake rankings, no fake review scores, no fake download counts, and no unverified claims. Readers deserve useful discovery, not invented certainty.
+A useful game introduction should make its claims easy to check. Look for a clear explanation of what you do in the game and a link to the official source. An unexplained score or a popularity claim tells you little about whether you will enjoy playing.
 
 ## Build A Small Personal Discovery Routine
 
