@@ -22,7 +22,7 @@ Web games vary by browser, device, and network conditions. Before you start, che
 
 ## Browser Puzzle Highlights
 
-[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game with a Key9-first flow. Players solve the Key9 first, then continue to the full board with no sign-up or download required.
+[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) offers a daily Sudoku board in the browser. Follow the classic number-logic rules, with no sign-up or download required.
 
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free block puzzle game that runs directly in the browser with no install. Players place block pieces, clear lines, chase their best score, and can use anonymous leaderboard support without login or email.
 

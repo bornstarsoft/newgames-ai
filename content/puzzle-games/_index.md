@@ -22,7 +22,7 @@ Start with the kind of thinking you enjoy: number logic, arranging shapes, or ma
 
 ## New Puzzle Games
 
-[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game with a Key9-first opening. Players solve the Key9 first, then continue to the full Sudoku board.
+[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game. Use the given number clues to work through the daily board under classic Sudoku rules.
 
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free online block puzzle game from the BornstarSoft / Puzzlepia web game family. Players place block pieces, clear lines, and chase their best score in the browser with no install.
 

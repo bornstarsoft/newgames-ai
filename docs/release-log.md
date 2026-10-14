@@ -1,5 +1,11 @@
 # Release Log
 
+## 2026-10-14 (Approved Content Release)
+
+- Published the reviewed comparison guide: Number, Block, or Color Puzzles: Which Fits Your Break?
+- Corrected DaySudoku's outdated Key9 description across its guide, homepage and discovery categories; retained the existing article URL, original date and legacy section anchor.
+- Added readable, wrapping comparison-table styles. Existing artwork and discovery redesign WIP are excluded from this release.
+
 ## 2026-09-08
 
 - Connected all six discovery categories to their published games and guides, with a direct jump from the page header.

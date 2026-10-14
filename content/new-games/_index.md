@@ -22,7 +22,7 @@ NewGames.ai is built as a discovery hub first. It is not an official ranking aut
 
 ## Newly Added Browser Puzzle Games
 
-[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game. Players solve the Key9 first, then continue to the full Sudoku board with no sign-up or download required.
+[DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game. Players use classic number-logic rules to solve the daily board, with no sign-up or download required.
 
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free block puzzle game you can play instantly in your browser. Players place block pieces, clear lines, and chase their best score with anonymous leaderboard support and no login or email required.
 
