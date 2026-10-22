@@ -39,10 +39,19 @@
 </div>
 <section class="section section-soft guide-archive" id="all-guides" aria-labelledby="all-guides-title">
   <div class="wrap">
-    <div class="section-heading"><h2 id="all-guides-title">All games &amp; guides</h2><p>Game introductions and practical reading, newest first.</p></div>
-    <div class="blog-grid">
-      {{ range sort $published "Date" "desc" }}{{ partial "post-card.html" . }}{{ end }}
-    </div>
+    <div class="section-heading"><h2 id="all-guides-title">All games &amp; guides</h2><p>{{ len $published }} articles. Game introductions and practical reading, newest first.</p></div>
+    <ul class="guide-archive-list" role="list">
+      {{ range sort $published "Date" "desc" }}
+      <li class="guide-archive-entry">
+        {{ with .Params.cover }}<img src="{{ . | relURL }}" alt="" width="96" height="54" loading="lazy">{{ end }}
+        <div class="guide-archive-copy">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+          <p class="guide-archive-meta"><span>Published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span><span>{{ .ReadingTime }} min read</span></p>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
   </div>
 </section>
 {{ end }}

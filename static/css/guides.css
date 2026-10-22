@@ -8,6 +8,17 @@
 .guide-path p { color: var(--muted); }
 .guide-path ul { padding-left: 20px; }
 .guide-path li + li { margin-top: 14px; }
+.guide-archive-list { max-width: 960px; margin: 0; padding: 0; list-style: none; }
+.guide-archive-entry { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px; padding-block: 24px; border-top: 1px solid var(--line); }
+.guide-archive-entry img { width: 96px; height: 54px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: var(--soft); margin-top: 6px; }
+.guide-archive-copy { grid-column: 2; min-width: 0; overflow-wrap: anywhere; }
+.guide-archive-copy h3 { font-size: 1.2rem; line-height: 1.4; }
+.guide-archive-copy h3 a { display: inline-block; min-height: 44px; padding-block: 8px; color: var(--ink); text-underline-offset: 3px; }
+.guide-archive-copy h3 a:hover { color: var(--blue); }
+.guide-archive-copy h3 a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.guide-archive-copy p { margin: 6px 0 0; color: var(--muted); }
+.guide-archive-copy .guide-archive-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 10px; font-size: 0.875rem; }
+.guide-archive .section-heading h2 { font-size: 2rem; line-height: 1.25; }
 .guide-index-nav a, .guide-path a, .guide-navigation a { color: var(--blue); text-underline-offset: 3px; }
 .guide-index-nav a, .guide-path a { font-weight: 700; }
 .guide-navigation { margin-bottom: 28px; padding-block: 12px 20px; border-block: 1px solid var(--line); }
@@ -24,7 +35,14 @@
 .guide-feedback a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .article-hero-inner > *, .footer-grid > *, .footer-navs > * { min-width: 0; overflow-wrap: anywhere; }
 .guide-navigation :is(a, summary):focus-visible, .guide-index-nav a:focus-visible, .guide-path a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+@media (min-width: 1000px) {
+  .guide-archive-list { max-width: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+  .guide-archive-entry { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding-block: 20px; }
+  .guide-archive-entry img { width: 64px; height: 36px; }
+}
 @media (max-width: 760px) {
+  .guide-archive-entry { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding-block: 20px; }
+  .guide-archive-entry img { width: 64px; height: 36px; }
   .guide-index-hero h1 { font-size: 2rem; }
   .guide-paths { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .guide-path { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
