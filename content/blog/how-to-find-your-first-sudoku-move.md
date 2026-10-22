@@ -3,6 +3,8 @@ title: "How to Find Your First Sudoku Move Without Guessing"
 slug: "how-to-find-your-first-sudoku-move"
 description: "Practice a simple row, column, and box check with three original examples, including when there is not enough information to place a digit."
 date: 2026-10-23T00:52:00+09:00
+lastmod: 2026-10-23T02:42:31+09:00
+updateNote: "Added a worked example for an empty candidate set and a cautious rechecking routine."
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["sudoku", "puzzle games", "beginner guides", "browser games"]
@@ -16,6 +18,8 @@ guideShortcuts:
     anchor: "try-three-small-checks"
   - label: "Review the steps"
     anchor: "start-with-the-three-checks"
+  - label: "No candidates?"
+    anchor: "when-no-candidates-remain"
 ---
 
 A Sudoku board can feel busy before you have placed a single digit. Instead of trying to understand the entire puzzle at once, choose one empty cell and ask a smaller question: which digits are already ruled out?
@@ -55,7 +59,28 @@ The third check is not a failed attempt. Recognizing that the supplied informati
 
 Do not turn a tentative candidate into a filled answer simply to make the board look less empty. If you keep notes, distinguish them from confirmed entries and update them after a justified placement. Check the game's instructions before relying on any notes control; this guide does not assume a particular game provides one.
 
-If your check leaves **no candidates**, pause. Recheck which row, column, and box you used, and whether you misread a digit. If you have already entered numbers, review those entries too. An empty candidate set signals a conflict in the current information, not a reason to insert a digit anyway.
+## When No Candidates Remain
+
+Two possibilities mean this check has not settled the choice. **No possibilities mean the current information conflicts.** Adding a digit anyway does not resolve that conflict.
+
+Suppose you wrote down the following digits while checking one empty cell:
+
+| Your written check | Digits already present |
+| --- | --- |
+| Row | 1, 2, 3, 4, 6, 7, 8, 9 |
+| Column | 5 |
+| Box | 1, 2, 4 |
+
+The row leaves only **5**, but the column rules out **5**. No digit from 1 through 9 survives both checks, even before considering the box. These are deliberately conflicting notes for a worked example, not a valid puzzle or a board from any game.
+
+This tells you to recheck the information. It does **not** identify which entry is wrong or prove that the original puzzle is broken.
+
+1. **Locate the cell again.** Trace its row, column, and box carefully. Make sure your written check belongs to that cell.
+2. **Compare your notes with the board.** Did you copy a digit incorrectly, miss one, or count a tentative candidate as a filled entry?
+3. **Separate clues from your own entries.** Do not change an original clue to make an answer fit. Review any placement you made without a clear reason, using the game's instructions for available controls.
+4. **Recalculate after a justified correction.** If you still cannot explain the conflict, stop and consult the puzzle's official help rather than clearing the board or guessing.
+
+Keep the distinction in mind for your next puzzle: several candidates call for more evidence; no candidates call for rechecking what you already used. This routine is not a recovery tool or a guarantee that you can repair every attempt.
 
 ## A Routine For Your Next Puzzle
 

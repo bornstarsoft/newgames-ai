@@ -14,6 +14,7 @@ TARGETS = {
     "how-to-find-your-first-sudoku-move": [
         ("#try-three-small-checks", "Practice examples"),
         ("#start-with-the-three-checks", "Review the steps"),
+        ("#when-no-candidates-remain", "No candidates?"),
     ],
     "block-puzzle-fit-clear-leave-space": [
         ("#the-rules-for-these-examples", "Rules & practice"),
