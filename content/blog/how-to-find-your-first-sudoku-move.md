@@ -67,6 +67,8 @@ When you return to these exercises, explain why each rejected digit cannot fit i
 
 ## From Practice To A Game
 
+Ready for a different check? [Look for one place for a number](/blog/sudoku-one-place-for-a-number/) explains how a digit can be certain even when its cell still has several candidates, with two more original examples.
+
 Our [DaySudoku introduction](/blog/daysudoku-free-daily-sudoku-game-online/) is a starting point for exploring that game; use its official instructions for the current experience. The exercises above do not test or demonstrate its controls.
 
 For a different style of reasoning, compare [number, block, and color puzzles](/blog/number-block-or-color-puzzles-for-your-break/), or browse [puzzle games](/puzzle-games/). If you expect to leave a game unfinished, use the [save checklist](/blog/browser-game-save-progress-checklist/) before assuming the board will be there later.

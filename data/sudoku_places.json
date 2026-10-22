@@ -1,0 +1,54 @@
+{
+  "one-place": {
+    "title": "Check 1: Several notes, one place",
+    "question": "Where must 5 go in this row?",
+    "clues": [
+      [1, 0, 3, 4, 0, 6, 0, 8, 9],
+      [0, 5, 0, 7, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 5, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "row": 0,
+    "missing": [2, 5, 7],
+    "target": 5,
+    "cells": [
+      {"column": 2, "candidates": [2, 7]},
+      {"column": 5, "candidates": [2, 5]},
+      {"column": 7, "candidates": [2, 7]}
+    ],
+    "places": [5],
+    "answer": "5 must go in column 5.",
+    "reason": "The row needs a 5, and neither column 2 nor column 7 allows it. Column 5 still lists 2 as a candidate, but placing 2 there would leave no place for 5 in the row. Place 5, then check the affected groups again. This does not settle the order of 2 and 7 in the two remaining cells."
+  },
+  "two-places": {
+    "title": "Check 2: A similar row, a different conclusion",
+    "question": "Can the same check tell you where to place 5 now?",
+    "clues": [
+      [1, 0, 3, 4, 0, 6, 0, 8, 9],
+      [0, 0, 0, 7, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 5, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "row": 0,
+    "missing": [2, 5, 7],
+    "target": 5,
+    "cells": [
+      {"column": 2, "candidates": [2, 5, 7]},
+      {"column": 5, "candidates": [2, 5]},
+      {"column": 7, "candidates": [2, 7]}
+    ],
+    "places": [2, 5],
+    "answer": "Not yet: 5 can go in column 2 or column 5.",
+    "reason": "Column 2 now also allows 5. Having fewer candidates in column 5 does not make that cell the answer. This row snapshot permits both placements of 5, so this check alone cannot choose between them. On a full board, look for another justified move and return to this row afterward."
+  }
+}

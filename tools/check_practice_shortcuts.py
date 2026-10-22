@@ -7,6 +7,10 @@ import sys
 from check_updates import Page
 
 TARGETS = {
+    "sudoku-one-place-for-a-number": [
+        ("#compare-two-row-snapshots", "Try the examples"),
+        ("#a-check-to-use-next-time", "Review the check"),
+    ],
     "how-to-find-your-first-sudoku-move": [
         ("#try-three-small-checks", "Practice examples"),
         ("#start-with-the-three-checks", "Review the steps"),
@@ -73,7 +77,7 @@ def main():
         assert all(s.get("type") == "application/ld+json" for s in page.scripts)
         assert "css/guides.css" in path.read_text()
     assert enabled == set(TARGETS)
-    print("PASS: two opt-in articles, four native links before titles, valid fragments, closed answers, original dates/canonicals and no executable JS")
+    print(f"PASS: {len(enabled)} opt-in articles, native links before titles, valid fragments, closed answers, dates/canonicals and no executable JS")
 
 
 if __name__ == "__main__":

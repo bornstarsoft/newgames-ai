@@ -13,6 +13,7 @@ TARGETS = {
     "block-puzzle-fit-clear-leave-space",
     "browser-game-save-progress-checklist",
     "number-block-or-color-puzzles-for-your-break",
+    "sudoku-one-place-for-a-number",
 }
 
 
@@ -96,7 +97,7 @@ def main():
     assert "/updates/" in contact.links
     for address in ("support", "games", "privacy"):
         assert f"mailto:{address}@newgames.ai" in contact.links
-    print("PASS: four scoped feedback areas, exact email context, preserved Cloudflare exclusion markers, no unexpected comments, contact fallback and existing addresses")
+    print(f"PASS: {len(enabled)} scoped feedback areas, exact email context, preserved Cloudflare exclusion markers, no unexpected comments, contact fallback and existing addresses")
 
 
 if __name__ == "__main__":

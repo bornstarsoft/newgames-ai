@@ -22,7 +22,7 @@ Start with the kind of thinking you enjoy: number logic, arranging shapes, or ma
 
 ## New Puzzle Games
 
-New to number puzzles? [Practice finding a certain Sudoku move](/blog/how-to-find-your-first-sudoku-move/) with three short examples before moving on to a full game.
+New to number puzzles? [Practice finding a certain Sudoku move](/blog/how-to-find-your-first-sudoku-move/) with three short examples before moving on to a full game. Then try [finding the only place for a number](/blog/sudoku-one-place-for-a-number/) when several candidates remain in each cell.
 
 Prefer arranging shapes? [Practice checking a block placement](/blog/block-puzzle-fit-clear-leave-space/) with small boards that separate fitting, clearing lines, and leaving usable space.
 

@@ -1,0 +1,18 @@
+{{ $id := .Get "id" }}
+{{ with index .Site.Data.sudoku_places $id }}
+<section class="sudoku-check" id="place-{{ $id }}" aria-labelledby="place-title-{{ $id }}">
+  <h3 id="place-title-{{ $id }}">{{ .title }}</h3>
+  <p>{{ .question }}</p>
+  <table>
+    <caption>All empty cells in one row; missing digits: {{ delimit .missing ", " }}</caption>
+    <thead><tr><th scope="col">Empty cell</th><th scope="col">Candidates after row, column and box checks</th></tr></thead>
+    <tbody>{{ range .cells }}
+      <tr><th scope="row">Column {{ .column }}</th><td>{{ delimit .candidates ", " }}</td></tr>
+    {{ end }}</tbody>
+  </table>
+  <details>
+    <summary>Reveal answer and reasoning</summary>
+    <p><strong>{{ .answer }}</strong> {{ .reason }}</p>
+  </details>
+</section>
+{{ else }}{{ errorf "Unknown Sudoku place example: %s" $id }}{{ end }}

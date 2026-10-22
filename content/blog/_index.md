@@ -17,6 +17,8 @@ guidePaths:
     links:
       - page: "/blog/how-to-find-your-first-sudoku-move"
         label: "Try three Sudoku checks with explanations"
+      - page: "/blog/sudoku-one-place-for-a-number"
+        label: "Next Sudoku step: one place for a number"
       - page: "/blog/block-puzzle-fit-clear-leave-space"
         label: "Practice block placement: fit, clear, space"
   - id: "return"
