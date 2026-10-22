@@ -1,0 +1,33 @@
+{{- $events := slice -}}
+{{- range (where .Site.RegularPages "Section" "blog").ByDate.Reverse -}}
+  {{- if and (not .Draft) (not (.PublishDate.After now)) (or .ExpiryDate.IsZero (.ExpiryDate.After now)) -}}
+    {{- $events = $events | append (dict "page" . "date" .PublishDate "kind" "New" "text" .Description) -}}
+    {{- $note := .Params.updateNote | default "" | plainify | strings.TrimSpace -}}
+    {{- if and $note (.Lastmod.After .PublishDate) (not (.Lastmod.After now)) -}}
+      {{- $events = $events | append (dict "page" . "date" .Lastmod "kind" "Updated" "text" (printf "%s Originally published %s." $note (.PublishDate.Format "January 2, 2006"))) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $events = first 20 (sort $events "date" "desc") -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ printf "%s - New & Updated" .Site.Title | htmlEscape | safeHTML }}</title>
+    <link>{{ .Permalink | htmlEscape | safeHTML }}</link>
+    <description>New guides and substantive article corrections from NewGames.ai. Publication and update notes, not game launch announcements. No fixed publishing schedule.</description>
+    <language>{{ .Site.Language.LanguageCode }}</language>
+    <atom:link href="{{ .Permalink }}index.xml" rel="self" type="application/rss+xml" />
+    {{- with $events }}
+    <lastBuildDate>{{ (index . 0).date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+    {{- end }}
+    {{- range $events }}
+    <item>
+      <title>{{ printf "%s: %s" .kind .page.Title | htmlEscape | safeHTML }}</title>
+      <link>{{ .page.Permalink | htmlEscape | safeHTML }}</link>
+      <guid isPermaLink="false">{{ printf "%s#%s-%s" .page.Permalink (.kind | lower) (.date.UTC.Format "20060102T150405Z") | htmlEscape | safeHTML }}</guid>
+      <pubDate>{{ .date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      <description>{{ .text | plainify | htmlEscape | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

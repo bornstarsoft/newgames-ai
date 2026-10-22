@@ -5,7 +5,7 @@ draft: false
 robots: "index,follow"
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai discovery cards."
-outputs: ["HTML"]
+outputs: ["HTML", "RSS"]
 handyGuides:
   - page: "/blog/block-puzzle-fit-clear-leave-space"
     label: "Think before placing a block"
