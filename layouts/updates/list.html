@@ -1,0 +1,57 @@
+{{ define "main" }}
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ $published := slice }}
+{{ $updated := slice }}
+{{ range $posts }}
+  {{ if and (not .Draft) (not (.PublishDate.After now)) }}
+    {{ $published = $published | append . }}
+    {{ if and .Params.updateNote (.Lastmod.After .Date) (not (.Lastmod.After now)) }}
+      {{ $updated = $updated | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+<section class="page-hero updates-hero">
+  <div class="wrap page-hero-inner">
+    <div>
+      <p class="eyebrow">NewGames.ai</p>
+      <h1>{{ .Title }}</h1>
+      <p>{{ .Description }}</p>
+      <nav class="updates-nav" aria-label="Updates sections">
+        <a href="#new-guides">New guides</a>
+        <a href="#updated-guides">Updated guides</a>
+        <a href="{{ "/blog/index.xml" | relURL }}">New guides RSS</a>
+      </nav>
+    </div>
+    <img class="page-hero-image" src="{{ .Params.cover | relURL }}" alt="{{ .Params.coverAlt }}" width="320" height="180">
+  </div>
+</section>
+<section class="section updates-section" id="new-guides" aria-labelledby="new-guides-title">
+  <div class="wrap">
+    <div class="section-heading"><h2 id="new-guides-title">New guides</h2><p>The six most recently published guides. Dates refer to NewGames.ai articles, not game launches.</p></div>
+    <ol class="updates-list">
+      {{ range first 6 (sort $published "Date" "desc") }}
+      <li>
+        <p class="post-meta">Published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></p>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Description }}</p>
+      </li>
+      {{ else }}<li>No guides published yet.</li>{{ end }}
+    </ol>
+    <a class="text-link" href="{{ "/blog/" | relURL }}">All games &amp; guides</a>
+  </div>
+</section>
+<section class="section section-soft updates-section" id="updated-guides" aria-labelledby="updated-guides-title">
+  <div class="wrap">
+    <div class="section-heading"><h2 id="updated-guides-title">Updated guides</h2><p>Changes to previously published coverage, with the reason for each update.</p></div>
+    <ol class="updates-list">
+      {{ range first 6 (sort $updated "Lastmod" "desc") }}
+      <li>
+        <p class="post-meta">Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time> &middot; Originally published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></p>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Params.updateNote }}</p>
+      </li>
+      {{ else }}<li>No article updates to report yet.</li>{{ end }}
+    </ol>
+  </div>
+</section>
+{{ end }}

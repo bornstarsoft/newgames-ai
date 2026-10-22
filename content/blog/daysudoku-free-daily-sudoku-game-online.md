@@ -3,6 +3,7 @@ title: "DaySudoku: A Free Daily Sudoku Game Online"
 description: "Meet DaySudoku, a browser-based daily Sudoku game with classic number logic and no sign-up or download required."
 date: 2026-06-15
 lastmod: 2026-10-14
+updateNote: "Revised the introduction to reflect the current classic daily Sudoku format and linked the official rules."
 slug: "daysudoku-free-daily-sudoku-game-online"
 draft: false
 categories: ["Puzzle Games", "Web Games", "Casual Games"]
