@@ -1,0 +1,9 @@
+{{ if and .Params.guideNavigation (strings.Contains .TableOfContents "<li>") }}
+<nav class="guide-navigation" aria-label="In this guide">
+  <details>
+    <summary>In this guide</summary>
+    {{ .TableOfContents }}
+  </details>
+  <a href="{{ "/blog/" | relURL }}">Find another guide</a>
+</nav>
+{{ end }}

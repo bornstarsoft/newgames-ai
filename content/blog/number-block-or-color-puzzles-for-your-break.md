@@ -9,6 +9,7 @@ tags: ["puzzle games", "number puzzles", "block puzzles", "color puzzles", "game
 cover: "/images/categories/puzzle-games.svg"
 coverAlt: "Concept illustration of colorful geometric puzzle blocks."
 robots: "index,follow"
+guideNavigation: true
 ---
 
 You have a few minutes free, but choosing a game is using up the break. Start with a smaller question: what kind of decision would feel enjoyable right now?

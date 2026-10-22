@@ -9,6 +9,7 @@ tags: ["browser games", "web games", "game saves", "puzzle games", "player guide
 cover: "/images/categories/web-games.svg"
 coverAlt: "Abstract browser window with colorful game tiles."
 robots: "index,follow"
+guideNavigation: true
 ---
 
 You have made a few good moves, your break is over, and the tab is still open. Can you close it and return to the same board later?

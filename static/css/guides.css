@@ -1,0 +1,23 @@
+.guide-index-hero .page-hero-inner { display: block; padding-block: 32px; }
+.guide-index-hero h1 { font-size: 2.5rem; }
+.guide-index-nav { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 20px; }
+.guide-index-nav a { padding-block: 8px; }
+.guide-paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.guide-path, .guide-archive, .content-body :is(h2, h3) { scroll-margin-top: 160px; }
+.guide-path h2 { font-size: 1.35rem; line-height: 1.4; }
+.guide-path p { color: var(--muted); }
+.guide-path ul { padding-left: 20px; }
+.guide-path li + li { margin-top: 14px; }
+.guide-index-nav a, .guide-path a, .guide-navigation a { color: var(--blue); text-underline-offset: 3px; }
+.guide-index-nav a, .guide-path a { font-weight: 700; }
+.guide-navigation { margin-bottom: 28px; padding-block: 12px 20px; border-block: 1px solid var(--line); }
+.guide-navigation summary { cursor: pointer; padding-block: 12px; font-weight: 700; }
+.guide-navigation ul { padding-left: 24px; }
+.guide-navigation li { margin-block: 8px; }
+.guide-navigation > a { display: inline-block; margin-top: 8px; }
+.guide-navigation :is(a, summary):focus-visible, .guide-index-nav a:focus-visible, .guide-path a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+@media (max-width: 760px) {
+  .guide-index-hero h1 { font-size: 2rem; }
+  .guide-paths { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .guide-path { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+}

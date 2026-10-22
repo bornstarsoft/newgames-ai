@@ -10,6 +10,7 @@ cover: "/images/categories/puzzle-games.svg"
 coverAlt: "Abstract colored puzzle blocks, not a Sudoku game screenshot."
 robots: "index,follow"
 sudokuPractice: true
+guideNavigation: true
 ---
 
 A Sudoku board can feel busy before you have placed a single digit. Instead of trying to understand the entire puzzle at once, choose one empty cell and ask a smaller question: which digits are already ruled out?

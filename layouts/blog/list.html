@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ $published := slice }}
+{{ range .RegularPages }}
+  {{ if and (not .Draft) (not (.PublishDate.After now)) }}
+    {{ $published = $published | append . }}
+  {{ end }}
+{{ end }}
+<section class="page-hero guide-index-hero">
+  <div class="wrap page-hero-inner">
+    <p class="eyebrow">NewGames.ai</p>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+    <nav class="guide-index-nav" aria-label="Guide topics">
+      {{ range .Params.guidePaths }}<a href="#{{ .id }}">{{ .title }}</a>{{ end }}
+      <a href="#all-guides">All games &amp; guides</a>
+      <a href="{{ "/updates/" | relURL }}">New &amp; updated</a>
+    </nav>
+  </div>
+</section>
+<div class="section">
+  <div class="wrap guide-paths">
+    {{ range .Params.guidePaths }}
+    <section class="guide-path" id="{{ .id }}" aria-labelledby="{{ .id }}-title">
+      <h2 id="{{ .id }}-title">{{ .title }}</h2>
+      <p>{{ .description }}</p>
+      <ul>
+        {{ range .links }}
+          {{ $label := .label }}
+          {{ with $.Site.GetPage .page }}
+            {{ if and (not .Draft) (not (.PublishDate.After now)) }}
+            <li><a href="{{ .RelPermalink }}">{{ $label }}</a></li>
+            {{ end }}
+          {{ else }}{{ errorf "Unknown guide path destination: %s" .page }}{{ end }}
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </div>
+</div>
+<section class="section section-soft guide-archive" id="all-guides" aria-labelledby="all-guides-title">
+  <div class="wrap">
+    <div class="section-heading"><h2 id="all-guides-title">All games &amp; guides</h2><p>Game introductions and practical reading, newest first.</p></div>
+    <div class="blog-grid">
+      {{ range sort $published "Date" "desc" }}{{ partial "post-card.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
