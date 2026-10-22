@@ -91,4 +91,6 @@ If the answer is uncertain, aim for a natural stopping point. Our [short-break w
 
 A good return visit starts with clear expectations. Knowing what will be waiting matters more than leaving a tab open and hoping.
 
+Saving the board is only part of returning. To remember what you were thinking, [leave a short puzzle note](/blog/return-to-a-puzzle-after-a-break/) separating your last certain step, open question, and next check. The note is not a backup or a way to restore missing progress.
+
 For your next visit, [useful guides](/updates/#handy-guides) brings together this checklist, a puzzle-style comparison, and advice for fitting a game into a short break. For new articles, follow the [NewGames.ai RSS feed](/blog/index.xml).

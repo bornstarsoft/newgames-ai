@@ -14,6 +14,7 @@ TARGETS = {
     "browser-game-save-progress-checklist",
     "number-block-or-color-puzzles-for-your-break",
     "sudoku-one-place-for-a-number",
+    "return-to-a-puzzle-after-a-break",
 }
 
 

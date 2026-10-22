@@ -23,10 +23,12 @@ guidePaths:
         label: "Practice block placement: fit, clear, space"
   - id: "return"
     title: "Come back prepared"
-    description: "Check what a game remembers before relying on an unfinished session being there later. When saving is uncertain, choose a stopping point you can comfortably reach."
+    description: "Check what the game remembers, then leave yourself a clear next step. Keeping the board and remembering your reasoning are different questions."
     links:
       - page: "/blog/browser-game-save-progress-checklist"
         label: "Check saving before closing the tab"
+      - page: "/blog/return-to-a-puzzle-after-a-break"
+        label: "Leave a useful note for your next session"
       - page: "/blog/how-to-find-web-games-that-fit-short-breaks"
         label: "Find a game that fits a short break"
 ---
