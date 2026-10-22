@@ -15,6 +15,7 @@
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p>{{ . }}</p>{{ end }}
       {{ if .Date }}<p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>{{ if eq .Section "blog" }} / {{ .ReadingTime }} min read{{ end }}</p>{{ end }}
+      {{ partial "article-update.html" (dict "page" . "compact" false) }}
       {{ with .Params.cover }}
       <img class="article-cover" src="{{ . | relURL }}" alt="{{ $.Params.coverAlt | default "" }}" width="960" height="540">
       {{ end }}

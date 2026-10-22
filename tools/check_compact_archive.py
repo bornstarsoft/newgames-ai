@@ -7,6 +7,7 @@ import re
 import sys
 
 from check_updates import Page
+from check_visible_updates import Notices
 
 
 class Archive(HTMLParser):
@@ -79,7 +80,8 @@ def main():
         article = Article(published[route].read_text())
         assert row["title"] == article.title
         assert row["description"] == article.description
-        assert row["dates"] == [article.published[:10]]
+        notices = Notices(published[route].read_text())
+        assert row["dates"] == [article.published[:10]] + notices.dates
         assert re.search(r"\b[1-9][0-9]* min read$", row["meta"])
         assert len(row["images"]) == 1
         image = row["images"][0]

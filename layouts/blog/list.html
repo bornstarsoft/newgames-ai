@@ -47,7 +47,7 @@
         <div class="guide-archive-copy">
           <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
           {{ with .Description }}<p>{{ . }}</p>{{ end }}
-          <p class="guide-archive-meta"><span>Published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span><span>{{ .ReadingTime }} min read</span></p>
+          <p class="guide-archive-meta"><span>Published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>{{ partial "article-update.html" (dict "page" . "compact" true) }}<span>{{ .ReadingTime }} min read</span></p>
         </div>
       </li>
       {{ end }}

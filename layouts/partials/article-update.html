@@ -1,0 +1,9 @@
+{{- $page := .page -}}
+{{- $note := strings.TrimSpace ($page.Params.updateNote | default "") -}}
+{{- if and (eq $page.Section "blog") (not $page.Draft) (not ($page.PublishDate.After now)) (or $page.ExpiryDate.IsZero ($page.ExpiryDate.After now)) $note ($page.Lastmod.After $page.PublishDate) (not ($page.Lastmod.After now)) -}}
+  {{- if .compact -}}
+  <span class="article-update-date">Updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "Jan 2, 2006" }}</time></span>
+  {{- else -}}
+  <p class="post-meta article-update">Updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "January 2, 2006" }}</time>: {{ $note }}</p>
+  {{- end -}}
+{{- end -}}
