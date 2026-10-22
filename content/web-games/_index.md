@@ -22,6 +22,8 @@ Web games vary by browser, device, and network conditions. Before you start, che
 
 ## Browser Puzzle Highlights
 
+Planning to continue later? Our [browser game save checklist](/blog/browser-game-save-progress-checklist/) explains what to check before closing a tab, without assuming every game remembers an unfinished session.
+
 [DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) offers a daily Sudoku board in the browser. Follow the classic number-logic rules, with no sign-up or download required.
 
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free block puzzle game that runs directly in the browser with no install. Players place block pieces, clear lines, chase their best score, and can use anonymous leaderboard support without login or email.

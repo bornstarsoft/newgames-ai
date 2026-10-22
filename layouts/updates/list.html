@@ -19,6 +19,7 @@
       <nav class="updates-nav" aria-label="Updates sections">
         <a href="#new-guides">New guides</a>
         <a href="#updated-guides">Updated guides</a>
+        <a href="#handy-guides">Useful guides</a>
         <a href="{{ "/blog/index.xml" | relURL }}">New guides RSS</a>
       </nav>
     </div>
@@ -52,6 +53,23 @@
       </li>
       {{ else }}<li>No article updates to report yet.</li>{{ end }}
     </ol>
+  </div>
+</section>
+<section class="section updates-section" id="handy-guides" aria-labelledby="handy-guides-title">
+  <div class="wrap">
+    <div class="section-heading"><h2 id="handy-guides-title">Useful on your next visit</h2><p>A few practical guides to return to, even after they leave the latest list.</p></div>
+    <ul class="updates-list">
+      {{ range .Params.handyGuides }}
+        {{ $item := . }}
+        {{ with $.Site.GetPage .page }}
+          {{ if and (not .Draft) (not (.PublishDate.After now)) }}
+          <li><h3><a href="{{ .RelPermalink }}">{{ $item.label }}</a></h3><p>{{ $item.reason }}</p></li>
+          {{ end }}
+        {{ else }}
+          {{ errorf "Unknown useful guide: %s" .page }}
+        {{ end }}
+      {{ end }}
+    </ul>
   </div>
 </section>
 {{ end }}
