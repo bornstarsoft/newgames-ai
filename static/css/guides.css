@@ -18,6 +18,10 @@
 .guide-shortcuts { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 20px; }
 .guide-shortcuts a { display: inline-block; padding-block: 10px; color: var(--blue); font-weight: 700; text-underline-offset: 3px; }
 .guide-shortcuts a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.guide-feedback { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
+.guide-feedback h2 { margin-top: 0; font-size: 1.35rem; line-height: 1.4; }
+.guide-feedback a { display: inline-block; padding-block: 8px; }
+.guide-feedback a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .article-hero-inner > *, .footer-grid > *, .footer-navs > * { min-width: 0; overflow-wrap: anywhere; }
 .guide-navigation :is(a, summary):focus-visible, .guide-index-nav a:focus-visible, .guide-path a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 @media (max-width: 760px) {

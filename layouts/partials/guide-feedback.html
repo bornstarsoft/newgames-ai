@@ -1,0 +1,9 @@
+{{ if and (eq .Section "blog") .Params.guideNavigation }}
+{{ $subject := printf "NewGames.ai guide feedback: %s" .Title | urlquery | replaceRE "\\+" "%20" }}
+{{ $body := printf "Guide: %s\r\n\r\nMy question or correction:\r\n" .Permalink | urlquery | replaceRE "\\+" "%20" }}
+<aside class="guide-feedback" aria-labelledby="guide-feedback-title">
+  <h2 id="guide-feedback-title">What would help you next?</h2>
+  <p>A step that needs a clearer example, a question this guide missed, or a detail to correct? Tell us what you were trying to work out.</p>
+  <p><a href="{{ printf "mailto:hello@newgames.ai?subject=%s&body=%s" $subject $body | safeURL }}">Email a question or correction</a> <span aria-hidden="true">&middot;</span> <a href="{{ "/contact/" | relURL }}">Other contact options</a></p>
+</aside>
+{{ end }}
