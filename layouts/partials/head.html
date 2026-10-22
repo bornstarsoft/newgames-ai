@@ -36,6 +36,9 @@
 {{ if .Params.sudokuPractice }}
 <link rel="stylesheet" href="{{ "css/sudoku-guide.css" | relURL }}">
 {{ end }}
+{{ if .Params.blockPractice }}
+<link rel="stylesheet" href="{{ "css/block-guide.css" | relURL }}">
+{{ end }}
 {{ if or .Params.guideNavigation (and (eq .Section "blog") (eq .Kind "section")) }}
 <link rel="stylesheet" href="{{ "css/guides.css" | relURL }}">
 {{ end }}

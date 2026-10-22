@@ -1,0 +1,39 @@
+{
+  "fit": {
+    "title": "1. Check every cell of the piece",
+    "question": "Place a horizontal two-cell piece. Which option fits without overlapping an occupied cell?",
+    "board": ["#..#", "..#.", "....", ".#.."],
+    "piece": [[0, 0], [0, 1]],
+    "options": [
+      {"label": "A: B1 and C1", "origin": [0, 1], "valid": true, "rows": [0], "columns": [], "remaining": 2},
+      {"label": "B: B2 and C2", "origin": [1, 1], "valid": false}
+    ],
+    "answer": "A fits; B overlaps C2.",
+    "reason": "B2 is empty, but C2 is occupied. A piece needs room for every cell, not just its first cell. Placing at B1 and C1 completes row 1, which then clears under these exercise rules."
+  },
+  "clear": {
+    "title": "2. Look across and down",
+    "question": "Place a single-cell piece. Which option completes both a row and a column?",
+    "board": ["##.#", "..#.", "..#.", "..#."],
+    "piece": [[0, 0]],
+    "options": [
+      {"label": "A: C1", "origin": [0, 2], "valid": true, "rows": [0], "columns": [2], "remaining": 0},
+      {"label": "B: A2", "origin": [1, 0], "valid": true, "rows": [], "columns": [], "remaining": 7}
+    ],
+    "answer": "A completes row 1 and column C.",
+    "reason": "Both lines are full after placing at C1, so both clear together. Their shared cell belongs to both lines but is removed only once: seven occupied cells disappear, leaving this small board empty. B fits but completes neither line. This is a space calculation, not a scoring rule."
+  },
+  "space": {
+    "title": "3. Leave room for the next shape",
+    "question": "Place the horizontal two-cell piece first, then a 2-by-2 square. Which first option leaves a legal place for the square after any completed lines clear?",
+    "board": ["#...", "#...", "..##", ".#.#"],
+    "piece": [[0, 0], [0, 1]],
+    "nextPiece": [[0, 0], [0, 1], [1, 0], [1, 1]],
+    "options": [
+      {"label": "A: A3 and B3", "origin": [2, 0], "valid": true, "rows": [2], "columns": [], "remaining": 4, "nextFits": [[0, 1], [0, 2], [1, 1], [1, 2]]},
+      {"label": "B: C2 and D2", "origin": [1, 2], "valid": true, "rows": [], "columns": [], "remaining": 8, "nextFits": []}
+    ],
+    "answer": "A leaves space for the square; B does not.",
+    "reason": "A completes and clears row 3. You can then place the square at C1, D1, C2 and D2, among other positions. B clears nothing and breaks up the open area near the top. Eight cells remain empty after B, but none form a 2-by-2 square. Count usable shapes, not only empty cells."
+  }
+}

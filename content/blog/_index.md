@@ -1,6 +1,6 @@
 ---
 title: "Games & Guides"
-description: "Find a game for your next break, practice a Sudoku move, or check what to do before leaving a browser game."
+description: "Find a game for your next break, practice a puzzle move, or check what to do before leaving a browser game."
 draft: false
 guidePaths:
   - id: "choose"
@@ -13,10 +13,12 @@ guidePaths:
         label: "Decide between mobile and web play"
   - id: "learn"
     title: "Learn a first move"
-    description: "Work through one justified move instead of rushing to finish a whole board. Knowing when the clues are not enough is part of careful play."
+    description: "Work through one decision instead of rushing to finish a whole board. Check a Sudoku candidate or picture the space left after a block placement."
     links:
       - page: "/blog/how-to-find-your-first-sudoku-move"
         label: "Try three Sudoku checks with explanations"
+      - page: "/blog/block-puzzle-fit-clear-leave-space"
+        label: "Practice block placement: fit, clear, space"
   - id: "return"
     title: "Come back prepared"
     description: "Check what a game remembers before relying on an unfinished session being there later. When saving is uncertain, choose a stopping point you can comfortably reach."

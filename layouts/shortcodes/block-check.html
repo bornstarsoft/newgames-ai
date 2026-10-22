@@ -1,0 +1,25 @@
+{{ $id := .Get "id" }}
+{{ with index .Site.Data.block_practice $id }}
+<section class="block-check" id="check-{{ $id }}" aria-labelledby="check-title-{{ $id }}">
+  <h3 id="check-title-{{ $id }}">{{ .title }}</h3>
+  <p>{{ .question }}</p>
+  <table class="block-board">
+    <caption>Starting board: X = occupied, dot = empty</caption>
+    <thead><tr><th scope="col">Row</th>{{ range slice "A" "B" "C" "D" }}<th scope="col">{{ . }}</th>{{ end }}</tr></thead>
+    <tbody>
+      {{ range $row, $cells := .board }}
+      <tr><th scope="row">{{ add $row 1 }}</th>
+        {{ range split $cells "" }}
+          {{ if eq . "#" }}<td class="block-filled">X</td>{{ else }}<td>.</td>{{ end }}
+        {{ end }}
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+  <ul class="block-options">{{ range .options }}<li>{{ .label }}</li>{{ end }}</ul>
+  <details>
+    <summary>Reveal answer and reasoning</summary>
+    <p><strong>{{ .answer }}</strong> {{ .reason }}</p>
+  </details>
+</section>
+{{ else }}{{ errorf "Unknown block practice example: %s" $id }}{{ end }}

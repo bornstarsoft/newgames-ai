@@ -7,6 +7,9 @@ cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai discovery cards."
 outputs: ["HTML"]
 handyGuides:
+  - page: "/blog/block-puzzle-fit-clear-leave-space"
+    label: "Think before placing a block"
+    reason: "Try three small boards: check the fit, the line clear, and room for the next shape."
   - page: "/blog/how-to-find-your-first-sudoku-move"
     label: "Find a certain Sudoku move"
     reason: "Try three short checks and reveal the reasoning, including when not to guess."
