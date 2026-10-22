@@ -11,6 +11,12 @@ The email link addresses `hello@newgames.ai` and pre-fills only the public artic
 
 Contact guidance distinguishes editorial questions from game support and offers no response-time or publication guarantee. No form, subscription, JavaScript, analytics, local storage, account or third-party service is added. Existing privacy wording remains applicable. Mail delivery itself is not established by link validation.
 
+## Production Compatibility Repair
+
+The first live JavaScript-disabled test exposed Cloudflare email obfuscation replacing native email links with `/cdn-cgi/l/email-protection` URLs. The feedback link and existing public contact addresses now use Cloudflare's documented `email_off` HTML comment markers. Hugo's HTML minifier preserves those markers with `keepComments = true`; a validator rejects unexpected public comments and ensures the exclusion is limited to four feedback areas and the contact body. No Cloudflare dashboard setting or zone-wide protection was changed. The public contact addresses remain deliberately public; this is not an anti-spam mechanism.
+
+References: [Cloudflare per-address exclusion](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/#prevent-cloudflare-from-obfuscating-email) and [Hugo minifier configuration](https://gohugo.io/configuration/minify/).
+
 ## Validation
 
 - Build the isolated staged source, not the unrelated artwork/design WIP.

@@ -23,7 +23,9 @@
   <div class="wrap article-layout">
     <div class="content-body">
       {{ partial "guide-navigation.html" . }}
+      {{ if eq .RelPermalink "/contact/" }}{{ "<!--email_off-->" | safeHTML }}{{ end }}
       {{ .Content }}
+      {{ if eq .RelPermalink "/contact/" }}{{ "<!--/email_off-->" | safeHTML }}{{ end }}
       {{ partial "guide-feedback.html" . }}
     </div>
   </div>

@@ -23,6 +23,8 @@ class Feedback(HTMLParser):
         self.inside = self.in_title = False
         self.title = ""
         self.links = []
+        self.email_off = False
+        self.email_markers = []
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
@@ -35,7 +37,21 @@ class Feedback(HTMLParser):
             assert attrs.get("aria-labelledby") == "guide-feedback-title"
         if self.inside:
             assert tag not in {"script", "form", "input", "iframe"}
-            if tag == "a": self.links.append(attrs["href"])
+            if tag == "a":
+                if attrs["href"].startswith("mailto:"):
+                    assert self.email_off, "Email must retain its Cloudflare exclusion markers"
+                self.links.append(attrs["href"])
+
+    def handle_comment(self, data):
+        if data == "email_off":
+            assert not self.email_off
+            self.email_off = True
+        elif data == "/email_off":
+            assert self.email_off
+            self.email_off = False
+        else:
+            raise AssertionError(f"Unexpected public HTML comment: {data}")
+        self.email_markers.append(data)
 
     def handle_data(self, data):
         if self.in_title: self.title += data
@@ -51,6 +67,11 @@ def main():
     enabled = set()
     for path in public.rglob("*.html"):
         feedback = Feedback(path)
+        assert not feedback.email_off
+        if path == public / "contact/index.html" or feedback.count:
+            assert feedback.email_markers == ["email_off", "/email_off"]
+        else:
+            assert not feedback.email_markers
         if not feedback.count: continue
         slug = path.parent.name
         assert slug in TARGETS and feedback.count == 1, path
@@ -75,7 +96,7 @@ def main():
     assert "/updates/" in contact.links
     for address in ("support", "games", "privacy"):
         assert f"mailto:{address}@newgames.ai" in contact.links
-    print("PASS: four scoped feedback areas, exact email context, no collection fields, contact fallback and existing addresses")
+    print("PASS: four scoped feedback areas, exact email context, preserved Cloudflare exclusion markers, no unexpected comments, contact fallback and existing addresses")
 
 
 if __name__ == "__main__":

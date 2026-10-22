@@ -27,3 +27,7 @@ summaryLength = 28
 
 [permalinks]
   blog = "/blog/:slug/"
+
+[minify.tdewolff.html]
+  # Preserve Cloudflare's per-address email_off markers for native email links.
+  keepComments = true
