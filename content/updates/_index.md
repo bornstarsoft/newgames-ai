@@ -7,6 +7,9 @@ cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai discovery cards."
 outputs: ["HTML"]
 handyGuides:
+  - page: "/blog/how-to-find-your-first-sudoku-move"
+    label: "Find a certain Sudoku move"
+    reason: "Try three short checks and reveal the reasoning, including when not to guess."
   - page: "/blog/browser-game-save-progress-checklist"
     label: "Check before closing a game"
     reason: "Find out what is saved and avoid risky resets when progress seems missing."

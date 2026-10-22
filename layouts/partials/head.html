@@ -33,6 +33,9 @@
 {{ if eq .Section "updates" }}
 <link rel="stylesheet" href="{{ "css/updates.css" | relURL }}">
 {{ end }}
+{{ if .Params.sudokuPractice }}
+<link rel="stylesheet" href="{{ "css/sudoku-guide.css" | relURL }}">
+{{ end }}
 {{ if .IsHome }}
   {{ $websiteSchema := dict
     "@context" "https://schema.org"

@@ -1,0 +1,20 @@
+{{ $id := .Get "id" }}
+{{ with index .Site.Data.sudoku_practice $id }}
+<section class="sudoku-check" id="check-{{ $id }}" aria-labelledby="check-title-{{ $id }}">
+  <h3 id="check-title-{{ $id }}">{{ .title }}</h3>
+  <p>{{ .question }}</p>
+  <table>
+    <caption>Visible digits around the same empty cell</caption>
+    <thead><tr><th scope="col">Where</th><th scope="col">Digits already present</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Its row</th><td>{{ delimit .row ", " }}</td></tr>
+      <tr><th scope="row">Its column</th><td>{{ delimit .column ", " }}</td></tr>
+      <tr><th scope="row">Its 3-by-3 box</th><td>{{ delimit .box ", " }}</td></tr>
+    </tbody>
+  </table>
+  <details>
+    <summary>Reveal answer and reasoning</summary>
+    <p><strong>{{ .answer }}</strong> {{ .reason }}</p>
+  </details>
+</section>
+{{ else }}{{ errorf "Unknown Sudoku practice example: %s" $id }}{{ end }}

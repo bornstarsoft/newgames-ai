@@ -1,0 +1,35 @@
+{
+  "one-left": {
+    "title": "Check 1: One digit left",
+    "question": "Which digit can go in this empty cell?",
+    "cell": [0, 4],
+    "row": [1, 2, 3, 4, 6, 7, 8, 9],
+    "column": [2, 8],
+    "box": [1, 2, 4, 6, 8],
+    "candidates": [5],
+    "answer": "5 is the only candidate.",
+    "reason": "The row already contains every digit except 5. Neither the column nor the box contains 5, so the other two checks agree."
+  },
+  "cross-check": {
+    "title": "Check 2: Use the column too",
+    "question": "The row leaves two possibilities. Can the other clues settle the choice?",
+    "cell": [3, 1],
+    "row": [1, 4, 5, 6, 7, 8, 9],
+    "column": [2, 5],
+    "box": [4, 5, 7, 8],
+    "candidates": [3],
+    "answer": "3 is the only candidate.",
+    "reason": "The row is missing 2 and 3. The column already contains 2, so 2 cannot go here. Nothing in the row, column, or box rules out 3."
+  },
+  "not-yet": {
+    "title": "Check 3: Know when to wait",
+    "question": "Can you justify a single digit using only these visible digits?",
+    "cell": [3, 1],
+    "row": [1, 4, 5, 6, 7, 8, 9],
+    "column": [5],
+    "box": [4, 5, 7, 8],
+    "candidates": [2, 3],
+    "answer": "Not yet: both 2 and 3 remain candidates.",
+    "reason": "Neither the column nor the box removes either of the two digits missing from the row. These clues alone do not justify choosing one. On a full board, look elsewhere for another certain move and return later."
+  }
+}

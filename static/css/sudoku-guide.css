@@ -1,0 +1,10 @@
+.sudoku-check { padding-block: 24px; border-block-start: 1px solid var(--line); scroll-margin-top: 160px; }
+.sudoku-check h3 { margin-top: 0; font-size: 1.25rem; }
+.sudoku-check caption { text-align: left; color: var(--muted); margin-bottom: 8px; }
+.sudoku-check table { margin-block: 16px; }
+.sudoku-check th:first-child { width: 36%; }
+.sudoku-check td { font-variant-numeric: tabular-nums; }
+.sudoku-check summary { cursor: pointer; padding-block: 12px; font-weight: 700; color: var(--blue); }
+.sudoku-check summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.sudoku-check details[open] { border-bottom: 2px solid var(--mint); }
+.sudoku-check details p { margin: 4px 0 16px; }

@@ -22,6 +22,8 @@ Start with the kind of thinking you enjoy: number logic, arranging shapes, or ma
 
 ## New Puzzle Games
 
+New to number puzzles? [Practice finding a certain Sudoku move](/blog/how-to-find-your-first-sudoku-move/) with three short examples before moving on to a full game.
+
 [DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) is a browser-based daily Sudoku game. Use the given number clues to work through the daily board under classic Sudoku rules.
 
 [Blockzzle](/blog/blockzzle-free-block-puzzle-game-online/) is a free online block puzzle game from the BornstarSoft / Puzzlepia web game family. Players place block pieces, clear lines, and chase their best score in the browser with no install.
