@@ -31,6 +31,12 @@ The current game starts with the daily Sudoku board. Use the given numbers to wo
 
 Your first goal can be one cell rather than the entire board: choose a space where the surrounding clues narrow the possibilities. The official [How to Play guide](https://daysudoku.com/how-to-play/) explains the current rules and controls.
 
+## Practice Finding A Starting Move
+
+Not sure how to begin? Try our [first Sudoku move guide](/blog/how-to-find-your-first-sudoku-move/). Its three short examples let you check a cell's row, column, and box, then reveal an explanation. They are original teaching examples, not answers to DaySudoku's daily board.
+
+Already comfortable with that check? Continue to [one place for a number](/blog/sudoku-one-place-for-a-number/) for a different way to inspect the clues. Both guides stay available to revisit; use DaySudoku's own instructions for its controls.
+
 ## No Sign-Up Or Download
 
 DaySudoku is browser-based, so it does not require an install. It also does not require sign-up for the basic play flow described here.

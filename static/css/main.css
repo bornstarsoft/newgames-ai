@@ -641,6 +641,13 @@ h3 {
   padding: 56px 0 72px;
 }
 
+.article-hero-inner > *,
+.footer-grid > *,
+.footer-navs > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .article-path {
   display: flex;
   flex-wrap: wrap;

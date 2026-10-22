@@ -54,6 +54,12 @@ Ringzzle includes an anonymous leaderboard for players who want a score-focused 
 
 As always, players should check official Ringzzle pages for the current state of any live feature. NewGames.ai avoids fake rankings, popularity claims, or traffic claims.
 
+## Before Ending A Session
+
+Planning to return to an unfinished game? Our [browser game save checklist](/blog/browser-game-save-progress-checklist/) separates a saved score from a saved board and explains what to check before closing a tab. It is general guidance, not a claim about what Ringzzle saves.
+
+Consult the game's official help first. Do not reload or reset an attempt you care about merely to test saving; the checklist's test is only for progress you can afford to lose.
+
 ## Where To Start
 
 The fastest path is the official play page:

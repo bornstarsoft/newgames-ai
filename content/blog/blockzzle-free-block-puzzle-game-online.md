@@ -37,6 +37,12 @@ Block puzzle games are built around placement. In Blockzzle, players place piece
 
 The loop is easy to understand but still asks for attention. A good move is not only about clearing a line immediately. It is also about leaving useful space for whatever comes next.
 
+## Practice A Placement Decision
+
+If you find it hard to picture a move, try [Fit, Clear, Leave Space](/blog/block-puzzle-fit-clear-leave-space/). Three small exercises separate checking a piece's footprint, identifying completed lines, and inspecting the space left afterward. Reveal each explanation when you are ready to compare your reasoning.
+
+These are original 4-by-4 teaching boards, not Blockzzle levels or a demonstration of its controls. Check the game's own rules when you return to play. You can revisit the same examples to review the steps, rather than just remember an answer.
+
 ## Line Clears And Best Score Chasing
 
 Line clears are the main rhythm of Blockzzle. They give the player a clear result for good placement and create the space needed to keep a run going.
