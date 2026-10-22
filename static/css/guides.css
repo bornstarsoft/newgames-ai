@@ -8,6 +8,13 @@
 .guide-path p { color: var(--muted); }
 .guide-path ul { padding-left: 20px; }
 .guide-path li + li { margin-top: 14px; }
+.practice-finder { margin-top: 20px; border-block: 1px solid var(--line); }
+.practice-finder summary { padding-block: 12px; cursor: pointer; font-weight: 700; color: var(--blue); }
+.practice-finder summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.practice-finder h3 { margin: 20px 0 8px; font-size: 1.1rem; line-height: 1.4; }
+.practice-finder a { display: inline-block; padding-block: 8px; }
+.practice-finder li + li { margin-top: 4px; }
+.practice-finder ul { margin-bottom: 20px; }
 .guide-archive-list { max-width: 960px; margin: 0; padding: 0; list-style: none; }
 .guide-archive-entry { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 24px; padding-block: 24px; border-top: 1px solid var(--line); }
 .guide-archive-entry img { width: 96px; height: 54px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: var(--soft); margin-top: 6px; }

@@ -1,0 +1,25 @@
+{{ $groups := slice
+  (dict "title" "Sudoku: check a cell" "page" "/blog/how-to-find-your-first-sudoku-move" "data" "sudoku_practice" "prefix" "check" "keys" (slice "one-left" "cross-check" "not-yet"))
+  (dict "title" "Sudoku: find a place" "page" "/blog/sudoku-one-place-for-a-number" "data" "sudoku_places" "prefix" "place" "keys" (slice "one-place" "two-places"))
+  (dict "title" "Blocks: fit, clear, space" "page" "/blog/block-puzzle-fit-clear-leave-space" "data" "block_practice" "prefix" "check" "keys" (slice "fit" "clear" "space"))
+}}
+<details class="practice-finder" id="practice-examples">
+  <summary>Choose a practice example</summary>
+  {{ range $groups }}
+    {{ $group := . }}
+    {{ with $.Site.GetPage .page }}
+      {{ if and (not .Draft) (not (.PublishDate.After now)) (or .ExpiryDate.IsZero (.ExpiryDate.After now)) }}
+      {{ $page := . }}
+      <h3>{{ $group.title }}</h3>
+      <ul>
+        {{ range $group.keys }}
+          {{ $key := . }}
+          {{ with index (index $.Site.Data $group.data) $key }}
+          <li><a href="{{ $page.RelPermalink }}#{{ $group.prefix }}-{{ $key }}">{{ .title }}</a></li>
+          {{ else }}{{ errorf "Unknown practice example: %s/%s" $group.data $key }}{{ end }}
+        {{ end }}
+      </ul>
+      {{ end }}
+    {{ else }}{{ errorf "Unknown practice guide: %s" .page }}{{ end }}
+  {{ end }}
+</details>

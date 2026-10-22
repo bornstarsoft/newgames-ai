@@ -33,6 +33,7 @@
           {{ else }}{{ errorf "Unknown guide path destination: %s" .page }}{{ end }}
         {{ end }}
       </ul>
+      {{ if eq .id "learn" }}{{ partial "practice-finder.html" $ }}{{ end }}
     </section>
     {{ end }}
   </div>
