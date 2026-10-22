@@ -11,6 +11,11 @@ coverAlt: "Abstract colored puzzle blocks, not a Sudoku game screenshot."
 robots: "index,follow"
 sudokuPractice: true
 guideNavigation: true
+guideShortcuts:
+  - label: "Practice examples"
+    anchor: "try-three-small-checks"
+  - label: "Review the steps"
+    anchor: "start-with-the-three-checks"
 ---
 
 A Sudoku board can feel busy before you have placed a single digit. Instead of trying to understand the entire puzzle at once, choose one empty cell and ask a smaller question: which digits are already ruled out?

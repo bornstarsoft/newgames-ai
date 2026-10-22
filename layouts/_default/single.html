@@ -11,6 +11,7 @@
       {{ else }}
       <p class="eyebrow">NewGames.ai</p>
       {{ end }}
+      {{ partial "guide-shortcuts.html" . }}
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p>{{ . }}</p>{{ end }}
       {{ if .Date }}<p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>{{ if eq .Section "blog" }} / {{ .ReadingTime }} min read{{ end }}</p>{{ end }}

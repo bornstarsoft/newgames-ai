@@ -11,6 +11,11 @@ coverAlt: "Abstract colored puzzle blocks, not a game screenshot."
 robots: "index,follow"
 blockPractice: true
 guideNavigation: true
+guideShortcuts:
+  - label: "Rules & practice"
+    anchor: "the-rules-for-these-examples"
+  - label: "Review the steps"
+    anchor: "a-small-checklist-for-your-next-session"
 ---
 
 A block can fit on a board and still leave an awkward position behind. Before committing to a space, ask three separate questions: does the whole piece fit, what will clear, and what can fit afterward?
