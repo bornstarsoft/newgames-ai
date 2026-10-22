@@ -1,7 +1,7 @@
 {{ $id := .Get "id" }}
 {{ with index .Site.Data.sudoku_places $id }}
 <section class="sudoku-check" id="place-{{ $id }}" aria-labelledby="place-title-{{ $id }}">
-  <h3 id="place-title-{{ $id }}">{{ .title }}</h3>
+  <h3 id="place-title-{{ $id }}"><a href="{{ $.Page.RelPermalink }}#place-{{ $id }}" title="Link to this example">{{ .title }}</a></h3>
   <p>{{ .question }}</p>
   <table>
     <caption>All empty cells in one row; missing digits: {{ delimit .missing ", " }}</caption>

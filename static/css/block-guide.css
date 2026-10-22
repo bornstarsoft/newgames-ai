@@ -1,5 +1,6 @@
-.block-check { padding-block: 24px; border-block-start: 1px solid var(--line); scroll-margin-top: 160px; }
+.block-check { padding-block: 24px; border-block-start: 1px solid var(--line); scroll-margin-top: max(160px, 10rem); }
 .block-check h3 { margin-top: 0; font-size: 1.25rem; }
+.block-check h3 a { display: inline-block; padding-block: 10px; color: var(--blue); text-underline-offset: 4px; }
 .block-check .block-board { width: 100%; max-width: 18rem; table-layout: fixed; border-collapse: collapse; }
 .block-board caption { text-align: left; color: var(--muted); margin-bottom: 8px; }
 .block-check .block-board :is(th, td) { width: 20%; height: 44px; padding: 8px 4px; text-align: center; vertical-align: middle; border: 1px solid var(--line); font-variant-numeric: tabular-nums; }
@@ -7,6 +8,6 @@
 .block-check .block-board .block-filled { color: #fff; background: #2450ae; }
 .block-options { padding-left: 24px; }
 .block-check summary { cursor: pointer; padding-block: 12px; font-weight: 700; color: var(--blue); }
-.block-check summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.block-check summary:focus-visible, .block-check h3 a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .block-check details[open] { border-bottom: 2px solid var(--mint); }
 .block-check details p { margin: 4px 0 16px; }

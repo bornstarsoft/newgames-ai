@@ -1,7 +1,7 @@
 {{ $id := .Get "id" }}
 {{ with index .Site.Data.block_practice $id }}
 <section class="block-check" id="check-{{ $id }}" aria-labelledby="check-title-{{ $id }}">
-  <h3 id="check-title-{{ $id }}">{{ .title }}</h3>
+  <h3 id="check-title-{{ $id }}"><a href="{{ $.Page.RelPermalink }}#check-{{ $id }}" title="Link to this example">{{ .title }}</a></h3>
   <p>{{ .question }}</p>
   <table class="block-board">
     <caption>Starting board: X = occupied, dot = empty</caption>
