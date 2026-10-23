@@ -13,6 +13,9 @@ class Exercises(HTMLParser):
     def __init__(self, html):
         super().__init__()
         self.examples, self.current, self.cell = {}, None, None
+        self.in_answer = False
+        self.table = None
+        self.heading = None
         self.text = []
         self.feed(html)
 
@@ -20,12 +23,19 @@ class Exercises(HTMLParser):
         attrs = dict(attrs)
         if tag == "section" and attrs.get("class") == "sudoku-check":
             self.current = attrs["id"]
-            self.examples[self.current] = {"digits": [], "details": 0, "summary": 0}
+            self.examples[self.current] = {"digits": [], "steps": [], "labels": [], "scopes": [], "details": 0, "summary": 0}
         if self.current:
+            if tag == "table":
+                self.table = "steps" if attrs.get("class") == "sudoku-steps" else "digits"
+                assert (self.table == "steps") == self.in_answer, "Candidate steps belong inside the answer"
+            if tag == "th" and self.table == "steps":
+                self.examples[self.current]["scopes"].append(attrs.get("scope"))
+                if attrs.get("scope") == "row": self.heading = ""
             if tag == "td":
                 self.cell = ""
             if tag == "details":
                 assert "open" not in attrs, "Answers should start collapsed"
+                self.in_answer = True
                 self.examples[self.current]["details"] += 1
             if tag == "summary":
                 self.examples[self.current]["summary"] += 1
@@ -34,11 +44,18 @@ class Exercises(HTMLParser):
         self.text.append(data)
         if self.cell is not None:
             self.cell += data
+        if self.heading is not None: self.heading += data
 
     def handle_endtag(self, tag):
         if tag == "td" and self.current:
-            self.examples[self.current]["digits"].append([int(n.strip()) for n in self.cell.split(",")])
+            values = [] if self.cell.strip() == "None" else [int(n.strip()) for n in self.cell.split(",")]
+            self.examples[self.current][self.table].append(values)
             self.cell = None
+        if tag == "th" and self.heading is not None:
+            self.examples[self.current]["labels"].append(self.heading)
+            self.heading = None
+        if tag == "table": self.table = None
+        if tag == "details": self.in_answer = False
         if tag == "section":
             self.current = None
 
@@ -74,6 +91,15 @@ def main():
         assert remaining == item["candidates"], key
         rendered = parsed.examples["check-" + key]
         assert rendered["digits"] == [item[n] for n in ("row", "column", "box")]
+        candidates = digits.copy()
+        expected_steps = [sorted(candidates)]
+        for name in ("row", "column", "box"):
+            candidates -= set(item[name])
+            expected_steps.append(sorted(candidates))
+        assert rendered["steps"] == expected_steps, (key, "Incorrect candidate elimination")
+        assert rendered["steps"][-1] == item["candidates"]
+        assert rendered["labels"] == ["Start with 1-9", "After the row", "After the column", "After the box"]
+        assert rendered["scopes"] == ["col"] * 2 + ["row"] * 4
         assert rendered["details"] == rendered["summary"] == 1
         assert item["answer"] in " ".join(parsed.text)
         assert item["reason"] in " ".join(parsed.text)
@@ -89,7 +115,10 @@ def main():
     assert page.canonical in {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in {n.text for n in ET.parse(public / "blog/index.xml").findall("./channel/item/link")}
     assert "sudoku-guide.css" not in (public / "index.html").read_text()
-    print("PASS: three consistent original clue groups, exact candidates and rendered answers, native disclosures, metadata/discovery/sitemap/RSS, no homepage stylesheet")
+    assert parsed.examples["check-cross-check"]["steps"] == [list(range(1, 10)), [2, 3], [3], [3]]
+    assert parsed.examples["check-not-yet"]["steps"][-3:] == [[2, 3]] * 3
+    assert "An unchanged list means that group rules out no additional candidates" in " ".join(parsed.text)
+    print("PASS: original clue groups/answers, twelve exact ordered candidate sets inside closed answers, unchanged-step/two-candidate cases, row scopes, metadata/discovery/sitemap/RSS")
 
 
 if __name__ == "__main__":

@@ -3,8 +3,8 @@ title: "How to Find Your First Sudoku Move Without Guessing"
 slug: "how-to-find-your-first-sudoku-move"
 description: "Practice a simple row, column, and box check with three original examples, including when there is not enough information to place a digit."
 date: 2026-10-23T00:52:00+09:00
-lastmod: 2026-10-23T02:42:31+09:00
-updateNote: "Added a worked example for an empty candidate set and a cautious rechecking routine."
+lastmod: 2026-10-23T21:28:30+09:00
+updateNote: "Added step-by-step candidate tables to the three practice answers. The earlier conflicting-notes example and rechecking routine remain available."
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["sudoku", "puzzle games", "beginner guides", "browser games"]

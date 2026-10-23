@@ -62,6 +62,10 @@ def main():
                 result_id = "result-context-" + example["id"].removeprefix("check-")
                 assert result_id in parsed.ids
                 assert example["tables"] == [note_id] + [note_id + " " + result_id] * (expected_count - 1)
+            elif slug == "how-to-find-your-first-sudoku-move":
+                steps_id = "steps-context-" + example["id"].removeprefix("check-")
+                assert steps_id in parsed.ids
+                assert example["tables"] == [note_id, steps_id]
             else:
                 assert example["tables"] == [note_id]
             assert all(phrase in note for phrase in phrases), (slug, note)

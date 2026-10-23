@@ -9,7 +9,7 @@ from check_updates import Page
 
 ROUTE = "/blog/how-to-find-your-first-sudoku-move/"
 ANCHOR = "when-no-candidates-remain"
-NOTE = "Added a worked example for an empty candidate set and a cautious rechecking routine."
+NOTE = "Added step-by-step candidate tables to the three practice answers. The earlier conflicting-notes example and rechecking routine remain available."
 
 
 class Recheck(HTMLParser):
@@ -66,7 +66,7 @@ def main():
     items = ET.parse(public / "updates/index.xml").findall("./channel/item")
     matches = [i for i in items if i.findtext("link") == page.canonical and i.findtext("title").startswith("Updated: ")]
     assert len(matches) == 1 and NOTE in matches[0].findtext("description")
-    assert matches[0].findtext("guid").endswith("#updated-20261022T174231Z")
+    assert matches[0].findtext("guid").endswith("#updated-20261023T122830Z")
     legacy = ET.parse(public / "blog/index.xml").findall("./channel/item")
     assert sum(i.findtext("link") == page.canonical for i in legacy) == 1
     print("PASS: conflicting notes yield no candidate, counter-check yields 5, boundaries, original anchors/canonical, one update event and one legacy feed entry")

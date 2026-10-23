@@ -16,6 +16,20 @@
   <details>
     <summary>Reveal answer and reasoning</summary>
     <p><strong>{{ .answer }}</strong> {{ .reason }}</p>
+    <p id="steps-context-{{ $id }}">Each step removes digits already seen in that group. An unchanged list means that group rules out no additional candidates. More than one candidate is not a reason to guess.</p>
+    {{ $example := . }}
+    {{ $remaining := slice 1 2 3 4 5 6 7 8 9 }}
+    <table class="sudoku-steps" aria-describedby="steps-context-{{ $id }}">
+      <caption>Candidate checks for this empty cell</caption>
+      <thead><tr><th scope="col">Check</th><th scope="col">Candidates left</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Start with 1-9</th><td>{{ delimit $remaining ", " }}</td></tr>
+        {{ range slice (dict "key" "row" "label" "After the row") (dict "key" "column" "label" "After the column") (dict "key" "box" "label" "After the box") }}
+          {{ $remaining = complement (index $example .key) $remaining }}
+          <tr><th scope="row">{{ .label }}</th><td>{{ if $remaining }}{{ delimit $remaining ", " }}{{ else }}None{{ end }}</td></tr>
+        {{ end }}
+      </tbody>
+    </table>
   </details>
 </section>
 {{ else }}{{ errorf "Unknown Sudoku practice example: %s" $id }}{{ end }}
