@@ -4,6 +4,7 @@
 .guide-index-nav a { padding-block: 8px; }
 .guide-paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 .guide-path, .guide-archive, .content-body :is(h2, h3) { scroll-margin-top: max(160px, 10rem); }
+.content-body :is(h2, h3) { overflow-wrap: anywhere; }
 .guide-path h2 { font-size: 1.35rem; line-height: 1.4; }
 .guide-path p { color: var(--muted); }
 .guide-path ul { padding-left: 20px; }

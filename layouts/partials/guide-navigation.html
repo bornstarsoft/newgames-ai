@@ -5,5 +5,10 @@
     {{ .TableOfContents }}
   </details>
   <a href="{{ "/blog/" | relURL }}">Find another guide</a>
+  {{ with .Site.GetPage "/puzzle-terms" }}
+    {{ if and (ne .RelPermalink $.RelPermalink) (not .Draft) (not (.PublishDate.After now)) (or .ExpiryDate.IsZero (.ExpiryDate.After now)) }}
+    <span aria-hidden="true"> &middot; </span><a href="{{ .RelPermalink }}">Puzzle terms</a>
+    {{ end }}
+  {{ end }}
 </nav>
 {{ end }}
