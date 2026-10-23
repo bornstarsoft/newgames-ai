@@ -10,6 +10,12 @@ cover: "/images/categories/puzzle-games.svg"
 coverAlt: "Abstract colored puzzle blocks, not a game screenshot."
 robots: "index,follow"
 guideNavigation: true
+guideShortcutsLabel: "Return guide shortcuts"
+guideShortcuts:
+  - label: "Return checklist"
+    anchor: "the-return-checklist"
+  - label: "Note example"
+    anchor: "an-example-of-a-useful-note"
 ---
 
 You return to a puzzle and recognize the board, but not the decision you were about to make. Was that number certain, or just a possibility? Were you trying to clear a line, or leave room for another piece?

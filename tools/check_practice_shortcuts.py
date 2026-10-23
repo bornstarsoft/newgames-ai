@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate opt-in, native practice links without changing article identity."""
+"""Validate opt-in, native guide links without changing article identity."""
 from html.parser import HTMLParser
 from pathlib import Path
 import sys
@@ -20,6 +20,19 @@ TARGETS = {
         ("#the-rules-for-these-examples", "Rules & practice"),
         ("#a-small-checklist-for-your-next-session", "Review the steps"),
     ],
+    "browser-game-save-progress-checklist": [
+        ("#the-short-checklist", "Save checklist"),
+        ("#do-not-clear-site-data-as-a-first-fix", "Progress missing?"),
+    ],
+    "return-to-a-puzzle-after-a-break": [
+        ("#the-return-checklist", "Return checklist"),
+        ("#an-example-of-a-useful-note", "Note example"),
+    ],
+}
+
+LABELS = {
+    "browser-game-save-progress-checklist": "Save checklist shortcuts",
+    "return-to-a-puzzle-after-a-break": "Return guide shortcuts",
 }
 
 
@@ -29,6 +42,7 @@ class Shortcuts(HTMLParser):
         self.in_header = self.in_nav = False
         self.seen_h1 = False
         self.nav_count = 0
+        self.labels = []
         self.links = []
         self.link = None
         self.open_details = 0
@@ -40,7 +54,7 @@ class Shortcuts(HTMLParser):
         if tag == "h1": self.seen_h1 = True
         if tag == "nav" and attrs.get("class") == "guide-shortcuts":
             assert self.in_header and not self.seen_h1
-            assert attrs.get("aria-label") == "Practice shortcuts"
+            self.labels.append(attrs.get("aria-label"))
             self.nav_count += 1
             self.in_nav = True
         if tag == "a" and self.in_nav:
@@ -71,6 +85,7 @@ def main():
         assert slug in TARGETS, path
         page = Page(path)
         assert nav.nav_count == 1 and nav.links == TARGETS[slug]
+        assert nav.labels == [LABELS.get(slug, "Practice shortcuts")]
         assert not nav.open_details
         assert all(href[1:] in page.ids for href, _ in nav.links)
         assert page.canonical == f"https://newgames.ai/blog/{slug}/"

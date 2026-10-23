@@ -10,6 +10,12 @@ cover: "/images/categories/web-games.svg"
 coverAlt: "Abstract browser window with colorful game tiles."
 robots: "index,follow"
 guideNavigation: true
+guideShortcutsLabel: "Save checklist shortcuts"
+guideShortcuts:
+  - label: "Save checklist"
+    anchor: "the-short-checklist"
+  - label: "Progress missing?"
+    anchor: "do-not-clear-site-data-as-a-first-fix"
 ---
 
 You have made a few good moves, your break is over, and the tab is still open. Can you close it and return to the same board later?

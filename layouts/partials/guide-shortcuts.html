@@ -1,5 +1,5 @@
 {{ if and .Params.guideNavigation .Params.guideShortcuts }}
-<nav class="guide-shortcuts" aria-label="Practice shortcuts">
+<nav class="guide-shortcuts" aria-label="{{ .Params.guideShortcutsLabel | default "Practice shortcuts" }}">
   {{ range .Params.guideShortcuts }}
   <a href="#{{ .anchor }}">{{ .label }}</a>
   {{ end }}
