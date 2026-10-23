@@ -3,8 +3,9 @@
 <section class="block-check" id="check-{{ $id }}" aria-labelledby="check-title-{{ $id }}">
   <h3 id="check-title-{{ $id }}"><a href="{{ $.Page.RelPermalink }}#check-{{ $id }}" title="Link to this example">{{ .title }}</a></h3>
   <p>{{ .question }}</p>
-  <table class="block-board">
-    <caption>Starting board: X = occupied, dot = empty</caption>
+  <p class="practice-context" id="context-check-{{ $id }}">Teaching-board rules: place the whole piece on empty cells without rotating it. All completed rows and columns clear together; other cells do not fall. Use the stated piece order. These rules are for these examples only.</p>
+  <table class="block-board" aria-describedby="context-check-{{ $id }}">
+    <caption>Starting 4-by-4 board: X = occupied, dot = empty. Columns A-D run left to right; rows 1-4 run top to bottom.</caption>
     <thead><tr><th scope="col">Row</th>{{ range slice "A" "B" "C" "D" }}<th scope="col">{{ . }}</th>{{ end }}</tr></thead>
     <tbody>
       {{ range $row, $cells := .board }}

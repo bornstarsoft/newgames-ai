@@ -3,7 +3,8 @@
 <section class="sudoku-check" id="place-{{ $id }}" aria-labelledby="place-title-{{ $id }}">
   <h3 id="place-title-{{ $id }}"><a href="{{ $.Page.RelPermalink }}#place-{{ $id }}" title="Link to this example">{{ .title }}</a></h3>
   <p>{{ .question }}</p>
-  <table>
+  <p class="practice-context" id="context-place-{{ $id }}">Teaching snapshot of every empty cell in one row, not a full puzzle. Column labels identify positions. Each candidate list includes all digits allowed by that cell's row, column and box checks.</p>
+  <table aria-describedby="context-place-{{ $id }}">
     <caption>All empty cells in one row; missing digits: {{ delimit .missing ", " }}</caption>
     <thead><tr><th scope="col">Empty cell</th><th scope="col">Candidates after row, column and box checks</th></tr></thead>
     <tbody>{{ range .cells }}

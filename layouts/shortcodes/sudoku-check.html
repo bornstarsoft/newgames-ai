@@ -3,7 +3,8 @@
 <section class="sudoku-check" id="check-{{ $id }}" aria-labelledby="check-title-{{ $id }}">
   <h3 id="check-title-{{ $id }}"><a href="{{ $.Page.RelPermalink }}#check-{{ $id }}" title="Link to this example">{{ .title }}</a></h3>
   <p>{{ .question }}</p>
-  <table>
+  <p class="practice-context" id="context-check-{{ $id }}">Teaching example, not a full puzzle. These are sorted visible digits around one empty cell, not board positions. A digit can appear in more than one group.</p>
+  <table aria-describedby="context-check-{{ $id }}">
     <caption>Visible digits around the same empty cell</caption>
     <thead><tr><th scope="col">Where</th><th scope="col">Digits already present</th></tr></thead>
     <tbody>
