@@ -25,6 +25,9 @@ class Exercises(HTMLParser):
     def __init__(self, markup):
         super().__init__()
         self.examples, self.current, self.cell = {}, None, None
+        self.table = None
+        self.in_answer = False
+        self.capture = None
         self.text = []
         self.feed(markup)
 
@@ -32,25 +35,38 @@ class Exercises(HTMLParser):
         attrs = dict(attrs)
         if tag == "section" and attrs.get("class") == "block-check":
             self.current = attrs["id"]
-            self.examples[self.current] = {"cells": [], "scopes": [], "details": 0, "summary": 0, "caption": 0}
+            self.examples[self.current] = {"tables": [], "details": 0, "summary": 0, "labels": []}
         if self.current:
             item = self.examples[self.current]
+            if tag == "table":
+                self.table = {"cells": [], "scopes": [], "caption": "", "answer": self.in_answer}
+                item["tables"].append(self.table)
             if tag == "td": self.cell = ""
-            if tag == "th": item["scopes"].append(attrs.get("scope"))
-            if tag == "caption": item["caption"] += 1
+            if tag == "th": self.table["scopes"].append(attrs.get("scope"))
+            if tag == "caption": self.capture = "caption"
+            if tag == "h4":
+                assert self.in_answer
+                item["labels"].append("")
+                self.capture = "label"
             if tag == "details":
                 assert "open" not in attrs, "Answers must start closed"
+                self.in_answer = True
                 item["details"] += 1
             if tag == "summary": item["summary"] += 1
 
     def handle_data(self, data):
         self.text.append(data)
         if self.cell is not None: self.cell += data
+        if self.capture == "caption": self.table["caption"] += data
+        if self.capture == "label": self.examples[self.current]["labels"][-1] += data
 
     def handle_endtag(self, tag):
         if tag == "td" and self.current:
-            self.examples[self.current]["cells"].append(self.cell.strip())
+            self.table["cells"].append(self.cell.strip())
             self.cell = None
+        if tag in ("caption", "h4"): self.capture = None
+        if tag == "table": self.table = None
+        if tag == "details": self.in_answer = False
         if tag == "section": self.current = None
 
 
@@ -75,20 +91,36 @@ def main():
             assert option["label"] in text
             result = place(board, item["piece"], option["origin"])
             assert (result is not None) == option["valid"], (key, option)
-            if result is None: continue
+            if result is None:
+                assert "afterClear" not in option, "Illegal placements must not get a result board"
+                continue
             rows, columns, remaining = result
             assert rows == option["rows"] and columns == option["columns"]
             assert len(remaining) == option["remaining"]
+            expected_board = ["".join("#" if (r, c) in remaining else "." for c in range(4)) for r in range(4)]
+            assert option["afterClear"] == expected_board, (key, option["label"], "Incorrect result cells")
             if "nextPiece" in item:
                 fits = [[r, c] for r in range(4) for c in range(4)
                         if all(0 <= r + y < 4 and 0 <= c + x < 4 and (r + y, c + x) not in remaining
                                for y, x in item["nextPiece"])]
                 assert fits == option["nextFits"], (key, option)
         rendered = parsed.examples["check-" + key]
-        assert rendered["cells"] == ["X" if cell == "#" else "." for row in board for cell in row]
-        assert rendered["scopes"] == ["col"] * 5 + ["row"] * 4
-        assert rendered["details"] == rendered["summary"] == rendered["caption"] == 1
+        legal = [option for option in item["options"] if option["valid"]]
+        assert len(rendered["tables"]) == 1 + len(legal)
+        assert rendered["labels"] == [option["label"] for option in item["options"]]
+        for index, table in enumerate(rendered["tables"]):
+            expected_board = board if index == 0 else legal[index - 1]["afterClear"]
+            assert table["cells"] == ["X" if cell == "#" else "." for row in expected_board for cell in row]
+            assert table["scopes"] == ["col"] * 5 + ["row"] * 4
+            assert table["answer"] == (index > 0), "Result boards must be inside the closed answer"
+            if index:
+                assert table["caption"] == f"After {legal[index - 1]['label']}: X = occupied, dot = empty."
+                assert f"{legal[index - 1]['remaining']} occupied cells remain." in text
+        assert rendered["details"] == rendered["summary"] == 1
         assert item["answer"] in text and item["reason"] in text
+    assert "before another piece is placed" in text
+    assert "Each option starts from the same board above" in text
+    assert "This option is not a legal placement; no resulting board is shown." in text
     # Pin the teaching claims independently of their prose and expected-data fields.
     assert place(data["fit"]["board"], [[0, 0], [0, 1]], [1, 1]) is None
     assert place(data["fit"]["board"], [[0, 0], [0, 1]], [0, 3]) is None
@@ -106,7 +138,10 @@ def main():
         assert "block-guide.css" not in parent_page.read_text(), parent
     assert page.canonical in {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in {n.text for n in ET.parse(public / "blog/index.xml").findall("./channel/item/link")}
-    print("PASS: 3 original 4x4 boards, 6 choices, overlap/boundary rejection, simultaneous clears, exhaustive next-piece fits, rendered cells/answers, metadata/discovery/sitemap/RSS and scoped CSS")
+    updates = ET.parse(public / "updates/index.xml").findall("./channel/item")
+    matches = [item for item in updates if item.findtext("link") == page.canonical and item.findtext("title").startswith("Updated:")]
+    assert len(matches) == 1 and "Added result boards" in matches[0].findtext("description")
+    print("PASS: 3 original boards, 6 choices, 5 exact computed result boards inside closed answers, no illegal result board, simultaneous clears, next-piece fits, coordinates/captions, SEO and one meaningful update event")
 
 
 if __name__ == "__main__":

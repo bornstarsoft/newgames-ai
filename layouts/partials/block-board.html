@@ -1,0 +1,13 @@
+<table class="block-board" aria-describedby="{{ .description }}">
+  <caption>{{ .caption }}</caption>
+  <thead><tr><th scope="col">Row</th>{{ range slice "A" "B" "C" "D" }}<th scope="col">{{ . }}</th>{{ end }}</tr></thead>
+  <tbody>
+    {{ range $row, $cells := .board }}
+    <tr><th scope="row">{{ add $row 1 }}</th>
+      {{ range split $cells "" }}
+        {{ if eq . "#" }}<td class="block-filled">X</td>{{ else }}<td>.</td>{{ end }}
+      {{ end }}
+    </tr>
+    {{ end }}
+  </tbody>
+</table>

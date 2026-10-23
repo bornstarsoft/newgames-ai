@@ -4,23 +4,26 @@
   <h3 id="check-title-{{ $id }}"><a href="{{ $.Page.RelPermalink }}#check-{{ $id }}" title="Link to this example">{{ .title }}</a></h3>
   <p>{{ .question }}</p>
   <p class="practice-context" id="context-check-{{ $id }}">Teaching-board rules: place the whole piece on empty cells without rotating it. All completed rows and columns clear together; other cells do not fall. Use the stated piece order. These rules are for these examples only.</p>
-  <table class="block-board" aria-describedby="context-check-{{ $id }}">
-    <caption>Starting 4-by-4 board: X = occupied, dot = empty. Columns A-D run left to right; rows 1-4 run top to bottom.</caption>
-    <thead><tr><th scope="col">Row</th>{{ range slice "A" "B" "C" "D" }}<th scope="col">{{ . }}</th>{{ end }}</tr></thead>
-    <tbody>
-      {{ range $row, $cells := .board }}
-      <tr><th scope="row">{{ add $row 1 }}</th>
-        {{ range split $cells "" }}
-          {{ if eq . "#" }}<td class="block-filled">X</td>{{ else }}<td>.</td>{{ end }}
-        {{ end }}
-      </tr>
-      {{ end }}
-    </tbody>
-  </table>
+  {{ partial "block-board.html" (dict "board" .board "description" (printf "context-check-%s" $id) "caption" "Starting 4-by-4 board: X = occupied, dot = empty. Columns A-D run left to right; rows 1-4 run top to bottom.") }}
   <ul class="block-options">{{ range .options }}<li>{{ .label }}</li>{{ end }}</ul>
   <details>
     <summary>Reveal answer and reasoning</summary>
     <p><strong>{{ .answer }}</strong> {{ .reason }}</p>
+    <p id="result-context-{{ $id }}">Each option starts from the same board above. These results show the first piece placed and any full lines cleared, before another piece is placed.</p>
+    <div class="block-results">
+      {{ range .options }}
+      <div class="block-result">
+        <h4>{{ .label }}</h4>
+        {{ if .valid }}
+          {{ if not .afterClear }}{{ errorf "Missing result board: %s / %s" $id .label }}{{ end }}
+          {{ partial "block-board.html" (dict "board" .afterClear "description" (printf "context-check-%s result-context-%s" $id $id) "caption" (printf "After %s: X = occupied, dot = empty." .label)) }}
+          <p>{{ .remaining }} occupied cells remain.</p>
+        {{ else }}
+          <p>This option is not a legal placement; no resulting board is shown.</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
   </details>
 </section>
 {{ else }}{{ errorf "Unknown block practice example: %s" $id }}{{ end }}

@@ -88,6 +88,7 @@ def main():
     expected = {
         "daysudoku-free-daily-sudoku-game-online": ("2026-10-14", "Revised the introduction to reflect the current classic daily Sudoku format and linked the official rules."),
         "how-to-find-your-first-sudoku-move": ("2026-10-23", "Added a worked example for an empty candidate set and a cautious rechecking routine."),
+        "block-puzzle-fit-clear-leave-space": ("2026-10-23", "Added result boards to compare the space left after each legal placement and line clear."),
     }
     found = set()
     for path in public.rglob("*.html"):
@@ -105,7 +106,7 @@ def main():
             assert notice.notes[0].endswith(": " + note)
             found.add(slug)
     assert found == set(expected)
-    print("PASS: only two substantively updated articles have dated notes and matching archive labels")
+    print(f"PASS: only {len(expected)} substantively updated articles have dated notes and matching archive labels")
     fixtures(root)
 
 

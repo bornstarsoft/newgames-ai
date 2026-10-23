@@ -57,7 +57,13 @@ def main():
             assert len(example["notes"]) == example["answers"] == 1
             note_id, note = example["notes"][0]
             assert note_id == "context-" + example["id"]
-            assert example["tables"] == [note_id]
+            if slug.startswith("block-"):
+                expected_count = 2 if example["id"] == "check-fit" else 3
+                result_id = "result-context-" + example["id"].removeprefix("check-")
+                assert result_id in parsed.ids
+                assert example["tables"] == [note_id] + [note_id + " " + result_id] * (expected_count - 1)
+            else:
+                assert example["tables"] == [note_id]
             assert all(phrase in note for phrase in phrases), (slug, note)
             if slug.startswith("block-"):
                 assert all(s in example["caption"] for s in ("4-by-4", "X = occupied", "dot = empty", "left to right", "top to bottom"))

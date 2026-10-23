@@ -3,6 +3,8 @@ title: "Before You Place a Block: Fit, Clear, Leave Space"
 slug: "block-puzzle-fit-clear-leave-space"
 description: "Try three original block-puzzle exercises to check a piece's fit, spot a line clear, and leave room for the next shape."
 date: 2026-10-23T01:19:00+09:00
+lastmod: 2026-10-23T21:21:00+09:00
+updateNote: "Added result boards to compare the space left after each legal placement and line clear."
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["block puzzles", "puzzle games", "beginner guides", "browser games"]
