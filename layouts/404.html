@@ -1,10 +1,18 @@
 {{ define "main" }}
 <section class="page-hero">
   <div class="wrap page-hero-inner">
-    <div>
+    <div class="content-body">
       <p class="eyebrow">404</p>
       <h1>Page not found</h1>
-      <p>The page you are looking for may have moved, expired, or never existed.</p>
+      <p>We could not find a page at this address. Check the link for a typo, or pick up your visit below.</p>
+      <nav aria-label="Find another page">
+        <ul>
+          <li><a href="{{ "/blog/" | relURL }}">Games &amp; guides</a>: browse game introductions and practical reading.</li>
+          <li><a href="{{ "/blog/#learn" | relURL }}">Puzzle practice</a>: return to Sudoku and block-puzzle examples.</li>
+          <li><a href="{{ "/updates/" | relURL }}">New &amp; updated</a>: see recent additions and revised guides.</li>
+        </ul>
+      </nav>
+      <p>Found a broken link on NewGames.ai? <a href="{{ "/contact/" | relURL }}">Let us know</a> which page linked here.</p>
       <div class="hero-actions">
         <a class="button button-primary" href="{{ "/" | relURL }}">Back to Home</a>
       </div>
