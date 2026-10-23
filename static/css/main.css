@@ -534,6 +534,7 @@ h3 {
 .content-body th { background: var(--soft); }
 
 .content-body h2 {
+  overflow-wrap: anywhere;
   margin-top: 32px;
   font-size: clamp(1.6rem, 6vw, 2.2rem);
 }

@@ -13,7 +13,7 @@ guidePaths:
         label: "Decide between mobile and web play"
   - id: "learn"
     title: "Learn a first move"
-    description: "Work through one decision instead of rushing to finish a whole board. Check a Sudoku candidate or picture the space left after a block placement."
+    description: "Work through one decision instead of rushing to finish a whole board. Check a Sudoku candidate, picture the space left after a block placement, or separate ring size from color."
     links:
       - page: "/blog/how-to-find-your-first-sudoku-move"
         label: "Try three Sudoku checks with explanations"
@@ -21,6 +21,8 @@ guidePaths:
         label: "Next Sudoku step: one place for a number"
       - page: "/blog/block-puzzle-fit-clear-leave-space"
         label: "Practice block placement: fit, clear, space"
+      - page: "/blog/ringzzle-free-color-rings-puzzle-game-online"
+        label: "Read a Ringzzle move: size, color, space"
   - id: "return"
     title: "Come back prepared"
     description: "Check what the game remembers, then leave yourself a clear next step. Keeping the board and remembering your reasoning are different questions."
