@@ -91,6 +91,7 @@ def main():
         "block-puzzle-fit-clear-leave-space": ("2026-10-23", "Added result boards to compare the space left after each legal placement and line clear."),
         "ringzzle-free-color-rings-puzzle-game-online": ("2026-10-24", "Clarified ring-size slots, color line clears and Color Burst, with three examples and a repeatable pre-move check."),
         "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
+        "sudoku-one-place-for-a-number": ("2026-11-10", "Added a worked comparison of which candidates change after placing the 5 in the first example."),
     }
     found = set()
     for path in public.rglob("*.html"):

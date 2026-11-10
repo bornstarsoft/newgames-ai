@@ -3,6 +3,8 @@ title: "Sudoku's Next Step: One Place for a Number"
 slug: "sudoku-one-place-for-a-number"
 description: "Learn the difference between one candidate in a cell and one possible place for a digit, with two original Sudoku checks and clear explanations."
 date: 2026-10-23T02:10:00+09:00
+lastmod: 2026-11-10T20:55:54+09:00
+updateNote: "Added a worked comparison of which candidates change after placing the 5 in the first example."
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["sudoku", "puzzle games", "beginner guides", "browser games"]
@@ -48,6 +50,24 @@ Now compare a different snapshot. Most of the notes look familiar, but one cell 
 {{< sudoku-place id="two-places" >}}
 
 The important difference is not the total number of notes. It is whether all but one possible location for the chosen digit have been excluded. A cell with two notes is not automatically a better answer than a cell with three.
+
+## After Placing The 5
+
+Return to [the first snapshot](#place-one-place). In that example the missing 5 belongs in row 1, column 5. After entering it, remove the notes from that filled cell and revisit the empty cells in its row, column and box. Cross out 5 where it was still a candidate. Do not cross out 5 across the whole board.
+
+The table compares three empty cells from the same underlying teaching board. The row 4 cells are outside the original row snapshot. "Allowed" means that the row, column and box checks do not rule out 5; it does not mean that 5 is the solution for that cell.
+
+| Cell | 5 before | 5 after |
+| --- | --- | --- |
+| R1C2 | Ruled out | Ruled out |
+| R4C5 | Allowed | Ruled out |
+| R4C6 | Allowed | Allowed |
+
+- **R1C2** (row 1, column 2) was already blocked by a 5 in column 2. Its candidates remain 2 and 7.
+- **R4C5** shares column 5 with the new entry. The new 5 is a reason to remove 5 from that cell's notes.
+- **R4C6** shares no row, column or box with the new entry. This placement gives no reason to remove its 5.
+
+On your next board, pick one affected cell and ask what actually changed before editing its notes. A correct placement can narrow the choices without deciding the next move.
 
 ## Do Not Mistake Missing Notes For Evidence
 
