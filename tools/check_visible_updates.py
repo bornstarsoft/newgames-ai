@@ -90,6 +90,7 @@ def main():
         "how-to-find-your-first-sudoku-move": ("2026-10-23", "Added step-by-step candidate tables to the three practice answers. The earlier conflicting-notes example and rechecking routine remain available."),
         "block-puzzle-fit-clear-leave-space": ("2026-10-23", "Added result boards to compare the space left after each legal placement and line clear."),
         "ringzzle-free-color-rings-puzzle-game-online": ("2026-10-24", "Clarified ring-size slots, color line clears and Color Burst, with three examples and a repeatable pre-move check."),
+        "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
     }
     found = set()
     for path in public.rglob("*.html"):

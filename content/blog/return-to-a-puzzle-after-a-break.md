@@ -3,6 +3,8 @@ title: "Return to a Puzzle After a Break: Leave a Useful Note"
 slug: "return-to-a-puzzle-after-a-break"
 description: "Leave a short note about your last certain step, open question, and next check so you can return to a puzzle with clearer expectations."
 date: 2026-10-23T02:59:05+09:00
+lastmod: 2026-11-10T20:48:45+09:00
+updateNote: "Added a reusable puzzle-note template and an example of what to do when the board has changed."
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["puzzle games", "browser games", "player guides"]
@@ -32,7 +34,7 @@ This guide is about remembering your reasoning. A note does not save a game, res
 - **Choose one next check:** make it specific enough to repeat without reconstructing your whole session.
 - **When you return:** verify the puzzle and position before trusting the note. If they differ, set the old note aside.
 
-There is no need to turn a break into homework. A sentence or two is enough if it points to the next decision. If there is nothing useful to record, it is also fine to stop and approach the puzzle afresh later.
+There is no need to turn a break into homework. A sentence or two is enough if it points to the next decision. Start with the [blank note template](#puzzle-note-template), or skip the note if there is nothing useful to record.
 
 ## Check Saving First
 
@@ -54,6 +56,14 @@ Use paper or a note you keep yourself. NewGames.ai does not collect or store the
 
 You can also record the official game address and a puzzle identifier if the game displays one. Use only information you can actually see; do not invent a level number or assume that today's board will be the same tomorrow.
 
+## Puzzle Note Template
+
+- **Certain:** [What I checked and what it established]
+- **Unresolved:** [The choice or question I left open]
+- **Next:** [One check I can repeat when I return]
+
+Optional board cue: add a visible puzzle label or a detail to compare, such as the target cell and a nearby given digit. The cue can help spot a different board; one matching detail is not proof that the position is unchanged.
+
 ## An Example Of A Useful Note
 
 Here is a fictional note about a number puzzle, not a supplied board or a claim that either candidate is valid:
@@ -67,6 +77,8 @@ A block-puzzle note could be shorter: "Before placing this piece, picture the cl
 ## Check The Position Before Using The Note
 
 When you come back, first confirm that you are looking at the same puzzle and position. Compare the relevant clues or occupied spaces with what the note describes. If another move has happened, a line has cleared, or a new puzzle has opened, the old reasoning may no longer apply.
+
+Suppose the note above refers to an empty cell, but on return that cell already contains a digit. Leave the board as it is while you check the position. Do not erase the digit to make the board match the note, or carry over 3 and 7 as candidates. If you are on a different puzzle, keep the habit of checking the row, column, and box, and start from the clues in front of you.
 
 Recheck even a familiar position before committing a move. A note can contain a copying error or an assumption you did not notice at the time. If the checks disagree, pause rather than forcing the remembered answer into place.
 
