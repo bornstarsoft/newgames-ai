@@ -3,8 +3,8 @@ title: "Before You Place a Block: Fit, Clear, Leave Space"
 slug: "block-puzzle-fit-clear-leave-space"
 description: "Try three original block-puzzle exercises to check a piece's fit, spot a line clear, and leave room for the next shape."
 date: 2026-10-23T01:19:00+09:00
-lastmod: 2026-10-23T21:21:00+09:00
-updateNote: "Added result boards to compare the space left after each legal placement and line clear."
+lastmod: 2026-11-10T21:06:11+09:00
+updateNote: "Added a row-by-row check showing why eight empty cells still cannot fit the square."
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["block puzzles", "puzzle games", "beginner guides", "browser games"]
@@ -55,6 +55,8 @@ Look both across and down after imagining the placement. For the rules here, you
 ### Check The Board After The Clear
 
 An empty-cell count does not tell you which shapes will fit. Four scattered gaps cannot hold a 2-by-2 square. When you know the next piece, imagine the cleared board and look for its whole footprint again.
+
+For a square, start with the top two rows of the result board. Look for two neighboring columns that are empty in both rows. If there is no such pair, move down one row and repeat. This checks every possible square without counting the same scattered gaps as usable space.
 
 {{< block-check id="space" >}}
 

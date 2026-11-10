@@ -127,6 +127,14 @@ def main():
     assert place(data["clear"]["board"], [[0, 0]], [0, 2]) == ([0], [2], set())
     assert data["space"]["options"][0]["nextFits"] and not data["space"]["options"][1]["nextFits"]
     assert data["space"]["options"][1]["remaining"] == 8
+    first, second = (option["afterClear"] for option in data["space"]["options"])
+
+    def shared_open_columns(board):
+        return ["".join("ABCD"[c] for c, (upper, lower) in enumerate(zip(a, b))
+                        if upper == lower == ".") for a, b in zip(board, board[1:])]
+
+    assert shared_open_columns(first) == ["BCD", "BCD", "AC"]
+    assert shared_open_columns(second) == ["B", "B", "A"]
     assert page.canonical == "https://newgames.ai" + route
     assert page.meta["robots"] == "index,follow" and "2026-10-23" in page.times
     assert all(s.get("type") == "application/ld+json" for s in page.scripts)
@@ -140,8 +148,8 @@ def main():
     assert page.canonical in {n.text for n in ET.parse(public / "blog/index.xml").findall("./channel/item/link")}
     updates = ET.parse(public / "updates/index.xml").findall("./channel/item")
     matches = [item for item in updates if item.findtext("link") == page.canonical and item.findtext("title").startswith("Updated:")]
-    assert len(matches) == 1 and "Added result boards" in matches[0].findtext("description")
-    print("PASS: 3 original boards, 6 choices, 5 exact computed result boards inside closed answers, no illegal result board, simultaneous clears, next-piece fits, coordinates/captions, SEO and one meaningful update event")
+    assert len(matches) == 1 and "eight empty cells still cannot fit the square" in matches[0].findtext("description")
+    print("PASS: original boards and choices, five computed result boards inside closed answers, simultaneous clears, next-piece fits, row-pair square checks and one substantive update")
 
 
 if __name__ == "__main__":
