@@ -70,17 +70,20 @@ def check_update_links(path):
         "/blog/number-block-or-color-puzzles-for-your-break/": ("try-one-decision-before-choosing", "Try one decision before choosing a puzzle"),
         "/blog/ringzzle-free-color-rings-puzzle-game-online/": ("three-small-checks", "Try the three Ringzzle checks"),
     }
-    found = set()
-    for title, *jumps in UpdateLinks(path).rows:
+    routes = set()
+    rows = UpdateLinks(path).rows
+    assert len(rows) == 6, "Keep the latest updates list capped at six"
+    for title, *jumps in rows:
         route = title[0]
         assert not urlsplit(route).fragment
+        assert route not in routes
+        routes.add(route)
         if route not in expected:
             assert not jumps
             continue
         anchor, label = expected[route]
         assert jumps == [[f"{route}#{anchor}", label]]
-        found.add(route)
-    assert found == set(expected)
+    return routes
 
 
 def main():
@@ -98,7 +101,7 @@ def main():
         if item["draft"] == "true" or publish_date > now or (expiry_date.year > 1 and expiry_date <= now):
             excluded.append(urlsplit(item["permalink"]).path)
     page = Page(public / "updates/index.html")
-    check_update_links(public / "updates/index.html")
+    recent_updates = check_update_links(public / "updates/index.html")
     assert page.canonical == "https://newgames.ai/updates/"
     assert page.meta["robots"] == "index,follow"
     assert {"new-guides", "updated-guides", "handy-guides"} <= page.ids
@@ -119,12 +122,18 @@ def main():
     day = Page(public / "blog/daysudoku-free-daily-sudoku-game-online/index.html")
     assert {"2026-06-15", "2026-10-14"} <= set(day.times)
     break_path = "/blog/how-to-find-web-games-that-fit-short-breaks/"
-    assert any(row and row[0][0] == break_path for row in UpdateLinks(public / "updates/index.html").rows)
+    assert break_path in recent_updates
     break_guide = Page(public / break_path.lstrip("/") / "index.html")
     assert break_guide.canonical == "https://newgames.ai" + break_path
     assert {"2026-06-03", "2026-11-18"} <= set(break_guide.times)
     assert "try-a-five-minute-break-budget" in break_guide.ids
     assert "/blog/browser-game-save-progress-checklist/#the-short-checklist" in break_guide.links
+    mobile_path = "/blog/how-to-choose-a-new-mobile-game-for-quick-sessions/"
+    assert mobile_path in recent_updates
+    mobile = Page(public / mobile_path.lstrip("/") / "index.html")
+    assert mobile.canonical == "https://newgames.ai" + mobile_path
+    assert {"2026-06-03", "2026-11-18"} <= set(mobile.times)
+    assert "try-three-moves-in-your-usual-setup" in mobile.ids
     sitemap = {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in sitemap
     rss = ET.parse(public / "blog/index.xml")

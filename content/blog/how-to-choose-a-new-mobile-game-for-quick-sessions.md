@@ -2,6 +2,8 @@
 title: "How to Choose a New Mobile Game for Quick Sessions"
 description: "A calm guide to choosing mobile games that fit short sessions, simple controls, fair difficulty, and everyday play."
 date: 2026-06-03
+lastmod: 2026-11-18T21:53:49+09:00
+updateNote: "Added a three-move check for control reach, screen visibility, and playing without sound."
 draft: false
 categories: ["Mobile Games", "Casual Games"]
 tags: ["mobile games", "casual games", "new games", "quick sessions", "game discovery"]
@@ -33,6 +35,18 @@ The first minute of a mobile game matters because it sets the relationship betwe
 Clear first-minute gameplay does not require a long tutorial. In many cases, one playable example teaches more than a wall of instructions. The game can start simple and grow later, but it should give you a foothold quickly.
 
 If the opening is crowded with menus, unclear buttons, or rewards before you understand the actual play, that may be a warning sign. A strong short-session game lets the main idea appear early enough for you to decide whether it fits.
+
+## Try Three Moves In Your Usual Setup
+
+Before you settle into a new game, try three ordinary moves in a tutorial or an attempt you can leave. Hold the phone as you normally would during a break. If you usually play without sound, try it muted from the start.
+
+1. **Reach:** Use the control you expect to repeat the most. Can you tap it or complete the gesture without shifting your grip or hitting a neighboring control?
+2. **See:** Make a move near the edge of the play area. Can you still see the destination or preview while your finger is on the screen?
+3. **Confirm:** Look for a visible result after the move, such as a piece settling in place, a changed counter, or a clear message. Can you tell whether it worked without relying on sound?
+
+For example, you might understand a drag puzzle but lose sight of the destination under your thumb. If the game offers tap-to-place or another layout, try the same move with that option. If it still feels awkward, it may suit a table or a longer break better than the way you play today.
+
+Remember the specific thing that got in the way, such as "I couldn't see where the piece would land." Test that first the next time you try a game. Three moves won't tell you everything about a game; they're enough to spot a problem worth checking again.
 
 ## Check Session Length And Pause Friendliness
 
