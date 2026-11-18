@@ -76,6 +76,7 @@ class UpdateLinks(HTMLParser):
 
 def check_update_links(path):
     expected = {
+        "/blog/best-new-puzzle-games-for-casual-players/": ("try-one-puzzle-move-together", "Try a puzzle move together"),
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
         "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
         "/blog/how-casual-players-can-choose-new-puzzle-games/": ("use-a-hint-without-giving-away-the-answer", "Try a puzzle hint without spoiling the answer"),
@@ -174,6 +175,15 @@ def main():
     assert hint_path + "#" + hint_anchor in Page(public / "puzzle-games/index.html").links
     assert {"/blog/how-to-find-your-first-sudoku-move/#check-cross-check",
             "/blog/return-to-a-puzzle-after-a-break/#puzzle-note-template"} <= set(hint.links)
+    shared_path = "/blog/best-new-puzzle-games-for-casual-players/"
+    shared_anchor = "try-one-puzzle-move-together"
+    assert shared_path in all_updates
+    shared = Page(public / shared_path.lstrip("/") / "index.html")
+    assert shared.canonical == "https://newgames.ai" + shared_path
+    assert {"2026-05-20", "2026-11-18"} <= set(shared.times) and shared_anchor in shared.ids
+    assert shared_path + "#" + shared_anchor in Page(public / "casual-games/index.html").links
+    assert {"/blog/block-puzzle-fit-clear-leave-space/#check-fit",
+            "/blog/how-to-find-your-first-sudoku-move/#check-one-left"} <= set(shared.links)
     sitemap = {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in sitemap
     rss = ET.parse(public / "blog/index.xml")

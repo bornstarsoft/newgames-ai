@@ -19,3 +19,5 @@ NewGames.ai treats casual game discovery as a practical player need. Sometimes t
 - Controls that work well on the target device.
 
 Start with the moment you have. For a spare break at a computer, explore [web games](/web-games/). For play on a phone, compare controls and pause options in our [mobile games](/mobile-games/) guides. If you prefer a clear problem to solve, browse [puzzle games](/puzzle-games/).
+
+Sharing a break? [Try one puzzle move together](/blog/best-new-puzzle-games-for-casual-players/#try-one-puzzle-move-together), with one person suggesting a move and the other checking the clues.

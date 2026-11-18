@@ -9,6 +9,7 @@ from check_updates import Page
 
 
 TARGETS = {
+    "best-new-puzzle-games-for-casual-players",
     "how-to-find-your-first-sudoku-move",
     "how-to-find-web-games-that-fit-short-breaks",
     "how-casual-players-can-choose-new-puzzle-games",

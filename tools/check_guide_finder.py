@@ -69,6 +69,7 @@ def main():
     assert GuidePage(index).archive_links == published, "Archive must retain every published article and no unpublished links"
     assert "/updates/" in page.links
     targets = {
+        "best-new-puzzle-games-for-casual-players": "2026-05-20",
         "browser-game-save-progress-checklist": "2026-10-23",
         "how-to-find-your-first-sudoku-move": "2026-10-23",
         "how-to-find-web-games-that-fit-short-breaks": "2026-06-03",
