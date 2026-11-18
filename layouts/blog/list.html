@@ -12,6 +12,7 @@
     <p>{{ .Description }}</p>
     <nav class="guide-index-nav" aria-label="Guide topics">
       {{ range .Params.guidePaths }}<a href="#{{ .id }}">{{ .title }}</a>{{ end }}
+      <a href="#practice-examples">Practice examples</a>
       <a href="#all-guides">All games &amp; guides</a>
       <a href="{{ "/updates/" | relURL }}">New &amp; updated</a>
     </nav>

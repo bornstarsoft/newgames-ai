@@ -52,6 +52,9 @@ def main():
     root = Path(__file__).resolve().parent.parent
     public = Path(sys.argv[1]) if len(sys.argv) > 1 else root / "public"
     index = public / "blog/index.html"
+    updates = public / "updates/index.html"
+    assert Page(index).links.count("#practice-examples") == 1
+    assert Page(updates).links.count("/blog/#practice-examples") == 1
     finder = Finder(index.read_text())
     assert finder.count == 1
     assert finder.summary == "Choose a practice example"
@@ -61,7 +64,10 @@ def main():
         route = f"/blog/{slug}/"
         for example in Examples((public / route.lstrip("/") / "index.html").read_text()).items:
             expected.append([route + "#" + example["id"], example["text"]])
-    assert len(expected) == 9
+        if slug == "sudoku-one-place-for-a-number":
+            assert "when-two-places-share-a-row" in Page(public / route.lstrip("/") / "index.html").ids
+            expected.append([route + "#when-two-places-share-a-row", "Remove a candidate without placing a digit"])
+    assert len(expected) == 10
     ring_path = "/blog/ringzzle-free-color-rings-puzzle-game-online/"
     ring = Page(public / ring_path.lstrip("/") / "index.html")
     for anchor, label in (
@@ -72,12 +78,13 @@ def main():
         assert anchor in ring.ids and f"#{anchor}" in ring.links
         expected.append([ring_path + "#" + anchor, label])
     assert finder.links == expected, "Keep all examples in their article teaching order"
-    assert len({href for href, _ in finder.links}) == 12
+    assert len({href for href, _ in finder.links}) == 13
     for href, _ in finder.links:
         assert urlsplit(href).fragment
     for path in public.rglob("*.html"):
         if path != index: assert Finder(path.read_text()).count == 0, path
-    print("PASS: one closed finder, four skill groups, twelve ordered example links, native same-tab links, directory-only scope")
+        if path != updates: assert "/blog/#practice-examples" not in Page(path).links, path
+    print("PASS: guide and updates entry links, one closed finder, four skill groups, thirteen ordered examples, and directory-only scope")
 
 
 if __name__ == "__main__":

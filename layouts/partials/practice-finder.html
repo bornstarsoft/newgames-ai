@@ -1,6 +1,6 @@
 {{ $groups := slice
   (dict "title" "Sudoku: check a cell" "page" "/blog/how-to-find-your-first-sudoku-move" "data" "sudoku_practice" "prefix" "check" "keys" (slice "one-left" "cross-check" "not-yet"))
-  (dict "title" "Sudoku: find a place" "page" "/blog/sudoku-one-place-for-a-number" "data" "sudoku_places" "prefix" "place" "keys" (slice "one-place" "two-places"))
+  (dict "title" "Sudoku: find a place" "page" "/blog/sudoku-one-place-for-a-number" "data" "sudoku_places" "prefix" "place" "keys" (slice "one-place" "two-places") "followUp" (dict "anchor" "when-two-places-share-a-row" "label" "Remove a candidate without placing a digit"))
   (dict "title" "Blocks: fit, clear, space" "page" "/blog/block-puzzle-fit-clear-leave-space" "data" "block_practice" "prefix" "check" "keys" (slice "fit" "clear" "space" "tradeoff"))
 }}
 <details class="practice-finder" id="practice-examples">
@@ -17,6 +17,9 @@
           {{ with index (index $.Site.Data $group.data) $key }}
           <li><a href="{{ $page.RelPermalink }}#{{ $group.prefix }}-{{ $key }}">{{ .title }}</a></li>
           {{ else }}{{ errorf "Unknown practice example: %s/%s" $group.data $key }}{{ end }}
+        {{ end }}
+        {{ with $group.followUp }}
+          <li><a href="{{ $page.RelPermalink }}#{{ .anchor }}">{{ .label }}</a></li>
         {{ end }}
       </ul>
       {{ end }}
