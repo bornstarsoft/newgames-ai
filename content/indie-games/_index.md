@@ -19,3 +19,5 @@ NewGames.ai approaches indie game discovery with care. A small project should no
 - Player-facing updates that are easy to understand.
 
 Use the guides below to narrow down the kind of experience you want. For any game you consider, check the developer's official page for current requirements and details. A distinctive idea is a useful starting point; comfortable controls and a session you enjoy are reasons to return.
+
+Already tried a demo? [Decide whether a developer update is a reason to revisit it](/blog/new-indie-games-for-relaxing-breaks/#when-to-revisit-an-indie-demo).

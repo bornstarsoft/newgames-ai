@@ -72,6 +72,7 @@ def main():
         "browser-game-save-progress-checklist": "2026-10-23",
         "how-to-find-your-first-sudoku-move": "2026-10-23",
         "how-to-find-web-games-that-fit-short-breaks": "2026-06-03",
+        "new-indie-games-for-relaxing-breaks": "2026-05-12",
         "number-block-or-color-puzzles-for-your-break": "2026-10-14",
     }
     for slug, date in targets.items():

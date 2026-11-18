@@ -78,6 +78,7 @@ def check_update_links(path):
     expected = {
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
         "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
+        "/blog/new-indie-games-for-relaxing-breaks/": ("when-to-revisit-an-indie-demo", "Decide whether to revisit a demo"),
         "/blog/return-to-a-puzzle-after-a-break/": ("rehearse-a-return-on-a-fixed-board", "Rehearse a return on a fixed board"),
         "/blog/sudoku-one-place-for-a-number/": ("when-two-places-share-a-row", "Try the box-to-row Sudoku check"),
         "/blog/number-block-or-color-puzzles-for-your-break/": ("check-the-board-without-relying-on-color", "Try the color and symbol check"),
@@ -140,7 +141,7 @@ def main():
     day = Page(public / "blog/daysudoku-free-daily-sudoku-game-online/index.html")
     assert {"2026-06-15", "2026-10-14"} <= set(day.times)
     break_path = "/blog/how-to-find-web-games-that-fit-short-breaks/"
-    assert break_path in recent_updates
+    assert break_path in all_updates
     break_guide = Page(public / break_path.lstrip("/") / "index.html")
     assert break_guide.canonical == "https://newgames.ai" + break_path
     assert {"2026-06-03", "2026-11-18"} <= set(break_guide.times)
@@ -150,11 +151,19 @@ def main():
     assert "https://support.google.com/chrome/answer/6098869" in break_guide.links
     assert break_path + "#when-a-web-game-will-not-load" in Page(public / "web-games/index.html").links
     mobile_path = "/blog/how-to-choose-a-new-mobile-game-for-quick-sessions/"
-    assert mobile_path in recent_updates
+    assert mobile_path in all_updates
     mobile = Page(public / mobile_path.lstrip("/") / "index.html")
     assert mobile.canonical == "https://newgames.ai" + mobile_path
     assert {"2026-06-03", "2026-11-18"} <= set(mobile.times)
     assert "try-three-moves-in-your-usual-setup" in mobile.ids
+    indie_path = "/blog/new-indie-games-for-relaxing-breaks/"
+    indie_anchor = "when-to-revisit-an-indie-demo"
+    assert indie_path in recent_updates
+    indie = Page(public / indie_path.lstrip("/") / "index.html")
+    assert indie.canonical == "https://newgames.ai" + indie_path
+    assert {"2026-05-12", "2026-11-18"} <= set(indie.times) and indie_anchor in indie.ids
+    assert indie_path + "#" + indie_anchor in Page(public / "indie-games/index.html").links
+    assert "/blog/browser-game-save-progress-checklist/#the-short-checklist" in indie.links
     sitemap = {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in sitemap
     rss = ET.parse(public / "blog/index.xml")

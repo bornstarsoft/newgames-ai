@@ -11,6 +11,7 @@ from check_updates import Page
 TARGETS = {
     "how-to-find-your-first-sudoku-move",
     "how-to-find-web-games-that-fit-short-breaks",
+    "new-indie-games-for-relaxing-breaks",
     "block-puzzle-fit-clear-leave-space",
     "browser-game-save-progress-checklist",
     "number-block-or-color-puzzles-for-your-break",
