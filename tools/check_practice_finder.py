@@ -14,9 +14,13 @@ class Finder(HTMLParser):
         super().__init__()
         self.count = 0
         self.active = False
+        self.in_topics = False
         self.capture = None
         self.summary = ""
         self.groups = []
+        self.group_ids = []
+        self.topics = []
+        self.topic_nav_count = 0
         self.links = []
         self.feed(html)
 
@@ -30,21 +34,30 @@ class Finder(HTMLParser):
         if not self.active:
             return
         if tag == "summary": self.capture = "summary"
+        if tag == "nav":
+            assert attrs.get("aria-label") == "Practice topics" and not self.groups
+            self.in_topics = True
+            self.topic_nav_count += 1
         if tag == "h3":
+            assert attrs.get("tabindex") == "-1"
+            self.group_ids.append(attrs["id"])
             self.groups.append("")
             self.capture = "heading"
         if tag == "a":
             assert not ({"onclick", "target", "download"} & attrs.keys())
-            self.links.append([attrs["href"], ""])
-            self.capture = "link"
+            collection = self.topics if self.in_topics else self.links
+            collection.append([attrs["href"], ""])
+            self.capture = "topic" if self.in_topics else "link"
 
     def handle_data(self, data):
         if self.capture == "summary": self.summary += data
         if self.capture == "heading": self.groups[-1] += data
         if self.capture == "link": self.links[-1][1] += data
+        if self.capture == "topic": self.topics[-1][1] += data
 
     def handle_endtag(self, tag):
         if tag in ("a", "h3", "summary"): self.capture = None
+        if tag == "nav": self.in_topics = False
         if tag == "details": self.active = False
 
 
@@ -61,6 +74,12 @@ def main():
     assert finder.count == 1
     assert finder.summary == "Choose a practice example"
     assert finder.groups == ["Sudoku: check a cell", "Sudoku: find a place", "Blocks: fit, clear, space", "Rings: size, color, space"]
+    assert finder.topic_nav_count == 1
+    assert finder.topics == [
+        ["#practice-sudoku-basics", "Sudoku basics"], ["#practice-sudoku-next", "Sudoku next steps"],
+        ["#practice-blocks", "Blocks"], ["#practice-rings", "Rings"],
+    ]
+    assert finder.group_ids == [href[1:] for href, _ in finder.topics]
     expected = []
     for slug in ("how-to-find-your-first-sudoku-move", "sudoku-one-place-for-a-number", "block-puzzle-fit-clear-leave-space"):
         route = f"/blog/{slug}/"
@@ -86,7 +105,7 @@ def main():
     for path in public.rglob("*.html"):
         if path != index: assert Finder(path.read_text()).count == 0, path
         if path not in (updates, missing): assert "/blog/#practice-examples" not in Page(path).links, path
-    print("PASS: guide, updates and missing-page entry links, one closed finder, four skill groups and thirteen ordered examples")
+    print("PASS: guide, updates and missing-page entry links, one closed finder, four topic jumps and thirteen ordered examples")
 
 
 if __name__ == "__main__":
