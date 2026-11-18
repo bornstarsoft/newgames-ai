@@ -62,7 +62,7 @@ def main():
     assert page.meta["robots"] == "index,follow"
     assert "2026-10-23" in page.times
     updates = Page(public / "updates/index.html")
-    assert ROUTE in updates.links and NOTE in (public / "updates/index.html").read_text()
+    assert ROUTE in updates.links and NOTE in path.read_text()
     items = ET.parse(public / "updates/index.xml").findall("./channel/item")
     matches = [i for i in items if i.findtext("link") == page.canonical and i.findtext("title").startswith("Updated: ")]
     assert len(matches) == 1 and NOTE in matches[0].findtext("description")

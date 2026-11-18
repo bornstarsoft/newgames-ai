@@ -67,6 +67,7 @@ def check_update_links(path):
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-the-board-after-the-clear", "See how to check the square's fit"),
         "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
         "/blog/sudoku-one-place-for-a-number/": ("after-placing-the-5", "Compare candidates after placing 5"),
+        "/blog/number-block-or-color-puzzles-for-your-break/": ("try-one-decision-before-choosing", "Try one decision before choosing a puzzle"),
     }
     found = set()
     for title, *jumps in UpdateLinks(path).rows:
@@ -101,7 +102,19 @@ def main():
     assert page.meta["robots"] == "index,follow"
     assert {"new-guides", "updated-guides", "handy-guides"} <= page.ids
     assert "/blog/index.xml" in page.links
-    assert "/blog/number-block-or-color-puzzles-for-your-break/" in page.links
+    compare_path = "/blog/number-block-or-color-puzzles-for-your-break/"
+    assert compare_path in page.links
+    compare = Page(public / compare_path.lstrip("/") / "index.html")
+    assert compare.canonical == "https://newgames.ai" + compare_path
+    assert {"2026-10-14", "2026-11-18"} <= set(compare.times)
+    assert "try-one-decision-before-choosing" in compare.ids
+    assert {
+        "/blog/how-to-find-your-first-sudoku-move/#check-one-left",
+        "/blog/block-puzzle-fit-clear-leave-space/#check-fit",
+        "/blog/ringzzle-free-color-rings-puzzle-game-online/",
+    } <= set(compare.links)
+    ring = Page(public / "blog/ringzzle-free-color-rings-puzzle-game-online/index.html")
+    assert "check-2-different-sizes-can-complete-a-line" in ring.ids
     day = Page(public / "blog/daysudoku-free-daily-sudoku-game-online/index.html")
     assert {"2026-06-15", "2026-10-14"} <= set(day.times)
     break_path = "/blog/how-to-find-web-games-that-fit-short-breaks/"

@@ -93,6 +93,7 @@ def main():
         "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
         "sudoku-one-place-for-a-number": ("2026-11-10", "Added a worked comparison of which candidates change after placing the 5 in the first example."),
         "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a five-minute example that budgets for setup, one round, and time to stop."),
+        "number-block-or-color-puzzles-for-your-break": ("2026-11-18", "Added three short prompts and links to worked examples so you can try a decision before choosing a puzzle."),
     }
     found = set()
     for path in public.rglob("*.html"):

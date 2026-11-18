@@ -3,6 +3,11 @@ title: "Number, Block, or Color Puzzles: Which Fits Your Break?"
 slug: "number-block-or-color-puzzles-for-your-break"
 description: "Choose a puzzle style by the decisions you enjoy: reasoning through number clues, arranging shapes, or spotting color patterns."
 date: 2026-10-14
+lastmod: 2026-11-18T21:34:59+09:00
+updateNote: "Added three short prompts and links to worked examples so you can try a decision before choosing a puzzle."
+updateLink:
+  anchor: "try-one-decision-before-choosing"
+  label: "Try one decision before choosing a puzzle"
 draft: false
 categories: ["Puzzle Games", "Web Games", "Casual Games"]
 tags: ["puzzle games", "number puzzles", "block puzzles", "color puzzles", "game discovery"]
@@ -25,6 +30,16 @@ Number clues, shapes, and colors ask you to notice different things. None is aut
 | Color patterns | Which placement builds or completes a matching pattern? | Can you distinguish every color the rules require? |
 
 These are starting points for choosing a style, not rankings or promises about every game in a category. Read the rules of the particular game before treating a familiar-looking board as familiar gameplay.
+
+## Try One Decision Before Choosing
+
+Pick one exercise, not all three. See whether you enjoy the thought that comes before the answer. These are short worked examples, not full games or timed tests.
+
+- **Numbers:** [Try the one-candidate Sudoku example](/blog/how-to-find-your-first-sudoku-move/#check-one-left). Before revealing the answer, name a digit you can cross off and which clue rules it out.
+- **Blocks:** [Try the two-cell placement example](/blog/block-puzzle-fit-clear-leave-space/#check-fit). Trace both squares of the piece before predicting which option fits.
+- **Colors:** Open the [Ringzzle guide](/blog/ringzzle-free-color-rings-puzzle-game-online/) and look for **Three Small Checks**, example 2. Read the setup, then predict which ring will stay before reading the explanation.
+
+Stop after one decision. If you want a different kind of break next time, try one of the other examples. Notice whether you prefer ruling out an answer, making room for a shape, or predicting what a match will remove.
 
 ## Choose Number Logic When You Want A Reason For Each Move
 
