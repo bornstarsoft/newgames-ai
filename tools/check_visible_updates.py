@@ -93,7 +93,7 @@ def main():
         "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
         "sudoku-one-place-for-a-number": ("2026-11-18", "Added a box-to-row exercise: remove a candidate without choosing between two possible cells."),
         "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a checklist for a browser game that will not load, starting with checks that leave saved progress alone."),
-        "number-block-or-color-puzzles-for-your-break": ("2026-11-18", "Added three short prompts and links to worked examples so you can try a decision before choosing a puzzle."),
+        "number-block-or-color-puzzles-for-your-break": ("2026-11-18", "Added a quick check for telling pieces apart and reading move feedback without relying on color alone."),
         "how-to-choose-a-new-mobile-game-for-quick-sessions": ("2026-11-18", "Added a three-move check for control reach, screen visibility, and playing without sound."),
     }
     found = set()

@@ -3,11 +3,11 @@ title: "Number, Block, or Color Puzzles: Which Fits Your Break?"
 slug: "number-block-or-color-puzzles-for-your-break"
 description: "Choose a puzzle style by the decisions you enjoy: reasoning through number clues, arranging shapes, or spotting color patterns."
 date: 2026-10-14
-lastmod: 2026-11-18T21:34:59+09:00
-updateNote: "Added three short prompts and links to worked examples so you can try a decision before choosing a puzzle."
+lastmod: 2026-11-18T22:30:32+09:00
+updateNote: "Added a quick check for telling pieces apart and reading move feedback without relying on color alone."
 updateLink:
-  anchor: "try-one-decision-before-choosing"
-  label: "Try one decision before choosing a puzzle"
+  anchor: "check-the-board-without-relying-on-color"
+  label: "Try the color and symbol check"
 draft: false
 categories: ["Puzzle Games", "Web Games", "Casual Games"]
 tags: ["puzzle games", "number puzzles", "block puzzles", "color puzzles", "game discovery"]
@@ -64,6 +64,17 @@ Color-pattern puzzles invite you to notice relationships across the board. You m
 Before settling in, check that you can reliably tell the required colors apart. Lighting, screen settings, and individual color perception can make a difference. Extra shapes or symbols can help when a game provides them, but do not assume every color puzzle includes those cues.
 
 Choose this style because you enjoy the decisions, not simply because a bright picture looks relaxing. A colorful game can still ask for close attention or careful planning.
+
+### Check The Board Without Relying On Color
+
+Try this in a tutorial or an attempt you do not mind leaving, on the screen you normally use. Look for two things: how the game tells pieces apart, and how it shows what your move did.
+
+1. **Tell two pieces apart.** Pick two pieces the rules treat differently but that look similar to you. Can you distinguish them by a symbol, pattern, or label? For example, a triangle and a dot could tell you which group each piece belongs to even when their colors look alike.
+2. **Read the result of one move.** Select a piece and make one ordinary move. Look for a clear border around the selection, a visible change on the board, or a message when a move is refused. A symbol that identifies the piece does not necessarily tell you whether your move worked.
+
+If the game offers a symbol or palette setting, repeat both checks after trying it. A better palette may help you tell pieces apart without making the result of a move any clearer. [W3C's guidance on use of color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html) explains why an additional cue can matter. This is a check for your own play, not an accessibility rating.
+
+If you still lose track, try a [number-clue example](/blog/how-to-find-your-first-sudoku-move/#check-one-left) or a [block board marked with Xs and dots](/blog/block-puzzle-fit-clear-leave-space/#check-fit). For your next break, remember which cue helped. It is easier to look for a visible selection border or piece labels than to judge a game from its palette alone.
 
 ## Match The Puzzle To The Break You Actually Have
 

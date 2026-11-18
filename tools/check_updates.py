@@ -80,7 +80,7 @@ def check_update_links(path):
         "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
         "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
         "/blog/sudoku-one-place-for-a-number/": ("when-two-places-share-a-row", "Try the box-to-row Sudoku check"),
-        "/blog/number-block-or-color-puzzles-for-your-break/": ("try-one-decision-before-choosing", "Try one decision before choosing a puzzle"),
+        "/blog/number-block-or-color-puzzles-for-your-break/": ("check-the-board-without-relying-on-color", "Try the color and symbol check"),
         "/blog/ringzzle-free-color-rings-puzzle-game-online/": ("three-small-checks", "Try the three Ringzzle checks"),
     }
     routes = set()
@@ -125,7 +125,11 @@ def main():
     compare = Page(public / compare_path.lstrip("/") / "index.html")
     assert compare.canonical == "https://newgames.ai" + compare_path
     assert {"2026-10-14", "2026-11-18"} <= set(compare.times)
-    assert "try-one-decision-before-choosing" in compare.ids
+    color_check = "check-the-board-without-relying-on-color"
+    assert {"try-one-decision-before-choosing", color_check} <= compare.ids
+    assert f"#{color_check}" in compare.links
+    assert "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html" in compare.links
+    assert compare_path + "#" + color_check in Page(public / "puzzle-games/index.html").links
     assert {
         "/blog/how-to-find-your-first-sudoku-move/#check-one-left",
         "/blog/block-puzzle-fit-clear-leave-space/#check-fit",

@@ -20,6 +20,8 @@ NewGames.ai covers puzzle games with an emphasis on approachability. A puzzle ga
 
 Start with the kind of thinking you enjoy: number logic, arranging shapes, or matching patterns. The introductions below describe different puzzle styles so you can choose a starting point that fits your mood.
 
+If similar colors make a board hard to read, try [a quick check for piece symbols and move feedback](/blog/number-block-or-color-puzzles-for-your-break/#check-the-board-without-relying-on-color).
+
 ## New Puzzle Games
 
 New to number puzzles? [Practice finding a certain Sudoku move](/blog/how-to-find-your-first-sudoku-move/) with three short examples before moving on to a full game. Then try [finding the only place for a number](/blog/sudoku-one-place-for-a-number/) when several candidates remain in each cell.
