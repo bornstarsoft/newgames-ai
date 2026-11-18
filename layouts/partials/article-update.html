@@ -4,6 +4,13 @@
   {{- if .compact -}}
   <span class="article-update-date">Updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "Jan 2, 2006" }}</time></span>
   {{- else -}}
-  <p class="post-meta article-update">Updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "January 2, 2006" }}</time>: {{ $note }}</p>
+  <p class="post-meta article-update">Updated <time datetime="{{ $page.Lastmod.Format "2006-01-02" }}">{{ $page.Lastmod.Format "January 2, 2006" }}</time>: {{ $note }}
+    {{- with $page.Params.updateLink }}
+      {{- if and .anchor .label }}
+        {{- $hasShortcut := and $page.Params.guideNavigation (where ($page.Params.guideShortcuts | default slice) "anchor" .anchor) }}
+        {{- if not $hasShortcut }} <a href="#{{ .anchor }}">{{ .label }}</a>{{ end }}
+      {{- end }}
+    {{- end -}}
+  </p>
   {{- end -}}
 {{- end -}}

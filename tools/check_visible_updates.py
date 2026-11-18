@@ -8,12 +8,17 @@ import subprocess
 import sys
 import tempfile
 
+from check_practice_shortcuts import Shortcuts
+from check_updates import UpdateLinks
+
 
 class Notices(HTMLParser):
     def __init__(self, html):
         super().__init__()
         self.active = None
+        self.in_link = False
         self.dates, self.compact_dates, self.notes = [], [], []
+        self.links = []
         self.feed(html)
 
     def handle_starttag(self, tag, attrs):
@@ -27,12 +32,21 @@ class Notices(HTMLParser):
         if tag == "time" and self.active:
             target = self.dates if self.active == "full" else self.compact_dates
             target.append(attrs["datetime"])
+        if tag == "a" and self.active:
+            assert self.active == "full" and attrs["href"].startswith("#")
+            assert not ({"target", "onclick"} & attrs.keys())
+            self.links.append([attrs["href"], ""])
+            self.in_link = True
 
     def handle_data(self, text):
-        if self.active == "full":
+        if self.in_link:
+            self.links[-1][1] += text
+        elif self.active == "full":
             self.notes[-1] += text
 
     def handle_endtag(self, tag):
+        if tag == "a":
+            self.in_link = False
         if (tag == "p" and self.active == "full") or (tag == "span" and self.active == "compact"):
             self.active = None
 
@@ -52,6 +66,9 @@ def fixtures(root):
             '{{ partial "article-update.html" (dict "page" . "compact" true) }}</main>')
         cases = {
             "updated": {},
+            "no-link": {"updateLink": None},
+            "missing-label": {"updateLink": {"anchor": "changed"}},
+            "duplicate-shortcut": {"guideNavigation": True, "guideShortcuts": [{"anchor": "changed"}]},
             "missing-note": {"updateNote": ""},
             "blank-note": {"updateNote": "  \n "},
             "same-date": {"lastmod": "2020-01-01"},
@@ -64,22 +81,24 @@ def fixtures(root):
         }
         note = '  Checked <b> & "quotes" safely.  '
         for name, changes in cases.items():
-            data = dict(title=name, date="2020-01-01", lastmod="2020-01-02", updateNote=note)
+            data = dict(title=name, date="2020-01-01", lastmod="2020-01-02", updateNote=note,
+                        updateLink={"anchor": "changed", "label": "Read <the change> & return"})
             data.update(changes)
-            (site / f"content/blog/{name}.md").write_text(json.dumps(data))
+            (site / f"content/blog/{name}.md").write_text(json.dumps(data) + "\n\n## Changed\n")
         (site / "content/about.md").write_text(json.dumps(dict(title="About", date="2020-01-01", lastmod="2020-01-02", updateNote=note)))
         subprocess.run(["hugo", "--source", str(site), "--buildDrafts", "--buildFuture", "--buildExpired"], check=True, capture_output=True)
         for name in cases:
             html = (site / f"public/blog/{name}/index.html").read_text()
             parsed = Notices(html)
-            if name == "updated":
+            if name in {"updated", "no-link", "missing-label", "duplicate-shortcut"}:
                 assert parsed.dates == parsed.compact_dates == ["2020-01-02"]
-                assert parsed.notes == ['Updated January 2, 2020: Checked <b> & "quotes" safely.']
+                assert [note.strip() for note in parsed.notes] == ['Updated January 2, 2020: Checked <b> & "quotes" safely.']
+                assert parsed.links == ([["#changed", "Read <the change> & return"]] if name == "updated" else [])
                 assert "<b>" not in html and "&lt;b&gt;" in html
             else:
-                assert not parsed.dates and not parsed.compact_dates and not parsed.notes, name
+                assert not parsed.dates and not parsed.compact_dates and not parsed.notes and not parsed.links, name
         assert not Notices((site / "public/about/index.html").read_text()).notes
-    print("PASS fixtures: explicit meaningful dates, escaped note, whitespace, same/earlier/future dates, delayed publication, preview drafts, expiry and non-blog exclusions")
+    print("PASS fixtures: dated notices, escaped text, optional and duplicate links, preview and publication exclusions")
 
 
 def main():
@@ -96,12 +115,16 @@ def main():
         "number-block-or-color-puzzles-for-your-break": ("2026-11-18", "Added a quick check for telling pieces apart and reading move feedback without relying on color alone."),
         "how-to-choose-a-new-mobile-game-for-quick-sessions": ("2026-11-18", "Added a three-move check for control reach, screen visibility, and playing without sound."),
     }
+    listing = UpdateLinks(public / "updates/index.html")
+    destinations = {title[0]: [href.split("#", 1)[1], label]
+                    for title, *links in listing.rows + listing.earlier for href, label in links}
     found = set()
+    link_count = 0
     for path in public.rglob("*.html"):
         notice = Notices(path.read_text())
         if path == public / "blog/index.html":
             assert sorted(notice.compact_dates) == sorted(x[0] for x in expected.values())
-            assert not notice.notes
+            assert not notice.notes and not notice.links
             continue
         assert not notice.compact_dates
         if notice.notes:
@@ -109,10 +132,20 @@ def main():
             assert slug in expected, path
             date, note = expected[slug]
             assert notice.dates == [date] and len(notice.notes) == 1
-            assert notice.notes[0].endswith(": " + note)
+            assert notice.notes[0].strip().endswith(": " + note)
+            jump = destinations.get(f"/blog/{slug}/")
+            if jump:
+                anchor, label = jump
+                href = f"#{anchor}"
+                has_shortcut = any(target == href for target, _ in Shortcuts(path).links)
+                assert notice.links == ([] if has_shortcut else [[href, label]]), path
+            else:
+                assert not notice.links, path
+            link_count += len(notice.links)
             found.add(slug)
     assert found == set(expected)
-    print(f"PASS: only {len(expected)} substantively updated articles have dated notes and matching archive labels")
+    assert link_count == 5
+    print(f"PASS: {len(expected)} dated article notices, {link_count} direct section links and unchanged compact archive scope")
     fixtures(root)
 
 
