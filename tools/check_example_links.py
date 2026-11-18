@@ -21,7 +21,7 @@ class Examples(HTMLParser):
         attrs = dict(attrs)
         if tag == "section" and attrs.get("class") in ("sudoku-check", "block-check"):
             self.current = dict(id=attrs["id"], label=attrs["aria-labelledby"], headings=[], links=[], text="", details=0,
-                                answer_links=[], board_targets=[])
+                                answer_links=[], table_targets=[])
             self.items.append(self.current)
         if self.current is not None:
             if tag == "h3":
@@ -32,7 +32,7 @@ class Examples(HTMLParser):
                 self.current["links" if self.in_heading else "answer_links"].append(attrs)
             if tag == "table" and "id" in attrs:
                 assert not self.in_answer and attrs.get("tabindex") == "-1"
-                self.current["board_targets"].append(attrs["id"])
+                self.current["table_targets"].append(attrs["id"])
             if tag == "details":
                 assert "open" not in attrs
                 self.in_answer = True
@@ -56,6 +56,7 @@ def main():
         ("sudoku-one-place-for-a-number", "sudoku_places", "place"),
         ("block-puzzle-fit-clear-leave-space", "block_practice", "check"),
     ]
+    return_prefixes = {"block_practice": "start-board-", "sudoku_practice": "start-clues-"}
     count = 0
     for slug, datafile, prefix in cases:
         route = f"/blog/{slug}/"
@@ -73,19 +74,19 @@ def main():
             assert link["title"] == "Link to this example"
             assert not ({"target", "download", "onclick"} & link.keys())
             assert example["id"] in page.ids
-            if datafile == "block_practice":
-                board = "start-board-" + example["id"].removeprefix("check-")
-                assert example["board_targets"] == [board] and board in page.ids
-                assert example["answer_links"] == [{"href": "#" + board}]
+            if datafile in return_prefixes:
+                target = return_prefixes[datafile] + example["id"].removeprefix("check-")
+                assert example["table_targets"] == [target] and target in page.ids
+                assert example["answer_links"] == [{"href": "#" + target}]
             else:
-                assert not example["board_targets"] and not example["answer_links"]
+                assert not example["table_targets"] and not example["answer_links"]
             count += 1
         assert page.canonical == "https://newgames.ai" + route
         assert all(s.get("type") == "application/ld+json" for s in page.scripts)
     assert count == 9
     for filename in ("index.html", "blog/index.html", "updates/index.html"):
         assert not Examples((public / filename).read_text()).items
-    print("PASS: nine stable example links, four closed-answer links to focusable start boards, no new script or homepage controls")
+    print("PASS: nine stable example links, seven closed-answer links to focusable start tables, no new script or homepage controls")
 
 
 if __name__ == "__main__":
