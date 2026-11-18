@@ -10,6 +10,7 @@ tags: ["Ringzzle", "puzzle games", "web games", "browser games", "color rings", 
 cover: "/images/og/default-og.svg"
 coverAlt: "Abstract NewGames.ai artwork with colorful ring puzzle cards and spark effects"
 robots: "index,follow"
+guideNavigation: true
 ---
 
 Ringzzle is a free color rings puzzle game online from the BornstarSoft / Puzzlepia web game family. It runs directly in the browser, so players can start from the official site without installing an app.

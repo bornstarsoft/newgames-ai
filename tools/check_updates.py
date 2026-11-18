@@ -111,7 +111,7 @@ def main():
     assert {
         "/blog/how-to-find-your-first-sudoku-move/#check-one-left",
         "/blog/block-puzzle-fit-clear-leave-space/#check-fit",
-        "/blog/ringzzle-free-color-rings-puzzle-game-online/",
+        "/blog/ringzzle-free-color-rings-puzzle-game-online/#check-2-different-sizes-can-complete-a-line",
     } <= set(compare.links)
     ring = Page(public / "blog/ringzzle-free-color-rings-puzzle-game-online/index.html")
     assert "check-2-different-sizes-can-complete-a-line" in ring.ids

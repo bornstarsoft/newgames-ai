@@ -57,7 +57,7 @@ def main():
     assert "@media print" in css and "@page guide" in css
     assert "body:has(.guide-print-source) details:not([open])" in css
     assert "body:has(.guide-print-source) .block-board .block-filled { color: black; background: white; }" in css
-    print("PASS: seven opt-in canonical print sources, screen-hidden default, closed-answer print rule, ink-safe block symbols, no script or unrelated page opt-in")
+    print(f"PASS: {len(found)} opt-in canonical print sources, screen-hidden default, closed-answer print rule, ink-safe block symbols and no executable script")
 
 
 if __name__ == "__main__":

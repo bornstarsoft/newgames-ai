@@ -22,4 +22,14 @@
       {{ end }}
     {{ else }}{{ errorf "Unknown practice guide: %s" .page }}{{ end }}
   {{ end }}
+  {{ with .Site.GetPage "/blog/ringzzle-free-color-rings-puzzle-game-online" }}
+    {{ if and (not .Draft) (not (.PublishDate.After now)) (or .ExpiryDate.IsZero (.ExpiryDate.After now)) }}
+    <h3>Rings: size, color, space</h3>
+    <ul>
+      <li><a href="{{ .RelPermalink }}#check-1-a-matching-color-is-not-an-empty-slot">Check 1: Find an empty size slot</a></li>
+      <li><a href="{{ .RelPermalink }}#check-2-different-sizes-can-complete-a-line">Check 2: Complete a line with different sizes</a></li>
+      <li><a href="{{ .RelPermalink }}#check-3-a-burst-reaches-beyond-one-line">Check 3: See what a Color Burst removes</a></li>
+    </ul>
+    {{ end }}
+  {{ else }}{{ errorf "Unknown Ringzzle practice guide" }}{{ end }}
 </details>

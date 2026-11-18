@@ -37,7 +37,7 @@ Pick one exercise, not all three. See whether you enjoy the thought that comes b
 
 - **Numbers:** [Try the one-candidate Sudoku example](/blog/how-to-find-your-first-sudoku-move/#check-one-left). Before revealing the answer, name a digit you can cross off and which clue rules it out.
 - **Blocks:** [Try the two-cell placement example](/blog/block-puzzle-fit-clear-leave-space/#check-fit). Trace both squares of the piece before predicting which option fits.
-- **Colors:** Open the [Ringzzle guide](/blog/ringzzle-free-color-rings-puzzle-game-online/) and look for **Three Small Checks**, example 2. Read the setup, then predict which ring will stay before reading the explanation.
+- **Colors:** [Try the mixed-size line example](/blog/ringzzle-free-color-rings-puzzle-game-online/#check-2-different-sizes-can-complete-a-line). Read the setup, then predict which ring will stay before reading the explanation.
 
 Stop after one decision. If you want a different kind of break next time, try one of the other examples. Notice whether you prefer ruling out an answer, making room for a shape, or predicting what a match will remove.
 
