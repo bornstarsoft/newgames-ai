@@ -3,6 +3,7 @@
 from pathlib import Path
 from email.utils import parsedate_to_datetime
 import sys
+from urllib.parse import urldefrag
 import xml.etree.ElementTree as ET
 
 from check_updates import Page
@@ -48,7 +49,8 @@ def main():
         assert route in Page(public / parent).links, parent
     assert page.canonical in {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     def feed_items(feed):
-        return [n for n in ET.parse(public / feed).findall("./channel/item") if n.findtext("link") == page.canonical]
+        return [n for n in ET.parse(public / feed).findall("./channel/item")
+                if urldefrag(n.findtext("link")).url == page.canonical]
 
     original = feed_items("blog/index.xml")
     assert len(original) == 1
@@ -56,6 +58,7 @@ def main():
     events = feed_items("updates/index.xml")
     assert len(events) == 2
     assert [item.findtext("title").split(": ", 1)[0] for item in events] == ["Updated", "New"]
+    assert [item.findtext("link") for item in events] == [page.canonical + "#" + rehearsal, page.canonical]
     assert parsedate_to_datetime(events[0].findtext("pubDate")).date().isoformat() == "2026-11-18"
     assert events[1].findtext("pubDate") == original[0].findtext("pubDate")
     assert "resume a fixed block exercise" in events[0].findtext("description")

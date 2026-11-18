@@ -183,8 +183,8 @@ def main():
                    "blog/how-to-find-your-first-sudoku-move/index.html"):
         assert ROUTE in Page(public / parent).links, parent
     assert page.canonical in {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
-    for feed in ("blog/index.xml", "updates/index.xml"):
-        assert page.canonical in {n.text for n in ET.parse(public / feed).findall("./channel/item/link")}
+    for feed, url in (("blog/index.xml", page.canonical), ("updates/index.xml", page.canonical + "#" + POINTING)):
+        assert url in {n.text for n in ET.parse(public / feed).findall("./channel/item/link")}
     assert "sudoku-guide.css" in path.read_text()
     assert "sudoku-guide.css" not in (public / "index.html").read_text()
     print("PASS: original snapshots, recomputed post-placement candidates, verified box-to-row elimination, closed answers and discovery/SEO/feed links")

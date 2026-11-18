@@ -161,7 +161,8 @@ def main():
     assert page.canonical in {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in {n.text for n in ET.parse(public / "blog/index.xml").findall("./channel/item/link")}
     updates = ET.parse(public / "updates/index.xml").findall("./channel/item")
-    matches = [item for item in updates if item.findtext("link") == page.canonical and item.findtext("title").startswith("Updated:")]
+    matches = [item for item in updates if item.findtext("link") == page.canonical + "#check-tradeoff"
+               and item.findtext("title").startswith("Updated:")]
     assert len(matches) == 1 and "clearing one line leaves room for the next square but clearing two does not" in matches[0].findtext("description")
     print("PASS: four original boards, seven computed result boards in closed answers, simultaneous clears, square fits and the one-line versus two-line tradeoff")
 

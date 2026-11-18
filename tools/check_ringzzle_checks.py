@@ -81,7 +81,8 @@ def main():
     legacy = [item for item in items if item.findtext("link") == url]
     assert len(legacy) == 1 and "09 Jun 2026" in legacy[0].findtext("pubDate")
     events = ET.parse(public / "updates/index.xml").findall("./channel/item")
-    updates = [item for item in events if item.findtext("link") == url and item.findtext("title").startswith("Updated:")]
+    updates = [item for item in events if item.findtext("link") == url + "#three-small-checks"
+               and item.findtext("title").startswith("Updated:")]
     assert len(updates) == 1
     assert parsedate_to_datetime(updates[0].findtext("pubDate")).date().isoformat() == "2026-11-18"
     assert "Originally published June 9, 2026." in updates[0].findtext("description")

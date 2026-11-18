@@ -21,9 +21,17 @@
     <lastBuildDate>{{ (index . 0).date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
     {{- end }}
     {{- range $events }}
+    {{- $link := .page.Permalink -}}
+    {{- if eq .kind "Updated" -}}
+      {{- with .page.Params.updateLink -}}
+        {{- if and .anchor .label -}}
+          {{- $link = printf "%s#%s" $link .anchor -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end }}
     <item>
       <title>{{ printf "%s: %s" .kind .page.Title | htmlEscape | safeHTML }}</title>
-      <link>{{ .page.Permalink | htmlEscape | safeHTML }}</link>
+      <link>{{ $link | htmlEscape | safeHTML }}</link>
       <guid isPermaLink="false">{{ printf "%s#%s-%s" .page.Permalink (.kind | lower) (.date.UTC.Format "20060102T150405Z") | htmlEscape | safeHTML }}</guid>
       <pubDate>{{ .date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
       <description>{{ .text | plainify | htmlEscape | safeHTML }}</description>

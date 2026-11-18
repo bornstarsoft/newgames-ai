@@ -9,6 +9,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+from urllib.parse import unquote, urldefrag
 import xml.etree.ElementTree as ET
 
 from check_updates import Page, UpdateLinks
@@ -33,13 +34,15 @@ def inspect_feed(path):
         title, link, guid = item.findtext("title"), item.findtext("link"), item.find("guid")
         kind, separator, _ = title.partition(": ")
         assert separator and kind in ("New", "Updated")
-        assert link.startswith(BASE + "/blog/") and link.endswith("/")
+        canonical, fragment = urldefrag(link)
+        assert canonical.startswith(BASE + "/blog/") and canonical.endswith("/")
+        assert kind == "Updated" or not fragment
         date = parsedate_to_datetime(item.findtext("pubDate"))
         assert date.tzinfo and date <= datetime.now(timezone.utc)
         dates.append(date)
         stamp = date.astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         assert guid.get("isPermaLink") == "false"
-        assert guid.text == f"{link}#{kind.lower()}-{stamp}"
+        assert guid.text == f"{canonical}#{kind.lower()}-{stamp}"
         identifiers.append(guid.text)
         assert item.findtext("description")
     assert dates == sorted(dates, reverse=True)
@@ -84,9 +87,21 @@ def check_public(public):
     assert {"/updates/index.xml", "/blog/index.xml"} <= set(page.links)
     assert FeedReference(public / "updates/index.html").urls == [BASE + "/updates/index.xml"]
     assert FeedReference(public / "blog/index.html").urls == [BASE + "/blog/index.xml"]
+    listing = UpdateLinks(public / "updates/index.html")
+    jumps = {BASE + title[0]: BASE + href
+             for title, *links in listing.rows + listing.earlier for href, _ in links}
     for item in items:
-        assert (public / item.findtext("link").removeprefix(BASE).lstrip("/") / "index.html").is_file()
-    print(f"PASS: {len(items)} feed events, valid XML/dates/IDs, existing correction, legacy feed compatibility, visible links and RSS autodiscovery")
+        link = item.findtext("link")
+        canonical, fragment = urldefrag(link)
+        target = public / canonical.removeprefix(BASE).lstrip("/") / "index.html"
+        assert target.is_file()
+        if item.findtext("title").startswith("Updated: "):
+            assert link == jumps.get(canonical, canonical)
+        else:
+            assert link == canonical
+        if fragment:
+            assert unquote(fragment) in Page(target).ids, link
+    print(f"PASS: {len(items)} feed events, real section links and fallback, stable IDs/dates, legacy feed and autodiscovery")
 
 
 def fixtures(root):
@@ -101,7 +116,7 @@ def fixtures(root):
         for name in ("layouts/updates/list.html", "layouts/partials/update-list-item.html"):
             shutil.copyfile(root / name, site / name)
         for name in ("single", "list"):
-            (site / f"layouts/_default/{name}.html").write_text("<main>{{ .Title }}</main>")
+            (site / f"layouts/_default/{name}.html").write_text("<main>{{ .Title }}{{ .Content }}</main>")
         (site / "layouts/_default/baseof.html").write_text('<main>{{ block "main" . }}{{ end }}</main>')
         (site / "content/updates/_index.md").write_text(json.dumps({"title": "New & Updated", "outputs": ["HTML", "RSS"]}))
 
@@ -109,7 +124,7 @@ def fixtures(root):
             data = {"title": 'A & B "quoted" <test>', "slug": slug,
                     "description": "A reader's check & another choice.", "date": "2020-01-01T00:00:00Z", "draft": False}
             data.update(changes)
-            (site / f"content/blog/{slug}.md").write_text(json.dumps(data) + "\n\nFixture only.")
+            (site / f"content/blog/{slug}.md").write_text(json.dumps(data) + "\n\n## Changed\n\nFixture only.")
 
         def build(inclusive=False):
             command = ["hugo", "--source", str(site), "--minify", "--cleanDestinationDir"]
@@ -119,8 +134,9 @@ def fixtures(root):
             path = site / "public/updates/index.xml"
             return inspect_feed(path), path.read_bytes()
 
-        post("plain")
-        post("corrected", lastmod="2020-01-05T00:00:00Z", updateNote="Corrected A & B; <em>keep checking</em>.")
+        post("plain", updateLink={"anchor": "changed", "label": "See what changed"})
+        post("corrected", lastmod="2020-01-05T00:00:00Z", updateNote="Corrected A & B; <em>keep checking</em>.",
+             updateLink={"anchor": "changed", "label": "See what changed"})
         post("future-note", lastmod="2099-01-01T00:00:00Z", updateNote="Not yet.")
         post("blank-note", lastmod="2020-01-05T00:00:00Z", updateNote="  \n ")
         post("no-note", lastmod="2020-01-05T00:00:00Z")
@@ -137,6 +153,10 @@ def fixtures(root):
         assert plain.findtext("title") == 'New: A & B "quoted" <test>'
         assert plain.findtext("description") == "A reader's check & another choice."
         correction = next(i for i in items if i.findtext("title").startswith("Updated: "))
+        assert correction.findtext("link") == BASE + "/blog/corrected/#changed"
+        assert correction.findtext("guid") == BASE + "/blog/corrected/#updated-20200105T000000Z"
+        assert "changed" in Page(site / "public/blog/corrected/index.html").ids
+        assert any(i.findtext("link") == BASE + "/blog/corrected/" for i in items)
         assert correction.findtext("description") == "Corrected A & B; keep checking. Originally published January 1, 2020."
         assert items[0].findtext("link").endswith("/delayed/")
         assert parsedate_to_datetime(items[0].findtext("pubDate")).date().isoformat() == "2020-03-01"
@@ -150,7 +170,8 @@ def fixtures(root):
         update_page = site / "public/updates/index.html"
         for i in range(6):
             post(f"revision-{i}", lastmod=f"2022-02-0{i + 1}T00:00:00Z", updateNote="A real revision.")
-            build(True)
+            revisions, _ = build(True)
+            assert revisions[0].findtext("link") == BASE + f"/blog/revision-{i}/"
             listing = UpdateLinks(update_page)
             assert len(listing.rows) == min(i + 2, 6)
             assert len(listing.earlier) == max(i - 4, 0)
@@ -160,7 +181,7 @@ def fixtures(root):
         for path in (site / "content/blog").glob("*.md"): path.unlink()
         assert not build()[0]
         assert not UpdateLinks(update_page).earlier and "earlier-guide-updates" not in Page(update_page).ids
-    print("PASS fixtures: RSS cap and exclusions, stable rebuild, earlier-update threshold/order, preview flags and empty site")
+    print("PASS fixtures: section link with stable ID, canonical fallback, cap and exclusions, stable rebuild, earlier-update order and empty site")
 
 
 if __name__ == "__main__":
