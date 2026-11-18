@@ -3,11 +3,11 @@ title: "Sudoku's Next Step: One Place for a Number"
 slug: "sudoku-one-place-for-a-number"
 description: "Learn the difference between one candidate in a cell and one possible place for a digit, with two original Sudoku checks and clear explanations."
 date: 2026-10-23T02:10:00+09:00
-lastmod: 2026-11-10T20:55:54+09:00
-updateNote: "Added a worked comparison of which candidates change after placing the 5 in the first example."
+lastmod: 2026-11-18T22:03:54+09:00
+updateNote: "Added a box-to-row exercise: remove a candidate without choosing between two possible cells."
 updateLink:
-  anchor: "after-placing-the-5"
-  label: "Compare candidates after placing 5"
+  anchor: "when-two-places-share-a-row"
+  label: "Try the box-to-row Sudoku check"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["sudoku", "puzzle games", "beginner guides", "browser games"]
@@ -71,6 +71,16 @@ The table compares three empty cells from the same underlying teaching board. Th
 - **R4C6** shares no row, column or box with the new entry. This placement gives no reason to remove its 5.
 
 On your next board, pick one affected cell and ask what actually changed before editing its notes. A correct placement can narrow the choices without deciding the next move.
+
+## When Two Places Share A Row
+
+One remaining place can give you an entry. Two places might still give you an elimination. Start inside one 3-by-3 box: if every possible location for a missing digit lies in the same row, the box must put that digit somewhere in that row. So the same digit cannot go in the rest of the row outside the box. The logic works along a column too. [HoDoKu calls this pattern pointing](https://hodoku.sourceforge.net/en/tech_intersections.php#lc1).
+
+For this example, imagine the second board above with two extra clues: a 4 at R3C7 and a 7 at R8C2. Track only **7**. After the usual row, column and box checks, the table shows where 7 can still go inside the top-left box. **R3C9** means row 3, column 9. It is outside that box, and those checks alone do not rule out 7 there.
+
+{{< sudoku-pointing >}}
+
+If even one possible place inside the box is in a different row, you cannot use this row elimination. Check every empty cell in the box before crossing anything out. The snapshot is not a full puzzle, and the pointing step alone does not tell you which cell inside the box gets 7.
 
 ## Do Not Mistake Missing Notes For Evidence
 

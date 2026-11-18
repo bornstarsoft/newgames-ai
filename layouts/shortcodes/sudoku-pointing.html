@@ -1,0 +1,16 @@
+<div class="sudoku-check">
+  <table>
+    <caption>Where 7 can go inside the top-left box</caption>
+    <thead><tr><th scope="col">Row</th><th scope="col">Possible cells for 7</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Row 1</th><td>None</td></tr>
+      <tr><th scope="row">Row 2</th><td>None</td></tr>
+      <tr><th scope="row">Row 3</th><td>R3C1, R3C3</td></tr>
+    </tbody>
+  </table>
+  <p>Can you cross out 7 at R3C9 without deciding which cell in the box gets it?</p>
+  <details>
+    <summary>Reveal the box-to-row answer</summary>
+    <p><strong>Yes. Remove 7 from R3C9.</strong> The box needs a 7, and both of its possible cells lie in row 3. Either way, that row's 7 is inside the box. Keep both candidates inside the box for this check; do not enter 7 in either cell yet.</p>
+  </details>
+</div>

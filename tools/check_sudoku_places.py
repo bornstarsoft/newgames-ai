@@ -12,6 +12,7 @@ from check_updates import Page
 
 DIGITS = set(range(1, 10))
 ROUTE = "/blog/sudoku-one-place-for-a-number/"
+POINTING = "when-two-places-share-a-row"
 
 
 def candidates(board, row, column):
@@ -82,16 +83,21 @@ class Examples(HTMLParser):
         if tag == "section": self.current = None
 
 
-class RecheckTable(HTMLParser):
-    def __init__(self, markup):
+class SectionTable(HTMLParser):
+    def __init__(self, markup, heading):
         super().__init__()
+        self.heading = heading
         self.in_section = self.in_cell = False
         self.rows = []
+        self.details = 0
         self.feed(markup)
 
     def handle_starttag(self, tag, attrs):
         if tag == "h2":
-            self.in_section = dict(attrs).get("id") == "after-placing-the-5"
+            self.in_section = dict(attrs).get("id") == self.heading
+        if self.in_section and tag == "details":
+            assert "open" not in dict(attrs)
+            self.details += 1
         if self.in_section and tag == "tr":
             self.rows.append([])
         if self.in_section and tag in ("th", "td"):
@@ -137,8 +143,26 @@ def main():
             for board in (before, after)
         ]])
     assert candidates(before, 0, 1) == candidates(after, 0, 1) == [2, 7]
-    assert RecheckTable(path.read_text()).rows == expected
+    assert SectionTable(path.read_text(), "after-placing-the-5").rows == expected
     assert "#after-placing-the-5" in page.links and "#place-one-place" in page.links
+
+    pointing = deepcopy(data["two-places"]["clues"])
+    assert pointing[2][6] == pointing[7][1] == 0
+    pointing[2][6], pointing[7][1] = 4, 7
+    # The same constructed completion also satisfies these two additional clues.
+    assert all(digit == 0 or digit == (r * 3 + r // 3 + c) % 9 + 1
+               for r, row in enumerate(pointing) for c, digit in enumerate(row))
+    inside = [[f"R{r + 1}C{c + 1}" for c in range(3)
+               if not pointing[r][c] and 7 in candidates(pointing, r, c)] for r in range(3)]
+    assert inside == [[], [], ["R3C1", "R3C3"]]
+    outside = [c + 1 for c in range(3, 9) if not pointing[2][c] and 7 in candidates(pointing, 2, c)]
+    assert outside == [9]
+    exercise = SectionTable(path.read_text(), POINTING)
+    assert exercise.rows == [["Row", "Possible cells for 7"]] + [
+        [f"Row {i + 1}", ", ".join(cells) or "None"] for i, cells in enumerate(inside)
+    ]
+    assert exercise.details == 1 and f"#{POINTING}" in page.links
+    assert "Remove 7 from R3C9" in " ".join(rendered.text)
     for kind in ("candidate", "missing-cell", "false-place", "bad-clue"):
         bad = deepcopy(data["one-place"])
         if kind == "candidate": bad["cells"][0]["candidates"].append(5)
@@ -163,7 +187,7 @@ def main():
         assert page.canonical in {n.text for n in ET.parse(public / feed).findall("./channel/item/link")}
     assert "sudoku-guide.css" in path.read_text()
     assert "sudoku-guide.css" not in (public / "index.html").read_text()
-    print("PASS: two original snapshots, recomputed candidates before/after 5, rendered answers, four invalid fixtures rejected and discovery/SEO/feed links")
+    print("PASS: original snapshots, recomputed post-placement candidates, verified box-to-row elimination, closed answers and discovery/SEO/feed links")
 
 
 if __name__ == "__main__":
