@@ -3,11 +3,11 @@ title: "Before You Place a Block: Fit, Clear, Leave Space"
 slug: "block-puzzle-fit-clear-leave-space"
 description: "Try three original block-puzzle exercises to check a piece's fit, spot a line clear, and leave room for the next shape."
 date: 2026-10-23T01:19:00+09:00
-lastmod: 2026-11-10T21:06:11+09:00
-updateNote: "Added a row-by-row check showing why eight empty cells still cannot fit the square."
+lastmod: 2026-11-18T22:12:20+09:00
+updateNote: "Added a block exercise where clearing one line leaves room for the next square but clearing two does not."
 updateLink:
-  anchor: "check-the-board-after-the-clear"
-  label: "See how to check the square's fit"
+  anchor: "check-tradeoff"
+  label: "Try the one-line versus two-line exercise"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["block puzzles", "puzzle games", "beginner guides", "browser games"]
@@ -37,7 +37,7 @@ For these exercises only:
 - **X** marks an occupied cell. A **dot** marks an empty cell. The symbols carry the meaning even without color.
 - Place the entire piece inside the board on empty cells. Do not rotate it or overlap an X.
 - After each placement, all full rows and columns clear together. Other occupied cells stay where they are; nothing falls into the gaps.
-- In the last exercise, place the two supplied pieces in the stated order. There are no unknown future pieces to predict.
+- When an exercise names two pieces, place them in the stated order. There are no unknown future pieces to predict.
 
 Each board shows the position before a move. Compare the two written options, then open the explanation. You do not need to drag anything or enter a score.
 
@@ -63,6 +63,12 @@ For a square, start with the top two rows of the result board. Look for two neig
 
 {{< block-check id="space" >}}
 
+## A Bonus Check: One Line Or Two?
+
+The previous board compared a clear with no clear. This time both moves clear a line or more. Your goal is narrower than scoring: make room for the square that comes next. Compare the shape of the gaps, not just the number of lines removed.
+
+{{< block-check id="tradeoff" >}}
+
 ## A Small Checklist For Your Next Session
 
 Use **fit, clear, space** as three separate passes:
@@ -77,9 +83,9 @@ If you cannot yet picture the result, go back to one question at a time. First c
 
 ## When You Come Back
 
-These three exercises stay the same. There is no daily rotation, saved attempt history, or timed challenge. On another visit, close the explanations and describe why the other option fails, rather than trying to recall the letter of the answer.
+These are fixed exercises. There is no daily rotation, saved attempt history, or timed challenge. On another visit, close the explanations and describe why the other option fails, rather than trying to recall the letter of the answer.
 
-The third example is especially useful for that check: can you explain why eight empty cells still do not provide space for the square? That distinction between total space and usable space is the main lesson to take away.
+Try the bonus again with one extra question: can you name all four cells the square needs before opening the answer? Then, on another board with a visible next piece, look for its full footprint before choosing between two clears.
 
 For a different kind of reasoning, try [finding a certain Sudoku move](/blog/how-to-find-your-first-sudoku-move/). To choose a style before practicing, compare [number, block, and color puzzles](/blog/number-block-or-color-puzzles-for-your-break/).
 

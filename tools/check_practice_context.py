@@ -47,7 +47,7 @@ def main():
     cases = [
         ("how-to-find-your-first-sudoku-move", 3, ["not a full puzzle", "sorted visible digits", "one empty cell", "not board positions", "more than one group"]),
         ("sudoku-one-place-for-a-number", 2, ["every empty cell in one row", "not a full puzzle", "Column labels identify positions", "all digits allowed", "row, column and box checks"]),
-        ("block-puzzle-fit-clear-leave-space", 3, ["whole piece on empty cells", "without rotating", "rows and columns clear together", "other cells do not fall", "stated piece order", "these examples only"]),
+        ("block-puzzle-fit-clear-leave-space", 4, ["whole piece on empty cells", "without rotating", "rows and columns clear together", "other cells do not fall", "stated piece order", "these examples only"]),
     ]
     for slug, count, phrases in cases:
         parsed = Context((public / "blog" / slug / "index.html").read_text())
@@ -73,7 +73,7 @@ def main():
                 assert all(s in example["caption"] for s in ("4-by-4", "X = occupied", "dot = empty", "left to right", "top to bottom"))
     for route in ("index.html", "blog/index.html", "updates/index.html"):
         assert not Context((public / route).read_text()).examples
-    print("PASS: eight visible pre-table context notes, unique described-by targets, reading/rule boundaries and closed answers; no directory/home additions")
+    print("PASS: nine visible pre-table context notes, unique described-by targets, reading/rule boundaries and closed answers; no directory/home additions")
 
 
 if __name__ == "__main__":

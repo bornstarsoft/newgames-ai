@@ -76,7 +76,7 @@ class UpdateLinks(HTMLParser):
 
 def check_update_links(path):
     expected = {
-        "/blog/block-puzzle-fit-clear-leave-space/": ("check-the-board-after-the-clear", "See how to check the square's fit"),
+        "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
         "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
         "/blog/sudoku-one-place-for-a-number/": ("when-two-places-share-a-row", "Try the box-to-row Sudoku check"),
         "/blog/number-block-or-color-puzzles-for-your-break/": ("try-one-decision-before-choosing", "Try one decision before choosing a puzzle"),

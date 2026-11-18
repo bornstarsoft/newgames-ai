@@ -35,5 +35,18 @@
     ],
     "answer": "A leaves space for the square; B does not.",
     "reason": "A completes and clears row 3. In its top two rows, columns B, C and D are empty in both rows, so either B-C or C-D holds the square. B clears nothing. Its rows 1 and 2 share only column B as an empty column; rows 2 and 3 share only B; rows 3 and 4 share only A. No pair of rows has two neighboring columns empty in both. That is why eight empty cells after B still do not fit the square."
+  },
+  "tradeoff": {
+    "title": "4. Can clearing fewer lines leave a better fit?",
+    "question": "The square does not fit yet. Place the single-cell piece first, then try the 2-by-2 square. Which of these two moves makes room for it? Name the four cells it would cover.",
+    "board": ["###.", ".###", "###.", "#..."],
+    "piece": [[0, 0]],
+    "nextPiece": [[0, 0], [0, 1], [1, 0], [1, 1]],
+    "options": [
+      {"label": "A: A2", "origin": [1, 0], "valid": true, "rows": [1], "columns": [0], "remaining": 4, "nextFits": [], "afterClear": [".##.", "....", ".##.", "...."]},
+      {"label": "B: C4", "origin": [3, 2], "valid": true, "rows": [], "columns": [2], "remaining": 7, "nextFits": [[2, 2]], "afterClear": ["##..", ".#.#", "##..", "#..."]}
+    ],
+    "answer": "B clears one line and makes room for the square.",
+    "reason": "A clears row 2 and column A, but every pair of neighboring rows still includes blocks in both B and C. There is no empty 2-by-2 patch. B clears column C only. Rows 3 and 4 are now both empty in columns C and D, so the square covers C3, D3, C4 and D4. A leaves more empty cells overall, but B leaves the shape you need."
   }
 }

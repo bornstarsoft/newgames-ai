@@ -21,6 +21,12 @@ def place(board, piece, origin):
     return rows, columns, remaining
 
 
+def fitting_origins(piece, occupied):
+    return [[r, c] for r in range(4) for c in range(4)
+            if all(0 <= r + y < 4 and 0 <= c + x < 4 and (r + y, c + x) not in occupied
+                   for y, x in piece)]
+
+
 class Exercises(HTMLParser):
     def __init__(self, markup):
         super().__init__()
@@ -78,8 +84,8 @@ def main():
     path = public / route.lstrip("/") / "index.html"
     markup = path.read_text()
     parsed, page = Exercises(markup), Page(path)
-    assert set(data) == {"fit", "clear", "space"}
-    assert len(parsed.examples) == 3
+    assert set(data) == {"fit", "clear", "space", "tradeoff"}
+    assert len(parsed.examples) == 4
     text = " ".join(parsed.text)
     for key, item in data.items():
         board = item["board"]
@@ -100,10 +106,7 @@ def main():
             expected_board = ["".join("#" if (r, c) in remaining else "." for c in range(4)) for r in range(4)]
             assert option["afterClear"] == expected_board, (key, option["label"], "Incorrect result cells")
             if "nextPiece" in item:
-                fits = [[r, c] for r in range(4) for c in range(4)
-                        if all(0 <= r + y < 4 and 0 <= c + x < 4 and (r + y, c + x) not in remaining
-                               for y, x in item["nextPiece"])]
-                assert fits == option["nextFits"], (key, option)
+                assert fitting_origins(item["nextPiece"], remaining) == option["nextFits"], (key, option)
         rendered = parsed.examples["check-" + key]
         legal = [option for option in item["options"] if option["valid"]]
         assert len(rendered["tables"]) == 1 + len(legal)
@@ -135,6 +138,17 @@ def main():
 
     assert shared_open_columns(first) == ["BCD", "BCD", "AC"]
     assert shared_open_columns(second) == ["B", "B", "A"]
+    tradeoff = data["tradeoff"]
+    square = [[0, 0], [0, 1], [1, 0], [1, 1]]
+    assert tradeoff["piece"] == [[0, 0]] and tradeoff["nextPiece"] == square
+    occupied = {(r, c) for r, row in enumerate(tradeoff["board"]) for c, value in enumerate(row) if value == "#"}
+    assert fitting_origins(square, occupied) == []
+    rows_a, columns_a, remaining_a = place(tradeoff["board"], [[0, 0]], [1, 0])
+    rows_b, columns_b, remaining_b = place(tradeoff["board"], [[0, 0]], [3, 2])
+    assert (rows_a, columns_a, len(remaining_a)) == ([1], [0], 4)
+    assert (rows_b, columns_b, len(remaining_b)) == ([], [2], 7)
+    assert fitting_origins(square, remaining_a) == []
+    assert fitting_origins(square, remaining_b) == [[2, 2]]
     assert page.canonical == "https://newgames.ai" + route
     assert page.meta["robots"] == "index,follow" and "2026-10-23" in page.times
     assert all(s.get("type") == "application/ld+json" for s in page.scripts)
@@ -148,8 +162,8 @@ def main():
     assert page.canonical in {n.text for n in ET.parse(public / "blog/index.xml").findall("./channel/item/link")}
     updates = ET.parse(public / "updates/index.xml").findall("./channel/item")
     matches = [item for item in updates if item.findtext("link") == page.canonical and item.findtext("title").startswith("Updated:")]
-    assert len(matches) == 1 and "eight empty cells still cannot fit the square" in matches[0].findtext("description")
-    print("PASS: original boards and choices, five computed result boards inside closed answers, simultaneous clears, next-piece fits, row-pair square checks and one substantive update")
+    assert len(matches) == 1 and "clearing one line leaves room for the next square but clearing two does not" in matches[0].findtext("description")
+    print("PASS: four original boards, seven computed result boards in closed answers, simultaneous clears, square fits and the one-line versus two-line tradeoff")
 
 
 if __name__ == "__main__":

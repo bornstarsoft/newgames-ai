@@ -9,7 +9,7 @@ outputs: ["HTML", "RSS"]
 handyGuides:
   - page: "/blog/block-puzzle-fit-clear-leave-space"
     label: "Think before placing a block"
-    reason: "Try three small boards: check the fit, the line clear, and room for the next shape."
+    reason: "Try four small boards: check what fits, what clears, and whether the next shape has room."
   - page: "/blog/how-to-find-your-first-sudoku-move"
     label: "Find a certain Sudoku move"
     reason: "Try three short checks and reveal the reasoning, including when not to guess."

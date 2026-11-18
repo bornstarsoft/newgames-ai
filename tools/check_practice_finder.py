@@ -61,7 +61,7 @@ def main():
         route = f"/blog/{slug}/"
         for example in Examples((public / route.lstrip("/") / "index.html").read_text()).items:
             expected.append([route + "#" + example["id"], example["text"]])
-    assert len(expected) == 8
+    assert len(expected) == 9
     ring_path = "/blog/ringzzle-free-color-rings-puzzle-game-online/"
     ring = Page(public / ring_path.lstrip("/") / "index.html")
     for anchor, label in (
@@ -72,12 +72,12 @@ def main():
         assert anchor in ring.ids and f"#{anchor}" in ring.links
         expected.append([ring_path + "#" + anchor, label])
     assert finder.links == expected, "Keep all examples in their article teaching order"
-    assert len({href for href, _ in finder.links}) == 11
+    assert len({href for href, _ in finder.links}) == 12
     for href, _ in finder.links:
         assert urlsplit(href).fragment
     for path in public.rglob("*.html"):
         if path != index: assert Finder(path.read_text()).count == 0, path
-    print("PASS: one closed finder, four skill groups, eleven ordered example links, native same-tab links, directory-only scope")
+    print("PASS: one closed finder, four skill groups, twelve ordered example links, native same-tab links, directory-only scope")
 
 
 if __name__ == "__main__":

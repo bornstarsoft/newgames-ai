@@ -69,10 +69,10 @@ def main():
             count += 1
         assert page.canonical == "https://newgames.ai" + route
         assert all(s.get("type") == "application/ld+json" for s in page.scripts)
-    assert count == 8
+    assert count == 9
     for filename in ("index.html", "blog/index.html", "updates/index.html"):
         assert not Examples((public / filename).read_text()).items
-    print("PASS: eight exact native self-links, stable IDs/titles/labels, closed answers, canonical routes, no new script or homepage controls")
+    print("PASS: nine exact native self-links, stable IDs/titles/labels, closed answers, canonical routes, no new script or homepage controls")
 
 
 if __name__ == "__main__":
