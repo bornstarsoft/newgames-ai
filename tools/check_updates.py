@@ -68,6 +68,7 @@ def check_update_links(path):
         "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
         "/blog/sudoku-one-place-for-a-number/": ("after-placing-the-5", "Compare candidates after placing 5"),
         "/blog/number-block-or-color-puzzles-for-your-break/": ("try-one-decision-before-choosing", "Try one decision before choosing a puzzle"),
+        "/blog/ringzzle-free-color-rings-puzzle-game-online/": ("three-small-checks", "Try the three Ringzzle checks"),
     }
     found = set()
     for title, *jumps in UpdateLinks(path).rows:

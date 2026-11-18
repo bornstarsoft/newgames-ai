@@ -13,6 +13,8 @@ class Sections(HTMLParser):
         super().__init__()
         self.section = None
         self.sections = {}
+        self.answers = {}
+        self.in_answer = False
         self.feed(markup)
 
     def handle_starttag(self, tag, attrs):
@@ -20,10 +22,22 @@ class Sections(HTMLParser):
         if tag in ("h2", "h3"):
             self.section = attrs.get("id")
             self.sections[self.section] = []
+        attrs = dict(attrs)
+        if tag == "details" and attrs.get("class") == "ring-answer":
+            assert self.section and self.section not in self.answers
+            assert "open" not in attrs
+            self.answers[self.section] = []
+            self.in_answer = True
+
+    def handle_endtag(self, tag):
+        if tag == "details":
+            self.in_answer = False
 
     def handle_data(self, text):
         if self.section:
             self.sections[self.section].append(text)
+        if self.in_answer:
+            self.answers[self.section].append(text)
 
     def text(self, section):
         return " ".join(" ".join(self.sections[section]).split())
@@ -36,15 +50,22 @@ def main():
     path = public / route.lstrip("/") / "index.html"
     page, sections = Page(path), Sections(path.read_text())
     assert page.canonical == url and page.meta["robots"] == "index,follow"
-    assert "2026-06-09" in page.times and "2026-10-24" in page.times
+    assert {"2026-06-09", "2026-11-18"} <= set(page.times)
     assert {"what-ringzzle-is", "no-install-browser-play", "core-rules-and-color-line-clears", "color-burst", "sound-toggle-and-mobile-friendly-play", "anonymous-leaderboard", "before-ending-a-session", "where-to-start", "closing-note"} <= page.ids
     assert {"before-placing-a-ring", "three-small-checks"} <= page.ids
     for key in ("Size:", "Color:", "Space:"):
         assert key in sections.text("before-placing-a-ring")
-    assert "small slot is occupied" in sections.text("check-1-a-matching-color-is-not-an-empty-slot")
-    assert "small blue ring stays in the right cell" in sections.text("check-2-different-sizes-can-complete-a-line")
-    assert "three red rings disappear" in sections.text("check-2-different-sizes-can-complete-a-line")
-    assert "distant blue ring clears too; the red ring stays" in sections.text("check-3-a-burst-reaches-beyond-one-line")
+    expected = {
+        "check-1-a-matching-color-is-not-an-empty-slot": ("small slot is occupied",),
+        "check-2-different-sizes-can-complete-a-line": ("small blue ring stays in the right cell", "three red rings disappear", "small red ring still does not fit; the medium red ring does"),
+        "check-3-a-burst-reaches-beyond-one-line": ("distant blue ring clears too; the red ring stays",),
+    }
+    assert set(sections.answers) == set(expected)
+    for index, (anchor, conclusions) in enumerate(expected.items(), 1):
+        answer = " ".join(sections.answers[anchor])
+        assert f"Reveal answer to check {index}" in answer
+        assert all(conclusion in answer for conclusion in conclusions)
+    assert "would a new small red ring fit" in sections.text("check-2-different-sizes-can-complete-a-line")
     assert "original text examples" in sections.text("three-small-checks")
     assert "Assume no other clear is completed" in sections.text("three-small-checks")
     assert "October 24, 2026" in sections.text("check-3-a-burst-reaches-beyond-one-line")
@@ -62,11 +83,11 @@ def main():
     events = ET.parse(public / "updates/index.xml").findall("./channel/item")
     updates = [item for item in events if item.findtext("link") == url and item.findtext("title").startswith("Updated:")]
     assert len(updates) == 1
-    assert parsedate_to_datetime(updates[0].findtext("pubDate")).isoformat() == "2026-10-24T02:33:07+09:00"
+    assert parsedate_to_datetime(updates[0].findtext("pubDate")).date().isoformat() == "2026-11-18"
     assert "Originally published June 9, 2026." in updates[0].findtext("description")
-    assert "three examples" in updates[0].findtext("description")
+    assert "all three answers reveal on demand" in updates[0].findtext("description")
     assert url in {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
-    print("PASS: three scoped text examples, original anchors/date, official links, Learn entry, one truthful update event and twenty legacy articles; no game-engine test claimed")
+    print("PASS: three initially closed answers with preserved explanations, new slot follow-up, original anchors/date, discovery and one substantive update event")
 
 
 if __name__ == "__main__":

@@ -2,8 +2,11 @@
 title: "Ringzzle: Free Color Rings Puzzle Game Online"
 description: "Understand Ringzzle's size slots, color line clears, and Color Burst with three small examples before starting a browser puzzle session."
 date: 2026-06-09
-lastmod: 2026-10-24T02:33:07+09:00
-updateNote: "Clarified ring-size slots, color line clears and Color Burst, with three examples and a repeatable pre-move check."
+lastmod: 2026-11-18T21:49:00+09:00
+updateNote: "Made all three answers reveal on demand and added a follow-up about which slots open after a clear."
+updateLink:
+  anchor: "three-small-checks"
+  label: "Try the three Ringzzle checks"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["Ringzzle", "puzzle games", "web games", "browser games", "color rings", "new games"]
@@ -57,19 +60,29 @@ These are original text examples, not screenshots, live boards, or recommended m
 
 A cell already holds a small red ring. You have another small red ring. Can it go there because the colors match?
 
+{{< ring-answer 1 >}}
 **No.** The small slot is occupied. Matching colors do not make two rings of the same size fit into one cell. If the medium and large slots are empty, those sizes are still possible destinations for suitable pieces.
+{{< /ring-answer >}}
 
 ### Check 2: Different Sizes Can Complete A Line
 
 In one row, the left cell contains a small red ring and the middle cell a large red ring. The right cell contains only a small blue ring. You place a medium red ring in the right cell's empty medium slot. What stays?
 
+After the clear, would a new small red ring fit in the right cell? What about a new medium red ring? Consider the size slots before checking any new pattern.
+
+{{< ring-answer 2 >}}
 **The small blue ring stays in the right cell.** Red now connects all three cells, even though its sizes differ. The three red rings disappear. The right cell is not completely empty: its small slot remains occupied by blue, while its medium slot becomes empty again.
+
+**The small red ring still does not fit; the medium red ring does.** The blue ring blocks the small slot regardless of color. The clear freed the medium slot, so a new medium ring can fit there. That tells you what fits, not whether it would clear anything next.
+{{< /ring-answer >}}
 
 ### Check 3: A Burst Reaches Beyond One Line
 
 One cell holds a small blue ring and a medium blue ring, with its large slot empty. Elsewhere on the board are a blue ring and a red ring. You add a large blue ring to the first cell. Does the distant blue ring stay?
 
+{{< ring-answer 3 >}}
 **No. The distant blue ring clears too; the red ring stays.** Completing the three blue sizes triggers Color Burst. Unlike a line clear, this reaches blue rings elsewhere on the board. It still leaves other colors in place.
+{{< /ring-answer >}}
 
 The distinction to remember is simple: size decides whether a placement fits; color decides the pattern; the remaining rings decide how much space you actually gained. For other kinds of decisions, [compare number, block, and color puzzles](/blog/number-block-or-color-puzzles-for-your-break/), or return to [the learning guides](/blog/#learn).
 

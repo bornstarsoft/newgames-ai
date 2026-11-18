@@ -31,6 +31,8 @@
 .guide-index-nav a, .guide-path a { font-weight: 700; }
 .guide-navigation { margin-bottom: 28px; padding-block: 12px 20px; border-block: 1px solid var(--line); }
 .guide-navigation summary { cursor: pointer; padding-block: 12px; font-weight: 700; }
+.ring-answer summary { cursor: pointer; padding-block: 12px; font-weight: 700; color: var(--blue); }
+.ring-answer summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .guide-navigation ul { padding-left: 24px; }
 .guide-navigation li { margin-block: 8px; }
 .guide-navigation > a { display: inline-block; margin-top: 8px; }

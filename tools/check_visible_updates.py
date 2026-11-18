@@ -89,7 +89,7 @@ def main():
         "daysudoku-free-daily-sudoku-game-online": ("2026-10-14", "Revised the introduction to reflect the current classic daily Sudoku format and linked the official rules."),
         "how-to-find-your-first-sudoku-move": ("2026-10-23", "Added step-by-step candidate tables to the three practice answers. The earlier conflicting-notes example and rechecking routine remain available."),
         "block-puzzle-fit-clear-leave-space": ("2026-11-10", "Added a row-by-row check showing why eight empty cells still cannot fit the square."),
-        "ringzzle-free-color-rings-puzzle-game-online": ("2026-10-24", "Clarified ring-size slots, color line clears and Color Burst, with three examples and a repeatable pre-move check."),
+        "ringzzle-free-color-rings-puzzle-game-online": ("2026-11-18", "Made all three answers reveal on demand and added a follow-up about which slots open after a clear."),
         "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
         "sudoku-one-place-for-a-number": ("2026-11-10", "Added a worked comparison of which candidates change after placing the 5 in the first example."),
         "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a five-minute example that budgets for setup, one round, and time to stop."),
