@@ -5,6 +5,9 @@ description: "Learn the difference between one candidate in a cell and one possi
 date: 2026-10-23T02:10:00+09:00
 lastmod: 2026-11-10T20:55:54+09:00
 updateNote: "Added a worked comparison of which candidates change after placing the 5 in the first example."
+updateLink:
+  anchor: "after-placing-the-5"
+  label: "Compare candidates after placing 5"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["sudoku", "puzzle games", "beginner guides", "browser games"]

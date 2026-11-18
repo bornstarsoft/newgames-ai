@@ -5,6 +5,9 @@ description: "Try three original block-puzzle exercises to check a piece's fit, 
 date: 2026-10-23T01:19:00+09:00
 lastmod: 2026-11-10T21:06:11+09:00
 updateNote: "Added a row-by-row check showing why eight empty cells still cannot fit the square."
+updateLink:
+  anchor: "check-the-board-after-the-clear"
+  label: "See how to check the square's fit"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["block puzzles", "puzzle games", "beginner guides", "browser games"]

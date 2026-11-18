@@ -5,6 +5,9 @@ description: "Leave a short note about your last certain step, open question, an
 date: 2026-10-23T02:59:05+09:00
 lastmod: 2026-11-10T20:48:45+09:00
 updateNote: "Added a reusable puzzle-note template and an example of what to do when the board has changed."
+updateLink:
+  anchor: "puzzle-note-template"
+  label: "Open the puzzle note template"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["puzzle games", "browser games", "player guides"]

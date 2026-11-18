@@ -32,6 +32,55 @@ class Page(HTMLParser):
         if tag == "link" and attrs.get("rel") == "canonical": self.canonical = attrs.get("href")
 
 
+class UpdateLinks(HTMLParser):
+    def __init__(self, path):
+        super().__init__()
+        self.in_updates = False
+        self.in_link = False
+        self.rows = []
+        self.feed(path.read_text())
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "section":
+            self.in_updates = attrs.get("id") == "updated-guides"
+        if self.in_updates and tag == "li":
+            self.rows.append([])
+        if self.in_updates and tag == "a":
+            assert "target" not in attrs
+            self.rows[-1].append([attrs["href"], ""])
+            self.in_link = True
+
+    def handle_data(self, data):
+        if self.in_link:
+            self.rows[-1][-1][1] += data
+
+    def handle_endtag(self, tag):
+        if tag == "a":
+            self.in_link = False
+        if tag == "section":
+            self.in_updates = False
+
+
+def check_update_links(path):
+    expected = {
+        "/blog/block-puzzle-fit-clear-leave-space/": ("check-the-board-after-the-clear", "See how to check the square's fit"),
+        "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
+        "/blog/sudoku-one-place-for-a-number/": ("after-placing-the-5", "Compare candidates after placing 5"),
+    }
+    found = set()
+    for title, *jumps in UpdateLinks(path).rows:
+        route = title[0]
+        assert not urlsplit(route).fragment
+        if route not in expected:
+            assert not jumps
+            continue
+        anchor, label = expected[route]
+        assert jumps == [[f"{route}#{anchor}", label]]
+        found.add(route)
+    assert found == set(expected)
+
+
 def main():
     public = (Path(sys.argv[1]) if len(sys.argv) > 1 else Path("public")).resolve()
     source = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else Path(__file__).resolve().parent.parent
@@ -47,6 +96,7 @@ def main():
         if item["draft"] == "true" or publish_date > now or (expiry_date.year > 1 and expiry_date <= now):
             excluded.append(urlsplit(item["permalink"]).path)
     page = Page(public / "updates/index.html")
+    check_update_links(public / "updates/index.html")
     assert page.canonical == "https://newgames.ai/updates/"
     assert page.meta["robots"] == "index,follow"
     assert {"new-guides", "updated-guides", "handy-guides"} <= page.ids
