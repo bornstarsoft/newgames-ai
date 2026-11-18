@@ -1,4 +1,4 @@
-<table class="block-board" aria-describedby="{{ .description }}">
+<table class="block-board" aria-describedby="{{ .description }}"{{ with .id }} id="{{ . }}" tabindex="-1"{{ end }}>
   <caption>{{ .caption }}</caption>
   <thead><tr><th scope="col">Row</th>{{ range slice "A" "B" "C" "D" }}<th scope="col">{{ . }}</th>{{ end }}</tr></thead>
   <tbody>

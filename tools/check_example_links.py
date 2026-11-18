@@ -14,22 +14,28 @@ class Examples(HTMLParser):
         self.items = []
         self.current = None
         self.in_heading = False
+        self.in_answer = False
         self.feed(html)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag == "section" and attrs.get("class") in ("sudoku-check", "block-check"):
-            self.current = dict(id=attrs["id"], label=attrs["aria-labelledby"], headings=[], links=[], text="", details=0)
+            self.current = dict(id=attrs["id"], label=attrs["aria-labelledby"], headings=[], links=[], text="", details=0,
+                                answer_links=[], board_targets=[])
             self.items.append(self.current)
         if self.current is not None:
             if tag == "h3":
                 self.in_heading = True
                 self.current["headings"].append(attrs["id"])
             if tag == "a":
-                assert self.in_heading, "Only the example heading should gain a link"
-                self.current["links"].append(attrs)
+                assert self.in_heading or self.in_answer
+                self.current["links" if self.in_heading else "answer_links"].append(attrs)
+            if tag == "table" and "id" in attrs:
+                assert not self.in_answer and attrs.get("tabindex") == "-1"
+                self.current["board_targets"].append(attrs["id"])
             if tag == "details":
                 assert "open" not in attrs
+                self.in_answer = True
                 self.current["details"] += 1
 
     def handle_data(self, text):
@@ -38,6 +44,7 @@ class Examples(HTMLParser):
 
     def handle_endtag(self, tag):
         if tag == "h3": self.in_heading = False
+        if tag == "details": self.in_answer = False
         if tag == "section": self.current = None
 
 
@@ -66,13 +73,19 @@ def main():
             assert link["title"] == "Link to this example"
             assert not ({"target", "download", "onclick"} & link.keys())
             assert example["id"] in page.ids
+            if datafile == "block_practice":
+                board = "start-board-" + example["id"].removeprefix("check-")
+                assert example["board_targets"] == [board] and board in page.ids
+                assert example["answer_links"] == [{"href": "#" + board}]
+            else:
+                assert not example["board_targets"] and not example["answer_links"]
             count += 1
         assert page.canonical == "https://newgames.ai" + route
         assert all(s.get("type") == "application/ld+json" for s in page.scripts)
     assert count == 9
     for filename in ("index.html", "blog/index.html", "updates/index.html"):
         assert not Examples((public / filename).read_text()).items
-    print("PASS: nine exact native self-links, stable IDs/titles/labels, closed answers, canonical routes, no new script or homepage controls")
+    print("PASS: nine stable example links, four closed-answer links to focusable start boards, no new script or homepage controls")
 
 
 if __name__ == "__main__":
