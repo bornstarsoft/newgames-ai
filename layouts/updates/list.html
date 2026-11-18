@@ -3,13 +3,14 @@
 {{ $published := slice }}
 {{ $updated := slice }}
 {{ range $posts }}
-  {{ if and (not .Draft) (not (.PublishDate.After now)) }}
+  {{ if and (not .Draft) (not (.PublishDate.After now)) (or .ExpiryDate.IsZero (.ExpiryDate.After now)) }}
     {{ $published = $published | append . }}
-    {{ if and .Params.updateNote (.Lastmod.After .Date) (not (.Lastmod.After now)) }}
+    {{ if and (strings.TrimSpace (.Params.updateNote | default "")) (.Lastmod.After .PublishDate) (not (.Lastmod.After now)) }}
       {{ $updated = $updated | append . }}
     {{ end }}
   {{ end }}
 {{ end }}
+{{ $updated = sort $updated "Lastmod" "desc" }}
 <section class="page-hero updates-hero">
   <div class="wrap page-hero-inner">
     <div>
@@ -46,18 +47,18 @@
   <div class="wrap">
     <div class="section-heading"><h2 id="updated-guides-title">Updated guides</h2><p>Changes to previously published coverage, with the reason for each update.</p></div>
     <ol class="updates-list">
-      {{ range first 6 (sort $updated "Lastmod" "desc") }}
-      <li>
-        <p class="post-meta">Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time> &middot; Originally published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></p>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        <p>{{ .Params.updateNote }}</p>
-        {{ $guide := . }}
-        {{ with .Params.updateLink }}
-        <p><a href="{{ $guide.RelPermalink }}#{{ .anchor }}">{{ .label }}</a></p>
-        {{ end }}
-      </li>
+      {{ range first 6 $updated }}
+        {{ partial "update-list-item.html" . }}
       {{ else }}<li>No article updates to report yet.</li>{{ end }}
     </ol>
+    {{ with after 6 $updated }}
+    <details class="updates-history" id="earlier-guide-updates">
+      <summary>Earlier guide updates ({{ len . }})</summary>
+      <ol class="updates-list" start="7">
+        {{ range . }}{{ partial "update-list-item.html" . }}{{ end }}
+      </ol>
+    </details>
+    {{ end }}
   </div>
 </section>
 <section class="section updates-section" id="handy-guides" aria-labelledby="handy-guides-title">

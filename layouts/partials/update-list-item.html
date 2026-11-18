@@ -1,0 +1,9 @@
+<li>
+  <p class="post-meta">Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time> &middot; Originally published <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></p>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p>{{ .Params.updateNote }}</p>
+  {{ $guide := . }}
+  {{ with .Params.updateLink }}
+  <p><a href="{{ $guide.RelPermalink }}#{{ .anchor }}">{{ .label }}</a></p>
+  {{ end }}
+</li>

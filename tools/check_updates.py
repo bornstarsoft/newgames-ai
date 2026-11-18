@@ -17,6 +17,7 @@ class Page(HTMLParser):
         self.links, self.images, self.scripts, self.times = [], [], [], []
         self.ids, self.meta = set(), {}
         self.canonical = None
+        self.has_update_notice = False
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
@@ -29,6 +30,8 @@ class Page(HTMLParser):
         if tag == "script": self.scripts.append(attrs)
         if tag == "time": self.times.append(attrs.get("datetime"))
         if tag == "meta": self.meta[attrs.get("name")] = attrs.get("content")
+        if tag == "p" and "article-update" in attrs.get("class", "").split():
+            self.has_update_notice = True
         if tag == "link" and attrs.get("rel") == "canonical": self.canonical = attrs.get("href")
 
 
@@ -37,27 +40,36 @@ class UpdateLinks(HTMLParser):
         super().__init__()
         self.in_updates = False
         self.in_link = False
+        self.in_history = False
         self.rows = []
+        self.earlier = []
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag == "section":
             self.in_updates = attrs.get("id") == "updated-guides"
+        if self.in_updates and tag == "details":
+            assert attrs.get("id") == "earlier-guide-updates" and "open" not in attrs
+            self.in_history = True
+        rows = self.earlier if self.in_history else self.rows
         if self.in_updates and tag == "li":
-            self.rows.append([])
+            rows.append([])
         if self.in_updates and tag == "a":
             assert "target" not in attrs
-            self.rows[-1].append([attrs["href"], ""])
+            rows[-1].append([attrs["href"], ""])
             self.in_link = True
 
     def handle_data(self, data):
         if self.in_link:
-            self.rows[-1][-1][1] += data
+            rows = self.earlier if self.in_history else self.rows
+            rows[-1][-1][1] += data
 
     def handle_endtag(self, tag):
         if tag == "a":
             self.in_link = False
+        if tag == "details":
+            self.in_history = False
         if tag == "section":
             self.in_updates = False
 
@@ -71,9 +83,9 @@ def check_update_links(path):
         "/blog/ringzzle-free-color-rings-puzzle-game-online/": ("three-small-checks", "Try the three Ringzzle checks"),
     }
     routes = set()
-    rows = UpdateLinks(path).rows
-    assert len(rows) == 6, "Keep the latest updates list capped at six"
-    for title, *jumps in rows:
+    listing = UpdateLinks(path)
+    assert len(listing.rows) == 6, "Keep the latest updates list capped at six"
+    for title, *jumps in listing.rows + listing.earlier:
         route = title[0]
         assert not urlsplit(route).fragment
         assert route not in routes
@@ -83,7 +95,8 @@ def check_update_links(path):
             continue
         anchor, label = expected[route]
         assert jumps == [[f"{route}#{anchor}", label]]
-    return routes
+    assert set(expected) <= routes
+    return {row[0][0] for row in listing.rows}, routes
 
 
 def main():
@@ -101,7 +114,7 @@ def main():
         if item["draft"] == "true" or publish_date > now or (expiry_date.year > 1 and expiry_date <= now):
             excluded.append(urlsplit(item["permalink"]).path)
     page = Page(public / "updates/index.html")
-    recent_updates = check_update_links(public / "updates/index.html")
+    recent_updates, all_updates = check_update_links(public / "updates/index.html")
     assert page.canonical == "https://newgames.ai/updates/"
     assert page.meta["robots"] == "index,follow"
     assert {"new-guides", "updated-guides", "handy-guides"} <= page.ids
@@ -149,8 +162,11 @@ def main():
     assert save.canonical in {n.text for n in rss.findall("./channel/item/link")}
     assert save_path in Page(public / "web-games/index.html").links
     count = 0
+    noticed_updates = set()
     for path in public.rglob("*.html"):
         p = Page(path)
+        if p.has_update_notice:
+            noticed_updates.add(urlsplit(p.canonical).path)
         count += 1
         assert "/updates/" in p.links, (path, "Missing footer updates link")
         assert all(s.get("type") == "application/ld+json" for s in p.scripts), path
@@ -165,6 +181,7 @@ def main():
         for img in p.images:
             assert img.get("width") and img.get("height") and "alt" in img
             assert (public / img["src"].lstrip("/")).is_file()
+    assert all_updates == noticed_updates, "Each article update must be discoverable exactly once"
     for path in public.rglob("*"):
         if path.suffix in (".xml", ".html"):
             markup = path.read_text()

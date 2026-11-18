@@ -10,6 +10,10 @@
 .updates-list h3 a { text-underline-offset: 4px; }
 .updates-list p { margin: 8px 0 0; color: var(--muted); line-height: 1.6; }
 .updates-list .post-meta { margin: 0 0 8px; font-size: 0.875rem; }
+.updates-history { max-width: 780px; margin-top: 12px; }
+.updates-history summary { padding-block: 12px; color: var(--blue); font-weight: 700; cursor: pointer; }
+.updates-history[open] .updates-list { margin-top: 12px; }
+.updates-history summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 .updates-nav a:focus-visible, .updates-list a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
 @media (min-width: 760px) {
   .updates-hero .page-hero-inner { grid-template-columns: minmax(0, 1fr) 320px; }
