@@ -71,6 +71,7 @@ def main():
     targets = {
         "browser-game-save-progress-checklist": "2026-10-23",
         "how-to-find-your-first-sudoku-move": "2026-10-23",
+        "how-to-find-web-games-that-fit-short-breaks": "2026-06-03",
         "number-block-or-color-puzzles-for-your-break": "2026-10-14",
     }
     for slug, date in targets.items():
@@ -86,7 +87,7 @@ def main():
     for path in (public / "index.html", public / "blog/daysudoku-free-daily-sudoku-game-online/index.html"):
         assert GuidePage(path).disclosures == 0
         assert "css/guides.css" not in path.read_text()
-    print(f"PASS: {len(published)} published articles retained; three purpose anchors; three closed TOCs with valid targets; original dates and homepage scope preserved")
+    print(f"PASS: {len(published)} published articles retained; three purpose anchors; {len(targets)} closed TOCs with valid targets; original dates and homepage scope preserved")
 
 
 if __name__ == "__main__":

@@ -24,6 +24,8 @@ Web games vary by browser, device, and network conditions. Before you start, che
 
 Planning to continue later? Our [browser game save checklist](/blog/browser-game-save-progress-checklist/) explains what to check before closing a tab, without assuming every game remembers an unfinished session.
 
+If a game [will not load when you return](/blog/how-to-find-web-games-that-fit-short-breaks/#when-a-web-game-will-not-load), start with the official address and connection checks before changing browser settings.
+
 Once you know what the game keeps, [leave a useful puzzle note](/blog/return-to-a-puzzle-after-a-break/) to remember the question you wanted to check next. Notes support your reasoning; they do not preserve the board.
 
 [DaySudoku](/blog/daysudoku-free-daily-sudoku-game-online/) offers a daily Sudoku board in the browser. Follow the classic number-logic rules, with no sign-up or download required.

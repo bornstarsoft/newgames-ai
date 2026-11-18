@@ -77,6 +77,7 @@ class UpdateLinks(HTMLParser):
 def check_update_links(path):
     expected = {
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
+        "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
         "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
         "/blog/sudoku-one-place-for-a-number/": ("when-two-places-share-a-row", "Try the box-to-row Sudoku check"),
         "/blog/number-block-or-color-puzzles-for-your-break/": ("try-one-decision-before-choosing", "Try one decision before choosing a puzzle"),
@@ -139,8 +140,11 @@ def main():
     break_guide = Page(public / break_path.lstrip("/") / "index.html")
     assert break_guide.canonical == "https://newgames.ai" + break_path
     assert {"2026-06-03", "2026-11-18"} <= set(break_guide.times)
-    assert "try-a-five-minute-break-budget" in break_guide.ids
+    assert {"try-a-five-minute-break-budget", "when-a-web-game-will-not-load"} <= break_guide.ids
     assert "/blog/browser-game-save-progress-checklist/#the-short-checklist" in break_guide.links
+    assert "/blog/browser-game-save-progress-checklist/#do-not-clear-site-data-as-a-first-fix" in break_guide.links
+    assert "https://support.google.com/chrome/answer/6098869" in break_guide.links
+    assert break_path + "#when-a-web-game-will-not-load" in Page(public / "web-games/index.html").links
     mobile_path = "/blog/how-to-choose-a-new-mobile-game-for-quick-sessions/"
     assert mobile_path in recent_updates
     mobile = Page(public / mobile_path.lstrip("/") / "index.html")

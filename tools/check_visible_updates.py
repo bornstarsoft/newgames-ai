@@ -92,7 +92,7 @@ def main():
         "ringzzle-free-color-rings-puzzle-game-online": ("2026-11-18", "Made all three answers reveal on demand and added a follow-up about which slots open after a clear."),
         "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
         "sudoku-one-place-for-a-number": ("2026-11-18", "Added a box-to-row exercise: remove a candidate without choosing between two possible cells."),
-        "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a five-minute example that budgets for setup, one round, and time to stop."),
+        "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a checklist for a browser game that will not load, starting with checks that leave saved progress alone."),
         "number-block-or-color-puzzles-for-your-break": ("2026-11-18", "Added three short prompts and links to worked examples so you can try a decision before choosing a puzzle."),
         "how-to-choose-a-new-mobile-game-for-quick-sessions": ("2026-11-18", "Added a three-move check for control reach, screen visibility, and playing without sound."),
     }
