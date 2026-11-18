@@ -27,6 +27,7 @@ TARGETS = {
     "return-to-a-puzzle-after-a-break": [
         ("#the-return-checklist", "Return checklist"),
         ("#an-example-of-a-useful-note", "Note example"),
+        ("#rehearse-a-return-on-a-fixed-board", "Practice a return"),
     ],
 }
 

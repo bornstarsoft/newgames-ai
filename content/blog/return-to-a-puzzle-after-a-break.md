@@ -3,11 +3,11 @@ title: "Return to a Puzzle After a Break: Leave a Useful Note"
 slug: "return-to-a-puzzle-after-a-break"
 description: "Leave a short note about your last certain step, open question, and next check so you can return to a puzzle with clearer expectations."
 date: 2026-10-23T02:59:05+09:00
-lastmod: 2026-11-10T20:48:45+09:00
-updateNote: "Added a reusable puzzle-note template and an example of what to do when the board has changed."
+lastmod: 2026-11-18T22:37:28+09:00
+updateNote: "Added a short rehearsal for leaving a puzzle note and using it to resume a fixed block exercise."
 updateLink:
-  anchor: "puzzle-note-template"
-  label: "Open the puzzle note template"
+  anchor: "rehearse-a-return-on-a-fixed-board"
+  label: "Rehearse a return on a fixed board"
 draft: false
 categories: ["Puzzle Games", "Web Games"]
 tags: ["puzzle games", "browser games", "player guides"]
@@ -21,6 +21,8 @@ guideShortcuts:
     anchor: "the-return-checklist"
   - label: "Note example"
     anchor: "an-example-of-a-useful-note"
+  - label: "Practice a return"
+    anchor: "rehearse-a-return-on-a-fixed-board"
 ---
 
 You return to a puzzle and recognize the board, but not the decision you were about to make. Was that number certain, or just a possibility? Were you trying to clear a line, or leave room for another piece?
@@ -67,6 +69,8 @@ You can also record the official game address and a puzzle identifier if the gam
 
 Optional board cue: add a visible puzzle label or a detail to compare, such as the target cell and a nearby given digit. The cue can help spot a different board; one matching detail is not proof that the position is unchanged.
 
+To try the template before using it on a game you care about, [practice with a fixed board](#rehearse-a-return-on-a-fixed-board).
+
 ## An Example Of A Useful Note
 
 Here is a fictional note about a number puzzle, not a supplied board or a claim that either candidate is valid:
@@ -86,6 +90,18 @@ Suppose the note above refers to an empty cell, but on return that cell already 
 Recheck even a familiar position before committing a move. A note can contain a copying error or an assumption you did not notice at the time. If the checks disagree, pause rather than forcing the remembered answer into place.
 
 After a justified move, revise or cross out the outdated question. Keeping a long list of stale possibilities is less useful than leaving one clear next step.
+
+## Rehearse A Return On A Fixed Board
+
+Open the [one-line versus two-line block exercise](/blog/block-puzzle-fit-clear-leave-space/#check-tradeoff) and leave the answer closed. You are only rehearsing how to return to a decision; there is no game progress to protect.
+
+- **Certain:** A2 is empty, so the single-cell piece fits there.
+- **Unresolved:** I have not checked whether the square fits after that move.
+- **Next:** Check which lines placing the piece at A2 completes. Then look for a 2-by-2 gap after those lines clear.
+
+Write those lines in your own words and keep the exercise link with them. Stop there. Later, or after a brief pause now, reopen the board and confirm that it still shows option A at A2 before using your note. Check the lines and the gap before revealing the answer. Your note should get you back to the question, not tell you which option to pick.
+
+Use the same distinction on a real board: "the first piece fits" is something you checked; "the next piece fits after the clear" is a separate claim. If you cannot confirm that the position is the same, start from what is on screen now.
 
 ## Make The Next Visit Optional
 

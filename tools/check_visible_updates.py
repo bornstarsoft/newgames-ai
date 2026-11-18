@@ -90,7 +90,7 @@ def main():
         "how-to-find-your-first-sudoku-move": ("2026-10-23", "Added step-by-step candidate tables to the three practice answers. The earlier conflicting-notes example and rechecking routine remain available."),
         "block-puzzle-fit-clear-leave-space": ("2026-11-18", "Added a block exercise where clearing one line leaves room for the next square but clearing two does not."),
         "ringzzle-free-color-rings-puzzle-game-online": ("2026-11-18", "Made all three answers reveal on demand and added a follow-up about which slots open after a clear."),
-        "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
+        "return-to-a-puzzle-after-a-break": ("2026-11-18", "Added a short rehearsal for leaving a puzzle note and using it to resume a fixed block exercise."),
         "sudoku-one-place-for-a-number": ("2026-11-18", "Added a box-to-row exercise: remove a candidate without choosing between two possible cells."),
         "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a checklist for a browser game that will not load, starting with checks that leave saved progress alone."),
         "number-block-or-color-puzzles-for-your-break": ("2026-11-18", "Added a quick check for telling pieces apart and reading move feedback without relying on color alone."),

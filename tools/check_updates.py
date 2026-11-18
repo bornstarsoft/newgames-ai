@@ -78,7 +78,7 @@ def check_update_links(path):
     expected = {
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
         "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
-        "/blog/return-to-a-puzzle-after-a-break/": ("puzzle-note-template", "Open the puzzle note template"),
+        "/blog/return-to-a-puzzle-after-a-break/": ("rehearse-a-return-on-a-fixed-board", "Rehearse a return on a fixed board"),
         "/blog/sudoku-one-place-for-a-number/": ("when-two-places-share-a-row", "Try the box-to-row Sudoku check"),
         "/blog/number-block-or-color-puzzles-for-your-break/": ("check-the-board-without-relying-on-color", "Try the color and symbol check"),
         "/blog/ringzzle-free-color-rings-puzzle-game-online/": ("three-small-checks", "Try the three Ringzzle checks"),
