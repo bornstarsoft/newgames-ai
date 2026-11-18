@@ -117,6 +117,7 @@ def main():
         "new-indie-games-for-relaxing-breaks": ("2026-11-18", "Added a way to decide whether an indie demo is worth revisiting after a developer update."),
         "how-casual-players-can-choose-new-puzzle-games": ("2026-11-18", "Added a way to use a small hint without revealing the answer, with an existing Sudoku exercise to try it on."),
         "best-new-puzzle-games-for-casual-players": ("2026-11-18", "Added a two-person puzzle break: suggest a move, check it together, and swap roles on the next example."),
+        "browser-game-save-progress-checklist": ("2026-11-18", "Added a checklist for continuing a browser game on another device without assuming a bookmark carries the save."),
     }
     listing = UpdateLinks(public / "updates/index.html")
     destinations = {title[0]: [href.split("#", 1)[1], label]
@@ -147,7 +148,7 @@ def main():
             link_count += len(notice.links)
             found.add(slug)
     assert found == set(expected)
-    assert link_count == 8
+    assert link_count == 9
     print(f"PASS: {len(expected)} dated article notices, {link_count} direct section links and unchanged compact archive scope")
     fixtures(root)
 

@@ -76,6 +76,7 @@ class UpdateLinks(HTMLParser):
 
 def check_update_links(path):
     expected = {
+        "/blog/browser-game-save-progress-checklist/": ("before-you-switch-devices", "Check before switching devices"),
         "/blog/best-new-puzzle-games-for-casual-players/": ("try-one-puzzle-move-together", "Try a puzzle move together"),
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
         "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
@@ -189,15 +190,17 @@ def main():
     rss = ET.parse(public / "blog/index.xml")
     assert rss.findall("./channel/item")
     save_path = "/blog/browser-game-save-progress-checklist/"
-    assert save_path in page.links
+    assert save_path in page.links and save_path in all_updates
     save = Page(public / save_path.lstrip("/") / "index.html")
     assert save.canonical == "https://newgames.ai" + save_path
     assert save.meta["robots"] == "index,follow"
-    assert "the-short-checklist" in save.ids
+    assert {"the-short-checklist", "before-you-switch-devices", "do-not-clear-site-data-as-a-first-fix"} <= save.ids
+    assert {"2026-10-23", "2026-11-18"} <= set(save.times)
+    assert "https://support.google.com/chrome/answer/165139?hl=en" in save.links
     assert "/updates/#handy-guides" in save.links
     assert save.canonical in sitemap
     assert save.canonical in {n.text for n in rss.findall("./channel/item/link")}
-    assert save_path in Page(public / "web-games/index.html").links
+    assert {save_path, save_path + "#before-you-switch-devices"} <= set(Page(public / "web-games/index.html").links)
     count = 0
     noticed_updates = set()
     for path in public.rglob("*.html"):
