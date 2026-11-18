@@ -102,7 +102,15 @@ def main():
     assert {"new-guides", "updated-guides", "handy-guides"} <= page.ids
     assert "/blog/index.xml" in page.links
     assert "/blog/number-block-or-color-puzzles-for-your-break/" in page.links
-    assert "2026-06-15" in page.times and "2026-10-14" in page.times
+    day = Page(public / "blog/daysudoku-free-daily-sudoku-game-online/index.html")
+    assert {"2026-06-15", "2026-10-14"} <= set(day.times)
+    break_path = "/blog/how-to-find-web-games-that-fit-short-breaks/"
+    assert any(row and row[0][0] == break_path for row in UpdateLinks(public / "updates/index.html").rows)
+    break_guide = Page(public / break_path.lstrip("/") / "index.html")
+    assert break_guide.canonical == "https://newgames.ai" + break_path
+    assert {"2026-06-03", "2026-11-18"} <= set(break_guide.times)
+    assert "try-a-five-minute-break-budget" in break_guide.ids
+    assert "/blog/browser-game-save-progress-checklist/#the-short-checklist" in break_guide.links
     sitemap = {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in sitemap
     rss = ET.parse(public / "blog/index.xml")

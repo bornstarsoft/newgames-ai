@@ -92,6 +92,7 @@ def main():
         "ringzzle-free-color-rings-puzzle-game-online": ("2026-10-24", "Clarified ring-size slots, color line clears and Color Burst, with three examples and a repeatable pre-move check."),
         "return-to-a-puzzle-after-a-break": ("2026-11-10", "Added a reusable puzzle-note template and an example of what to do when the board has changed."),
         "sudoku-one-place-for-a-number": ("2026-11-10", "Added a worked comparison of which candidates change after placing the 5 in the first example."),
+        "how-to-find-web-games-that-fit-short-breaks": ("2026-11-18", "Added a five-minute example that budgets for setup, one round, and time to stop."),
     }
     found = set()
     for path in public.rglob("*.html"):

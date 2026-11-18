@@ -2,6 +2,8 @@
 title: "How to Find Web Games That Fit Short Breaks"
 description: "A lightweight guide to finding browser-friendly web games that fit short breaks, quick sessions, and low-friction play."
 date: 2026-06-03
+lastmod: 2026-11-18T21:25:10+09:00
+updateNote: "Added a five-minute example that budgets for setup, one round, and time to stop."
 draft: false
 categories: ["Web Games", "Casual Games"]
 tags: ["web games", "browser games", "casual games", "quick play", "new games"]
@@ -17,6 +19,18 @@ A short break is a small window. You may have a few minutes between tasks, a qui
 [Web games](/web-games/) can be a good fit for this style of play because they often put the experience close to the browser. Still, it is better to be precise than romantic about the format. Not every browser game starts instantly, works on every device, or suits a short session. Some need more attention, setup, or comfort than expected.
 
 This guide explains how to choose browser-friendly games in a calm, practical way. It does not rank specific titles or make claims about availability. It offers a simple filter for finding games that suit brief, low-friction play.
+
+## Try A Five-Minute Break Budget
+
+Start with the time you can actually use. Count getting to the first move and putting the game down, not just the round itself.
+
+Say you have five minutes. Set aside one minute to open the game and see how it works, and leave one minute at the end to stop. That leaves up to three minutes to play. This is an example budget, not an estimate for a particular game.
+
+- **At the start:** If the setup takes longer than expected, recalculate. With two minutes spent on setup and one still reserved at the end, you have two minutes to play.
+- **Before starting a round:** Choose a stopping point you can recognize, such as the end of a round you already know or one puzzle move you can explain. If you cannot tell when you can stop, save the link for a longer break.
+- **At the end:** Stop at the point you chose. If you want to leave a board unfinished, [check what the game actually saves](/blog/browser-game-save-progress-checklist/#the-short-checklist) before counting on a return. Keeping the link does not keep the board.
+
+Next time, remember what used up the break: getting started, taking a turn, or stopping. That tells you what to look for in another game, even when you have a different amount of time.
 
 ## Why Web Games Can Work Well For Short Breaks
 
