@@ -53,8 +53,10 @@ def main():
     public = Path(sys.argv[1]) if len(sys.argv) > 1 else root / "public"
     index = public / "blog/index.html"
     updates = public / "updates/index.html"
+    missing = public / "404.html"
     assert Page(index).links.count("#practice-examples") == 1
     assert Page(updates).links.count("/blog/#practice-examples") == 1
+    assert Page(missing).links.count("/blog/#practice-examples") == 1
     finder = Finder(index.read_text())
     assert finder.count == 1
     assert finder.summary == "Choose a practice example"
@@ -83,8 +85,8 @@ def main():
         assert urlsplit(href).fragment
     for path in public.rglob("*.html"):
         if path != index: assert Finder(path.read_text()).count == 0, path
-        if path != updates: assert "/blog/#practice-examples" not in Page(path).links, path
-    print("PASS: guide and updates entry links, one closed finder, four skill groups, thirteen ordered examples, and directory-only scope")
+        if path not in (updates, missing): assert "/blog/#practice-examples" not in Page(path).links, path
+    print("PASS: guide, updates and missing-page entry links, one closed finder, four skill groups and thirteen ordered examples")
 
 
 if __name__ == "__main__":

@@ -39,7 +39,7 @@ def main():
     recovery = Recovery(error.read_text())
     assert page.meta["robots"] == "noindex,follow"
     assert recovery.count == 1
-    assert recovery.links == ["/blog/", "/blog/#learn", "/updates/"]
+    assert recovery.links == ["/blog/#all-guides", "/blog/#practice-examples", "/updates/"]
     assert "/" in page.links and "/contact/" in page.links
     assert not page.scripts
     for link in recovery.links + ["/", "/contact/"]:
