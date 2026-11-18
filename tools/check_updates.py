@@ -78,6 +78,7 @@ def check_update_links(path):
     expected = {
         "/blog/block-puzzle-fit-clear-leave-space/": ("check-tradeoff", "Try the one-line versus two-line exercise"),
         "/blog/how-to-find-web-games-that-fit-short-breaks/": ("when-a-web-game-will-not-load", "Check a game that will not load"),
+        "/blog/how-casual-players-can-choose-new-puzzle-games/": ("use-a-hint-without-giving-away-the-answer", "Try a puzzle hint without spoiling the answer"),
         "/blog/new-indie-games-for-relaxing-breaks/": ("when-to-revisit-an-indie-demo", "Decide whether to revisit a demo"),
         "/blog/return-to-a-puzzle-after-a-break/": ("rehearse-a-return-on-a-fixed-board", "Rehearse a return on a fixed board"),
         "/blog/sudoku-one-place-for-a-number/": ("when-two-places-share-a-row", "Try the box-to-row Sudoku check"),
@@ -116,7 +117,7 @@ def main():
         if item["draft"] == "true" or publish_date > now or (expiry_date.year > 1 and expiry_date <= now):
             excluded.append(urlsplit(item["permalink"]).path)
     page = Page(public / "updates/index.html")
-    recent_updates, all_updates = check_update_links(public / "updates/index.html")
+    _, all_updates = check_update_links(public / "updates/index.html")
     assert page.canonical == "https://newgames.ai/updates/"
     assert page.meta["robots"] == "index,follow"
     assert {"new-guides", "updated-guides", "handy-guides"} <= page.ids
@@ -158,12 +159,21 @@ def main():
     assert "try-three-moves-in-your-usual-setup" in mobile.ids
     indie_path = "/blog/new-indie-games-for-relaxing-breaks/"
     indie_anchor = "when-to-revisit-an-indie-demo"
-    assert indie_path in recent_updates
+    assert indie_path in all_updates
     indie = Page(public / indie_path.lstrip("/") / "index.html")
     assert indie.canonical == "https://newgames.ai" + indie_path
     assert {"2026-05-12", "2026-11-18"} <= set(indie.times) and indie_anchor in indie.ids
     assert indie_path + "#" + indie_anchor in Page(public / "indie-games/index.html").links
     assert "/blog/browser-game-save-progress-checklist/#the-short-checklist" in indie.links
+    hint_path = "/blog/how-casual-players-can-choose-new-puzzle-games/"
+    hint_anchor = "use-a-hint-without-giving-away-the-answer"
+    assert hint_path in all_updates
+    hint = Page(public / hint_path.lstrip("/") / "index.html")
+    assert hint.canonical == "https://newgames.ai" + hint_path
+    assert {"2026-06-03", "2026-11-18"} <= set(hint.times) and hint_anchor in hint.ids
+    assert hint_path + "#" + hint_anchor in Page(public / "puzzle-games/index.html").links
+    assert {"/blog/how-to-find-your-first-sudoku-move/#check-cross-check",
+            "/blog/return-to-a-puzzle-after-a-break/#puzzle-note-template"} <= set(hint.links)
     sitemap = {n.text for n in ET.parse(public / "sitemap.xml").iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     assert page.canonical in sitemap
     rss = ET.parse(public / "blog/index.xml")

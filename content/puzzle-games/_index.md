@@ -22,6 +22,8 @@ Start with the kind of thinking you enjoy: number logic, arranging shapes, or ma
 
 If similar colors make a board hard to read, try [a quick check for piece symbols and move feedback](/blog/number-block-or-color-puzzles-for-your-break/#check-the-board-without-relying-on-color).
 
+Stuck on a move? [Practice using a hint without seeing the answer](/blog/how-casual-players-can-choose-new-puzzle-games/#use-a-hint-without-giving-away-the-answer).
+
 ## New Puzzle Games
 
 New to number puzzles? [Practice finding a certain Sudoku move](/blog/how-to-find-your-first-sudoku-move/) with three short examples before moving on to a full game. Then try [finding the only place for a number](/blog/sudoku-one-place-for-a-number/) when several candidates remain in each cell.
