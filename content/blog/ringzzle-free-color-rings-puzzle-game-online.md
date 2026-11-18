@@ -40,7 +40,7 @@ A nearly complete set is something to notice, not a reason to ignore the pieces 
 
 ## Before Placing A Ring
 
-Use the same short check when you start a session or return after a break:
+Use the same short check when you start a session or return after a break. The [ring puzzle terms](/puzzle-terms/#ring-size-slot) are available as a quick reference:
 
 1. **Size:** is this ring's size slot empty at the destination?
 2. **Color:** would this placement complete a matching line or a three-size set in one cell?

@@ -20,6 +20,9 @@ TERMS = {
     "piece-footprint",
     "line-clear",
     "usable-space",
+    "ring-size-slot",
+    "color-line-clear",
+    "color-burst",
     "return-note",
 }
 EXAMPLES = {
@@ -32,6 +35,7 @@ EXAMPLES = {
     "/blog/block-puzzle-fit-clear-leave-space/#check-clear",
     "/blog/block-puzzle-fit-clear-leave-space/#check-space",
     "/blog/return-to-a-puzzle-after-a-break/#the-return-checklist",
+    "/blog/ringzzle-free-color-rings-puzzle-game-online/",
 }
 
 
@@ -75,8 +79,14 @@ def main():
         "not a confirmed entry",
         "incomplete notes is not enough evidence",
         "it does not save or restore a game's board",
+        "cannot accept a second small ring",
+        "The rings need not be the same size",
+        "removes that color across the board",
     ):
         assert boundary in text, boundary
+    assert "https://ringzzle.com/how-to-play/" in page.links
+    ring_guide = Page(public / "blog/ringzzle-free-color-rings-puzzle-game-online/index.html")
+    assert ring_guide.links.count(ROUTE + "#ring-size-slot") == 1
     entries = set()
     for html in public.rglob("*.html"):
         links = GuidePage(html).contents_links
@@ -92,7 +102,7 @@ def main():
         assert page.canonical not in {e.text for e in ET.parse(public / feed).findall("./channel/item/link")}
     root_items = [e for e in ET.parse(public / "index.xml").findall("./channel/item") if e.findtext("link") == page.canonical]
     assert len(root_items) == 1 and "2026" in root_items[0].findtext("pubDate")
-    print("PASS: nine reference terms, nine practice destinations, six guide entry links, closed TOC, canonical/OG/robots/sitemap, no self-link, real root-feed date and no blog/update feed event")
+    print("PASS: twelve reference terms, scoped Ringzzle definitions and reciprocal guide link, existing guide entries, original publication date and feed scope")
 
 
 if __name__ == "__main__":

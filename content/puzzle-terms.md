@@ -1,7 +1,8 @@
 ---
 title: "Puzzle Terms: A Small Reference for Your Next Move"
-description: "Plain-English Sudoku and block-puzzle terms, linked to small practice examples: candidates, one possible place, line clears and usable space."
+description: "Look up Sudoku candidates, block-puzzle space, and Ringzzle's ring slots, color lines, and Color Burst, with links to worked examples."
 date: 2026-10-23T21:42:26+09:00
+lastmod: 2026-11-18T21:29:23+09:00
 draft: false
 robots: "index,follow"
 cover: "/images/categories/puzzle-games.svg"
@@ -11,7 +12,7 @@ guideNavigation: true
 
 A familiar word can mean something quite specific in a puzzle. This reference explains the terms used in our learning guides and points to an example for each check. Start with the word you need; there is no need to read the whole page before returning to your board.
 
-The Sudoku definitions refer to classic Sudoku. The block definitions describe our fixed teaching exercises, not every game's rules or controls.
+The Sudoku definitions refer to classic Sudoku. The block definitions describe our fixed teaching exercises, not every game's rules or controls. The ring terms below describe Ringzzle specifically.
 
 ## Cell, Row, Column And Box
 
@@ -76,6 +77,20 @@ Those are the rules for these examples. A different game may clear shapes differ
 When the next piece is known, check its shape against the board that will remain after the current move and any clears.
 
 [Compare two placements and the space left behind](/blog/block-puzzle-fit-clear-leave-space/#check-space).
+
+## Ring Size Slot
+
+In Ringzzle, a **size slot** is the place in a cell for one small, medium, or large ring. A cell with a small ring can still accept a medium ring if that slot is empty. It cannot accept a second small ring, even in a different color.
+
+## Color Line Clear
+
+A **color line clear** in Ringzzle needs the same color in each cell of a complete row, column, or diagonal. The rings need not be the same size. That clear removes the matching color along the line, not every ring in those cells. This differs from the full-row clear in our block exercises.
+
+## Color Burst
+
+In Ringzzle, a **Color Burst** starts in one cell with a small, medium, and large ring of the same color. It removes that color across the board, not just in the cell that triggered it. A line spans cells; a Burst starts with three sizes in one cell.
+
+See the [official Ringzzle rules](https://ringzzle.com/how-to-play/) or [try our three Ringzzle examples](/blog/ringzzle-free-color-rings-puzzle-game-online/) to see which rings stay after each kind of clear.
 
 ## Return Note
 
